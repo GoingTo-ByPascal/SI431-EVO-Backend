@@ -35,7 +35,7 @@ namespace GoingTo_API
         {
             services.AddControllers();
             services.AddDbContext<AppDbContext>(options =>
-                options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<ILocatableRepository, LocatableRepository>();
             services.AddScoped<ILocatableService, LocatableService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();

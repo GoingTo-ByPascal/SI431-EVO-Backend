@@ -21,6 +21,7 @@ namespace GoingTo_API.Controllers
             _mapper = mapper;
             _locatableService = locatableService;
         }
+
         [HttpGet]
         public async Task<IEnumerable<LocatableResource>> GetAllAsync()
         {
