@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Domain.Models
 {
-    public class Review
+    public class Reviewable
     {
         public int Id { get; set; }
-        public string Comment { get; set; }
-        public float Score { get; set; }
+        public string Description { get; set; }
     }
 }
