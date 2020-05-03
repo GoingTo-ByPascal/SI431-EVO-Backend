@@ -12,7 +12,7 @@ namespace GoingTo_API.Domain.Persistence.Context
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<Achievement> achievements { get; set; }
-        public DbSet<City> Cities { get; set; }
+        public DbSet<City> cities { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Currency> Currencies { get; set; }
         public DbSet<Favourite> Favourites { get; set; }
