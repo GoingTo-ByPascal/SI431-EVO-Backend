@@ -11,6 +11,6 @@ namespace GoingTo_API.Domain.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Birthdate { get; set; }
-        public IList<Users> Users { get; set; } = new List<Users>();
+        public User UserP { get; set; } 
     }
 }
