@@ -1,4 +1,5 @@
-﻿using System;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -26,6 +27,5 @@ namespace GoingTo_API.Domain.Persistence.Context
         public DbSet<Tip> Tips { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Wallet> Wallets { get; set; }
-
     }
 }
