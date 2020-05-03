@@ -13,19 +13,19 @@ namespace GoingTo_API.Domain.Persistence.Context
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<Achievement> achievements { get; set; }
         public DbSet<City> cities { get; set; }
-        public DbSet<Country> Countries { get; set; }
-        public DbSet<Currency> Currencies { get; set; }
-        public DbSet<Favourite> Favourites { get; set; }
-        public DbSet<Language> Languages { get; set; }
+        public DbSet<Country> countries { get; set; }
+        public DbSet<Currency> currencies { get; set; }
+        public DbSet<Favourite> favourites { get; set; }
+        public DbSet<Language> languages { get; set; }
         public DbSet<Locatable> locatables { get; set; }
-        public DbSet<LocatableType> LocatableTypes { get; set; }
-        public DbSet<Place> Places { get; set; }
-        public DbSet<Profile> Profiles { get; set; }
-        public DbSet<Review> Reviews { get; set; }
-        public DbSet<Reviewable> Reviewables { get; set; }
-        public DbSet<ReviewImage>ReviewImages { get; set; }
+        public DbSet<LocatableType> locatableTypes { get; set; }
+        public DbSet<Place> places { get; set; }
+        public DbSet<Profile> profiles { get; set; }
+        public DbSet<Review> reviews { get; set; }
+        public DbSet<Reviewable> reviewables { get; set; }
+        public DbSet<ReviewImage>reviewImages { get; set; }
         public DbSet<Tip> tips { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Wallet> Wallets { get; set; }
+        public DbSet<User> users { get; set; }
+        public DbSet<Wallet> wallets { get; set; }
     }
 }
