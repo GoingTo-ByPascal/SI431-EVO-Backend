@@ -39,7 +39,8 @@ namespace GoingTo_API
             services.AddScoped<ILocatableRepository, LocatableRepository>();
             services.AddScoped<ILocatableService, LocatableService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
             services.AddAutoMapper(typeof(Startup));
         }
 

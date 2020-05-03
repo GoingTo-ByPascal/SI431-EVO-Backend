@@ -13,7 +13,7 @@ namespace GoingTo_API.Mapping
         public ModelToResourceProfile()
         {
             CreateMap<Locatable, LocatableResource>();
-
+            CreateMap<User, UserResource>();
         }
 
       

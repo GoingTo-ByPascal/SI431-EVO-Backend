@@ -13,6 +13,7 @@ namespace GoingTo_API.Mapping
         public ResourceToModelProfile()
         {
             CreateMap<SaveLocatableResource, Locatable>();
+            CreateMap<SaveUserResource, User>();
         }
     }
 }
