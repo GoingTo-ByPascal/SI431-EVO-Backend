@@ -24,7 +24,7 @@ namespace GoingTo_API.Domain.Persistence.Context
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Reviewable> Reviewables { get; set; }
         public DbSet<ReviewImage>ReviewImages { get; set; }
-        public DbSet<Tip> Tips { get; set; }
+        public DbSet<Tip> tips { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Wallet> Wallets { get; set; }
     }

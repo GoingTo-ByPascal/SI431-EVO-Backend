@@ -9,5 +9,6 @@ namespace GoingTo_API.Domain.Models
     {
         public int Id { get; set; }
         public string Text { get; set; }
+        Locatable Locatable { get; set; }
     }
 }

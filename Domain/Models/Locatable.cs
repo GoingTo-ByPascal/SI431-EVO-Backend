@@ -11,5 +11,6 @@ namespace GoingTo_API.Domain.Models
         public string Address { get; set; }
         public float Latitude { get; set; }
         public float Longitude { get; set; }
+        IList<Tip> Tips { get; set; } = new List<Tip>();
     }
 }
