@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Domain.Repositories
 {
-    public interface ILocatable
+    public interface IUnitOfWork
     {
-         
-        
+        Task CompleteAsync();
     }
 }
