@@ -9,5 +9,8 @@ namespace GoingTo_API.Domain.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public Country Country;
+        public IList<Place> Places { get; set; } = new List<Place>();
     }
 }

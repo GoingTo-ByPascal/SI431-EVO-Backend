@@ -10,5 +10,6 @@ namespace GoingTo_API.Domain.Models
         public int Id { get; set; }
         public string Unit { get; set; }
         public string ShortName { get; set; }
+
     }
 }
