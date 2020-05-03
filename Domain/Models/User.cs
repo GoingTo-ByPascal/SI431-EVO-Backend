@@ -10,6 +10,6 @@ namespace GoingTo_API.Domain.Models
         public int Id { get; set; }
         public string Email { get; set; }
         public int Password { get; set; }
-        public IList<Wallet> Wallets { get; set; } = new List<Wallet>();
+        public Wallet Wallet { get; set; }
     }
 }
