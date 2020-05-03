@@ -13,5 +13,6 @@ namespace GoingTo_API.Domain.Models
         public string ReviewAt { get; set; }
         public Reviewable Reviewable { get; set; }
         public User User { get; set; }
+        public IList<ReviewImage> ReviewImages { get; set; } = new List<ReviewImage>();
     }
 }
