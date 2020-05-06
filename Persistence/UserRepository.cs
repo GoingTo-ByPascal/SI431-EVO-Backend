@@ -35,7 +35,7 @@ namespace GoingTo_API.Persistence
 
         public void Update(User user)
         {
-            _context.users.Update(user);            
+            _context.users.Update(user);
         }
     }
 }

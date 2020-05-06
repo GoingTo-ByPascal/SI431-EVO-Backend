@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,6 +12,6 @@ namespace GoingTo_API.Domain.Models
         public string ShortName { get; set; }
         public string FullName { get; set; }
         public IList<City> Cities { get; set; } = new List<City>();
-
+        public int LocatableId { get; set; }
     }
 }

@@ -11,5 +11,6 @@ namespace GoingTo_API.Domain.Models
         public string Unit { get; set; }
         public string ShortName { get; set; }
 
+        //public List<CountryCunrrencies> CountryCurrencies { get; set; }
     }
 }
