@@ -15,7 +15,8 @@ namespace GoingTo_API.Domain.Models
         
         public Review Review { get; set; }
         public Profile Profile { get; set; }
-      
+
+        public List<Review> Reviews { get; set; } = new List<Review>();
         public List<Favourite> Favourites { get; set; } = new List<Favourite>();
         public List<UserAchievements> UserAchievements { get; set; } = new List<UserAchievements>();
 

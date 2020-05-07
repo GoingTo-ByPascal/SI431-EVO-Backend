@@ -15,27 +15,27 @@ namespace GoingTo_API.Persistence
 
         public async Task AddAsync(User user)
         {
-            await _context.users.AddAsync(user);
+            await _context.Users.AddAsync(user);
         }
 
         public async Task<User> FindById(int id)
         {
-            return await _context.users.FindAsync(id);
+            return await _context.Users.FindAsync(id);
         }
 
         public async Task<IEnumerable<User>> ListAsync()
         {
-            return await _context.users.ToListAsync();
+            return await _context.Users.Include(p=> p.Wallet).ToListAsync();
         }
 
         public void Remove(User user)
         {
-            _context.users.Remove(user);
+            _context.Users.Remove(user);
         }
 
         public void Update(User user)
         {
-            _context.users.Update(user);
+            _context.Users.Update(user);
         }
     }
 }

@@ -22,8 +22,6 @@ namespace GoingTo_API.Controllers
             _mapper = mapper;
         }
 
-
-
         [HttpGet]
         public async Task<IEnumerable<UserResource>> GetAllAsync()
         {

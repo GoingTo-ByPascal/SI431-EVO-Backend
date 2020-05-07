@@ -12,9 +12,7 @@ namespace GoingTo_API.Resources
         public string Address{ get; set; }
         public float Latitude { get; set; }
         public float Longitude { get; set; }
-        public int ReviewableId { get; set; }
-
-        public Reviewable Reviewable { get; set; }
+        public ReviewableResource Reviewable { get; set; }
        
     }
 }

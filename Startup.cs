@@ -34,10 +34,10 @@ namespace GoingTo_API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            //options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"))
             services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseInMemoryDatabase("goingto-on-memory");
+                //options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"))
+                //options.UseInMemoryDatabase("goingto-on-memory");
 
             });
             services.AddScoped<ILocatableRepository, LocatableRepository>();

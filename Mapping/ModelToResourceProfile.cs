@@ -14,8 +14,8 @@ namespace GoingTo_API.Mapping
         {
             CreateMap<Locatable, LocatableResource>();
             CreateMap<User, UserResource>();
+            CreateMap<Wallet, WalletResource>();
+            CreateMap<Reviewable, ReviewableResource>();
         }
-
-      
     }
 }
