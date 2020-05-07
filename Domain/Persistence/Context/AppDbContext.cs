@@ -353,7 +353,7 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Wallet>().HasData
             (
                 new Wallet { Id = 1, Points = 530 },
-                new Wallet { Id = 2, Points = 1000 },
+                new Wallet { Id = 2, Points = 1000 }
             );
         }
     }
