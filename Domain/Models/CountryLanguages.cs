@@ -10,7 +10,7 @@ namespace GoingTo_API.Domain.Models
         public int Id { get; set; }
 
         public Country Country { get; set; }
-        public int CountryId { get; set; }s
+        public int CountryId { get; set; }
 
         public Language Language { get; set; }
         public int LanguageId { get; set; }

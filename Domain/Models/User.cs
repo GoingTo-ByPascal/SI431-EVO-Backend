@@ -11,14 +11,13 @@ namespace GoingTo_API.Domain.Models
         public string Email { get; set; }
         public int Password { get; set; }
         public Wallet Wallet { get; set; }
-        public int WalletId{ get; set; }
+        public int WalletId { get; set; }
         
         public Review Review { get; set; }
         public Profile Profile { get; set; }
       
         public List<Favourite> Favourites { get; set; } = new List<Favourite>();
         public List<UserAchievements> UserAchievements { get; set; } = new List<UserAchievements>();
-        //public ICollection<UserAchievements> UserAchievements { get; set; } = new HashSet<UserAchievements>();
 
     
     }
