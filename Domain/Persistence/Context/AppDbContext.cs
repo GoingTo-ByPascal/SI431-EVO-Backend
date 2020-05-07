@@ -30,10 +30,7 @@ namespace GoingTo_API.Domain.Persistence.Context
         public DbSet<UserAchievements> user_achievements { get; set; }
         public DbSet<Wallet> wallets { get; set; }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseMySQL("server=localhost;database=test;user=root;password=admin");
-        //}
+      
 
 
         protected override void OnModelCreating(ModelBuilder builder)
