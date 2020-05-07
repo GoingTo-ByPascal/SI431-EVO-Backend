@@ -9,7 +9,7 @@ namespace GoingTo_API.Domain.Models
     {
         public int Id { get; set; }
         public string Filename { get; set; }
-        public int RewiewId { get; set; }
+        public int review_id { get; set; }
         public Review Review { get; set; }
     }
 }

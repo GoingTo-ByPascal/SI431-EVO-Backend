@@ -11,9 +11,9 @@ namespace GoingTo_API.Domain.Models
         public string Comment { get; set; }
         public float Stars { get; set; }
         public string ReviewedAt { get; set; }
-        public int ReviewableId { get; set; }
+        public int reviewable_id { get; set; }
         public Reviewable Reviewable { get; set; }
-        public int UserId { get; set; }
+        public int user_id { get; set; }
         public User User { get; set; }
         public List<ReviewImage> ReviewImages { get; set; } = new List<ReviewImage>();
     }
