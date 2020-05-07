@@ -11,6 +11,9 @@ namespace GoingTo_API.Domain.Models
         public string Email { get; set; }
         public int Password { get; set; }
         public Wallet Wallet { get; set; }
+        
+        public Review Review { get; set; }
+        public Profile Profile { get; set; }
         public IList<Favourite> Favourites { get; set; } = new List<Favourite>();
         //public ICollection<UserAchievements> UserAchievements { get; set; } = new HashSet<UserAchievements>();
     }

@@ -14,7 +14,7 @@ namespace GoingTo_API.Domain.Models
         public IList<Tip> Tips { get; set; }
         public int ReviewableId { get; set; }
         public Reviewable Reviewable { get; set; }
-        public List<Favourite> Favourites { get; set; }
+        public Favourite Favourite { get; set; }
         public City City { get; set; }
         public Country Country { get; set; }
         public Place Place { get; set; }

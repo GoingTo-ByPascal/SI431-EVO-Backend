@@ -53,7 +53,7 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .HasMany(p => p.Places)
                 .WithOne(p => p.City)
                 .HasForeignKey(p => p.CityId);
-            
+
 
 
             //Tabla Country
@@ -68,6 +68,11 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .HasMany(p => p.Cities)
                 .WithOne(p => p.Country)
                 .HasForeignKey(p => p.CountryId);
+
+
+            //Tabla CountryCurrencies
+
+            //Tabla CountryLanguages
 
             //Tabla Currency
 
@@ -84,15 +89,12 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Favourite>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Favourite>().Property(p => p.Description).HasMaxLength(45);
             builder.Entity<Favourite>().Property(p => p.UserId).IsRequired();//Esta y la linea de abajo van?
-            builder.Entity<Favourite>().Property(p => p.LocatableId).IsRequired(); 
+            builder.Entity<Favourite>().Property(p => p.LocatableId).IsRequired();
             builder.Entity<Favourite>()
                 .HasOne(p => p.User)
                 .WithMany(p => p.Favourites)
                 .HasForeignKey(p => p.UserId);
-            builder.Entity<Favourite>()
-                .HasOne(p => p.Locatable)
-                .WithMany(p => p.Favourites)
-                .HasForeignKey(p => p.LocatableId);
+           
 
             //Tabla Language
 
@@ -112,10 +114,89 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Locatable>().Property(p => p.Latitude);
             builder.Entity<Locatable>().Property(p => p.Longitude);
             builder.Entity<Locatable>().Property(p => p.ReviewableId);
+            builder.Entity<Locatable>()
+                .HasOne(p => p.Favourite)
+                .WithOne(p => p.Locatable)
+                .HasForeignKey<Favourite>(p => p.LocatableId);
             // Representar el foreign en reviewable
-            
+            //Alonso            
             //builder.Entity<Locatable>().Property(p => p.LocatableType); Creo que esto debe quitarse
 
+            //Tabla LocatableType
+
+            //Tabla Place
+
+            //Tabla Profile
+            //-------------------------------------------------------------------------
+
+            //Tabla Profile
+            builder.Entity<Profile>().ToTable("profiles");
+            builder.Entity<Profile>().HasKey(p => p.Id);
+            builder.Entity<Profile>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Profile>().Property(p => p.Name).IsRequired().HasMaxLength(45);
+            builder.Entity<Profile>().Property(p => p.Surname).IsRequired().HasMaxLength(45);
+            builder.Entity<Profile>().Property(p => p.Birthdate).IsRequired();
+            builder.Entity<Profile>().Property(p => p.CountryId).IsRequired();
+            builder.Entity<Profile>().Property(p => p.UserId).IsRequired();
+
+            //Tabla Review
+            builder.Entity<Review>().ToTable("reviews");
+            builder.Entity<Review>().HasKey(p => p.Id);
+            builder.Entity<Review>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Review>().Property(p => p.ReviewableId).IsRequired().HasDefaultValue<int>(null);
+            builder.Entity<Review>().Property(p => p.UserId).IsRequired().HasMaxLength(45);
+            builder.Entity<Review>().Property(p => p.Birthdate).IsRequired();
+            builder.Entity<Review>().Property(p => p.CountryId).IsRequired();
+            builder.Entity<Review>().Property(p => p.UserId).IsRequired();
+
+            //Tabla Reviewable
+
+
+            builder.Entity<Reviewable>
+            //Tabla ReviewImage
+
+
+            //-------------------------------------------------------------------------
+            //Tabla Tip
+
+            builder.Entity<Tip>().ToTable("tips");
+            builder.Entity<Tip>().HasKey(p => p.Id);
+            builder.Entity<Tip>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Tip>().Property(p => p.Text).IsRequired().HasMaxLength(100);
+            builder.Entity<Tip>().Property(p => p.Locatable).IsRequired();
+          //  builder.Entity<Tips>()
+          //.HasOne(p => p.User)
+          //.WithMany(p => p.Favourites)
+          //.HasForeignKey(p => p.UserId);
+
+
+
+
+
+            //Tabla User
+
+
+            builder.Entity<User>()
+                .HasOne(p => p.Profile)
+                .WithOne(p => p.User)
+                .HasForeignKey<Profile>(p => p.UserId);
+            builder.Entity<User>()
+                .HasOne(p => p.Review)
+                .WithOne(p => p.User)
+                .HasForeignKey<Review>(p => p.UserId);
+
+            //Tabla UserAchievements
+            builder.Entity<UserAchievements>().ToTable("user_achievements");
+            builder.Entity<UserAchievements>().HasKey(p => p.Id);
+            builder.Entity<UserAchievements>().HasKey(p => p);
+
+
+            //Tabla Wallet
+
+            builder.Entity<Wallet>().ToTable("wallets");
+            builder.Entity<Wallet>().HasKey(p => p.Id);
+            builder.Entity<Wallet>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Wallet>().Property(p => p.Points).IsRequired();
 
         }
     }
