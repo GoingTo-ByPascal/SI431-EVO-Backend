@@ -14,6 +14,6 @@ namespace GoingTo_API.Domain.Models
         public Country Country;
         public int LocatableId { get; set; }
         public Locatable Locatable { get; set; }
-        public IList<Place> Places { get; set; } = new List<Place>();
+        public List<Place> Places { get; set; } = new List<Place>();
     }
 }

@@ -9,9 +9,11 @@ namespace GoingTo_API.Domain.Models
     {
         public int Id { get; set; }
         public int Name { get; set; }
-        public float Score { get; set; }
+        public float Stars { get; set; }
         public int CityId { get; set; }
         public City City { get; set; }
 
+        public int LocatableId { get; set; }
+        public Locatable Locatable { get; set; }
     }
 }
