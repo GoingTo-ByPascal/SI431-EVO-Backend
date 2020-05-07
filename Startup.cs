@@ -37,7 +37,7 @@ namespace GoingTo_API
             //options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"))
             services.AddDbContext<AppDbContext>(options =>
             {
-                //options.UseInMemoryDatabase("supermarket-api-in-memory");
+                options.UseInMemoryDatabase("goingto-on-memory");
 
             });
             services.AddScoped<ILocatableRepository, LocatableRepository>();
