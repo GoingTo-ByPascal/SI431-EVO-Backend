@@ -11,7 +11,10 @@ namespace GoingTo_API.Domain.Models
         public int Id { get; set; }
         public string ShortName { get; set; }
         public string FullName { get; set; }
-        public IList<City> Cities { get; set; } = new List<City>();
+        public List<City> Cities { get; set; } = new List<City>();
         public int LocatableId { get; set; }
+        public Locatable Locatable { get; set; }
+        public List<CountryCurrencies> CountryCurrencies { get; set; }
+        public List<CountryLanguages> CountryLanguages { get; set; }
     }
 }
