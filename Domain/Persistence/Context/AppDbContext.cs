@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -129,7 +130,13 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .HasOne(p => p.User)
                 .WithMany(p => p.Favourites)
                 .HasForeignKey(p => p.UserId);
-           
+
+           builder.Entity<Favourite>().HasData
+                (
+                    new Favourite { Id = 1, UserId=1, LocatableId=1, Description = "Interesante"},
+                    new Favourite { Id = 2, UserId=2, LocatableId=7, Description = "Posible viaje en familia"},
+                    new Favourite { Id = 3, UserId=3, LocatableId=11, Description = "Para ir con mi baby"}
+                );
 
             //Tabla Language
 
@@ -138,6 +145,13 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Language>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Language>().Property(p => p.ShortName).IsRequired().HasMaxLength(45);
             builder.Entity<Language>().Property(p => p.FullName).IsRequired().HasMaxLength(45);
+
+            builder.Entity<Language>().HasData
+                (
+                    new Language { Id = 1, ShortName = "ES" , FullName = "Spanish"},
+                    new Language { Id = 2, ShortName = "FR" , FullName = "French"},
+                    new Language { Id = 3, ShortName = "RO" , FullName = "Romanian"}
+                );
 
             //Tabla Locatable
 
@@ -165,6 +179,15 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .WithOne(p => p.Locatable)
                 .HasForeignKey<Favourite>(p => p.LocatableId);
 
+             builder.Entity<Locatable>().HasData
+                (
+                    new Locatable { Id = 4, Address = "BCP plaza Cusco" , Latitude = -13.5226 ,Longitude = -71.9673 ,ReviewableId = 2},
+                    new Locatable { Id = 5, Address = "The Champ de Mars" , Latitude = 48.8534 ,Longitude = 2.3486 ,ReviewableId = 1},
+                    new Locatable { Id = 6, Address = "Cusco" , Latitude = -13.5226 ,Longitude = -71.9673 ,ReviewableId = 3}
+
+
+                );
+
             //Tabla Place
             builder.Entity<Place>().ToTable("places");
             builder.Entity<Place>().HasKey(p => p.Id);
@@ -174,6 +197,12 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Place>().Property(p => p.Stars);
             builder.Entity<Place>().Property(p => p.LocatableId).IsRequired();
 
+             builder.Entity<Place>().HasData
+                (
+                    new Place { Id = 1, CityId = 1, Name = "Machu Picchu"  ,Stars = 5 ,LocatableId = 4},
+                    new Place { Id = 2, CityId = 1, Name = "Rainbow Mountain"  ,Stars = 4 ,LocatableId = 5},
+                    new Place { Id = 3, CityId = 1, Name = "Sacsayhuaman"  ,Stars = 4 ,LocatableId = 6}
+                );
 
 
             //Tabla Profile
@@ -185,6 +214,14 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Profile>().Property(p => p.Birthdate).IsRequired();
             builder.Entity<Profile>().Property(p => p.CountryId).IsRequired();
             builder.Entity<Profile>().Property(p => p.UserId).IsRequired();
+
+             builder.Entity<Profile>().HasData
+                (
+                    new Profile { Id = 1, Name = "Alonso", Surname = "Garrido" ,Birthdate = 1993-05-12 ,CountryId = 1, UserId = 1},
+                    new Profile { Id = 2, Name = "Marcio", Surname = "Begazo" ,Birthdate = 1998-04-19 ,CountryId = 1, UserId = 2},
+                    new Profile { Id = 3, Name = "Luis" , Surname = "Ordoñez" ,Birthdate = 2000-07-11 ,CountryId = 1, UserId = 3}
+                );
+
 
             //Tabla Review
             builder.Entity<Review>().ToTable("reviews");
@@ -199,6 +236,13 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .HasMany(p => p.ReviewImages)
                 .WithOne(p => p.Review)
                 .HasForeignKey(p => p.RewiewId);
+
+             builder.Entity<Review>().HasData
+                (
+                   new Review { Id=1,ReviewableId=1,UserId=1,Comment="escogi una casa muy cerca al parque y es un agradablel lugar con vistas muy hermosas",Stars=4,ReviewedAt=2020-03-01},
+                   new Review { Id=2,ReviewableId=2,UserId=2,Comment="estamos en feriado y afortunadamente no habia mucha cola, aunque no hay aire acondicinado ",Stars=4,ReviewedAt=2020-04-15},
+                   new Review { Id=3,ReviewableId=3,UserId=3,Comment="siempre que viajo con latam el vuelo se hace muy comodo aunque cueste un poco mas que otras aerolineas, llegue en solo 2hrs a Cusco",Stars=5,ReviewedAt=2020-04-26}
+                );
 
             //Tabla Reviewable
             builder.Entity<Reviewable>().ToTable("reviewables");
