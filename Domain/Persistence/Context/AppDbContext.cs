@@ -216,13 +216,31 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Tip>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Tip>().Property(p => p.Text).IsRequired().HasMaxLength(100);
             builder.Entity<Tip>().Property(p => p.Locatable).IsRequired();
-         
-            //Tabla User
+            builder.Entity<Locatable>()
+             .HasOne(p => p.Locatable)
+             .WithMany(p => p.Tip)
+             .HasForeignKey<Locatable>(p => p.LocatableId);
 
+
+
+
+
+            //Tabla User
+                builder.Entity<User>().ToTable("users");
+            lder.Entity<User>().HasKey(p => p.Id);
+            builder.Entity<User>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<User>().Property(p => p.Email).IsRequired().HasMaxLength(45);
+            builder.Entity<User>().Property(p => p.Password).IsRequired().HasMaxLength(45);
+            builder.Entity<User>().Property(p => p.WalletId).IsRequired();
+             builder.Entity<User>()
+                .HasOne(p => p.Wallet)
+                .WithOne(p => p.User)
+                .HasForeignKey<Wallet>(p => p.WalletId);
             builder.Entity<User>()
                 .HasOne(p => p.Profile)
                 .WithOne(p => p.User)
                 .HasForeignKey<Profile>(p => p.UserId);
+
             builder.Entity<User>()
                 .HasOne(p => p.Review)
                 .WithOne(p => p.User)
@@ -230,16 +248,36 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             //Tabla UserAchievements
             builder.Entity<UserAchievements>().ToTable("user_achievements");
-            builder.Entity<UserAchievements>().HasKey(p => p.Id);
-            builder.Entity<UserAchievements>().HasKey(p => p);
+            lder.Entity<Tip>().HasKey(p => p.Id);
+            builder.Entity<Tip>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            
 
+            builder.Entity<Tip>().Property(p => p.UserId).Isrequired();
 
+             builder.Entity<Tip>()
+             .IsRequired().HasOne(p => p.User)
+             .WithMany(p => p.UserAchievements)
+             .HasForeignKey<Locatable>(p => p.UserId);
+                
+            
+            builder.Entity<Tip>().Property(p => p.AchievementId).IsRequired();
+
+            builder.Entity<Tip>()
+             .HasOne(p => p.Achievements)
+             .WithMany(p => p.UserAchievements)
+             .HasForeignKey<Locatable>(p => p.AchievementId);
+                
             //Tabla Wallet
 
             builder.Entity<Wallet>().ToTable("wallets");
             builder.Entity<Wallet>().HasKey(p => p.Id);
             builder.Entity<Wallet>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Wallet>().Property(p => p.Points).IsRequired();
+
+              builder.Entity<Wallet>()
+             .HasOne(p => p.User)
+             .WithMany(p => p.Wallet)
+             .HasForeignKey<User>(p => p.UserId);
 
         }
     }
