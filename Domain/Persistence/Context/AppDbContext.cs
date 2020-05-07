@@ -32,7 +32,7 @@ namespace GoingTo_API.Domain.Persistence.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server=34.67.198.111;database=test;port=3306;user=GoingTo;password=admin");
+            optionsBuilder.UseMySQL("server=34.67.198.111;database=goingto_db;port=3306;user=GoingTo;password=admin");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -73,6 +73,10 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Country>().Property(p => p.LocatableId).IsRequired();
             builder.Entity<Country>()
                 .HasMany(p => p.Cities)
+                .WithOne(p => p.Country)
+                .HasForeignKey(p => p.CountryId);
+            builder.Entity<Country>()
+                .HasMany(p => p.Profiles)
                 .WithOne(p => p.Country)
                 .HasForeignKey(p => p.CountryId);
 
