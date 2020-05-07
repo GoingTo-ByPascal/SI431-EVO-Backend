@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Domain.Models
 {
-    public class City
+    public class Place
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int country_id { get; set; }
+        public float Stars { get; set; }
+        public int city_id { get; set; }
+        public City City { get; set; }
 
-        public Country Country { get; set; }
         public int locatable_id { get; set; }
         public Locatable Locatable { get; set; }
-        public List<Place> Places { get; set; } = new List<Place>();
     }
 }
