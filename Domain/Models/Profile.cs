@@ -11,5 +11,11 @@ namespace GoingTo_API.Domain.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Birthdate { get; set; }
+
+        public int user_id { get; set; }
+        public User User { get; set; }
+
+        public int country_id { get; set; }
+        public Country Country { get; set; }
     }
 }

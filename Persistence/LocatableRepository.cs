@@ -14,24 +14,24 @@ namespace GoingTo_API.Persistence
         public LocatableRepository(AppDbContext context) : base(context) { }
         public async Task AddAsync(Locatable locatable)
         {
-            await _context.locatables.AddAsync(locatable);
+            await _context.Locatables.AddAsync(locatable);
         }
         public async Task<IEnumerable<Locatable>> ListAsync()
         {
-            return await _context.locatables.ToListAsync();
+            return await _context.Locatables.Include(p=> p.Reviewable).ToListAsync();
         }
         public async Task<Locatable> FindById(int id)
         {
-            return await _context.locatables.FindAsync(id);
+            return await _context.Locatables.FindAsync(id);
         }
         public void Remove(Locatable locatable)
         {
-            _context.locatables.Remove(locatable);
+            _context.Locatables.Remove(locatable);
         }
 
         public void Update(Locatable locatable)
         {
-            _context.locatables.Update(locatable);
+            _context.Locatables.Update(locatable);
         }
     }
 }

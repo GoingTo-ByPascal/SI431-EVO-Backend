@@ -35,11 +35,19 @@ namespace GoingTo_API
         {
             services.AddControllers();
             services.AddDbContext<AppDbContext>(options =>
-                options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<ILocatableRepository, LocatableRepository>();
-            services.AddScoped<ILocatableService, LocatableService>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            {
+                //options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"))
+                //options.UseInMemoryDatabase("goingto-on-memory");
 
+            });
+            services.AddScoped<ILocatableRepository, LocatableRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            
+            services.AddScoped<ILocatableService, LocatableService>();
+            services.AddScoped<IUserService, UserService>();
+            
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            
             services.AddAutoMapper(typeof(Startup));
         }
 

@@ -9,6 +9,10 @@ namespace GoingTo_API.Domain.Models
     {
         public int Id { get; set; }
         public string Text { get; set; }
-        Locatable Locatable { get; set; }
+        public int locatable_id { get; set; }
+        public Locatable Locatable { get; set; }
+
+       
+
     }
 }
