@@ -19,5 +19,6 @@ namespace GoingTo_API.Domain.Models
         public Country Country { get; set; }
         public Place Place { get; set; }
 
+
     }
 }

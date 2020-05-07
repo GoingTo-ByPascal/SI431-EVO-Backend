@@ -11,5 +11,8 @@ namespace GoingTo_API.Domain.Models
         public string Text { get; set; }
         public int locatable_id { get; set; }
         public Locatable Locatable { get; set; }
+
+       
+
     }
 }
