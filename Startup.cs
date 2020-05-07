@@ -34,9 +34,12 @@ namespace GoingTo_API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            //options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"))
             services.AddDbContext<AppDbContext>(options =>
-            options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
-            
+            {
+                //options.UseInMemoryDatabase("supermarket-api-in-memory");
+
+            });
             services.AddScoped<ILocatableRepository, LocatableRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             
