@@ -9,5 +9,6 @@ namespace GoingTo_API.Domain.Models
     {
         public int Id { get; set; }
         public int Points { get; set; }
+        public User User{get;set;}
     }
 }
