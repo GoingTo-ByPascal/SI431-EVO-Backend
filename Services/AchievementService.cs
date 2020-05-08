@@ -13,6 +13,7 @@ namespace GoingTo_API.Services
     {
         private readonly IAchievementRepository _achievementRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IUserAchievementRepository _userAchievementsRepository;
 
         public async Task<IEnumerable<Achievement>> ListAsync()
         {

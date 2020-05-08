@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Domain.Models
 {
-    public class UserAchievements
+    public class UserAchievement
+
     {
         public int Id { get; set; }
         public int UserId { get; set; }

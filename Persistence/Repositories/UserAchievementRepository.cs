@@ -9,36 +9,36 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Persistence.Repositories
 {
-    public class UserAchievementsRepository : BaseRepository, IUserAchievementsRepository
+    public class UserAchievementRepository : BaseRepository, IUserAchievementRepository
     {
-        public UserAchievementsRepository(AppDbContext context) : base(context) { }
+        public UserAchievementRepository(AppDbContext context) : base(context) { }
        
         //LISTO
-        public async Task AddAsync(UserAchievements userAchievements)
+        public async Task AddAsync(UserAchievement userAchievement)
         {
-            await _context.UserAchievements.AddAsync(userAchievements);
+            await _context.UserAchievements.AddAsync(userAchievement);
         }
 
         //LISTO
-        public async Task AssignUserAchievements(int userId, int achievementId)
+        public async Task AssignUserAchievement(int userId, int achievementId)
         {
 
-            UserAchievements userAchievements = await FindByUserIdAndAchievementId(userId, achievementId);
-            if (userAchievements == null) 
+            UserAchievement userAchievement = await FindByUserIdAndAchievementId(userId, achievementId);
+            if (userAchievement == null) 
             {
-                userAchievements = new UserAchievements { UserId = userId, AchievementId = achievementId };
-                await AddAsync(userAchievements);
+                userAchievement = new UserAchievement { UserId = userId, AchievementId = achievementId };
+                await AddAsync(userAchievement);
             }        
         }
 
         //LISTO
-        public async Task<UserAchievements> FindByUserIdAndAchievementId(int userId, int achievementId)
+        public async Task<UserAchievement> FindByUserIdAndAchievementId(int userId, int achievementId)
         {
             return await _context.UserAchievements.FindAsync(userId, achievementId);
         }
 
         //LISTO
-        public async Task<IEnumerable<UserAchievements>> ListAsync()
+        public async Task<IEnumerable<UserAchievement>> ListAsync()
         {
             return await _context.UserAchievements
                 .Include(ua => ua.User)
@@ -47,7 +47,7 @@ namespace GoingTo_API.Persistence.Repositories
         }
 
         //LISTO
-        public async Task<IEnumerable<UserAchievements>> ListByUserIdAsync(int userId)
+        public async Task<IEnumerable<UserAchievement>> ListByUserIdAsync(int userId)
         {
             return await _context.UserAchievements
                 .Where(ua => ua.UserId == userId)
@@ -57,7 +57,7 @@ namespace GoingTo_API.Persistence.Repositories
         }
 
         //LISTO
-        public async Task<IEnumerable<UserAchievements>> ListByAchievementIdAsync(int achievementId)
+        public async Task<IEnumerable<UserAchievement>> ListByAchievementIdAsync(int achievementId)
         {
             return await _context.UserAchievements
                 .Where(ua => ua.AchievementId == achievementId)
@@ -67,15 +67,15 @@ namespace GoingTo_API.Persistence.Repositories
         }
 
         //LISTO
-        public void Remove(UserAchievements userAchievements)
+        public void Remove(UserAchievement userAchievements)
         {
             _context.UserAchievements.Remove(userAchievements);
         }
 
         //LISTO
-        public async void UnassignUserAchievements(int userId, int achievementId)
+        public async void UnassignUserAchievement(int userId, int achievementId)
         {
-            UserAchievements userAchievements = await FindByUserIdAndAchievementId(userId, achievementId);
+            UserAchievement userAchievements = await FindByUserIdAndAchievementId(userId, achievementId);
             if (userAchievements != null)
             {
                 Remove(userAchievements);

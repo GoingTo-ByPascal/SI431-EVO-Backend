@@ -30,7 +30,7 @@ namespace GoingTo_API.Domain.Persistence.Context
         public DbSet<ReviewImage>ReviewImages { get; set; }
         public DbSet<Tip> Tips { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<UserAchievements> UserAchievements { get; set; }
+        public DbSet<UserAchievement> UserAchievements { get; set; }
         public DbSet<Wallet> Wallets { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -259,16 +259,16 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             //Tabla UserAchievements
 
-            builder.Entity<UserAchievements>().ToTable("UserAchievements");
-            builder.Entity<UserAchievements>().HasKey(p => p.Id);
-            builder.Entity<UserAchievements>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<UserAchievements>().Property(p => p.UserId).IsRequired();
-            builder.Entity<UserAchievements>().Property(p => p.AchievementId).IsRequired();
-            builder.Entity<UserAchievements>()
+            builder.Entity<UserAchievement>().ToTable("UserAchievements");
+            builder.Entity<UserAchievement>().HasKey(p => p.Id);
+            builder.Entity<UserAchievement>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<UserAchievement>().Property(p => p.UserId).IsRequired();
+            builder.Entity<UserAchievement>().Property(p => p.AchievementId).IsRequired();
+            builder.Entity<UserAchievement>()
                 .HasOne(p => p.User)
                 .WithMany(p => p.UserAchievements)
                 .HasForeignKey(p => p.UserId);
-            builder.Entity<UserAchievements>()
+            builder.Entity<UserAchievement>()
                 .HasOne(p => p.Achievement)
                 .WithMany(p => p.UserAchievements)
                 .HasForeignKey(p => p.AchievementId);
