@@ -42,12 +42,14 @@ namespace GoingTo_API
             });
             services.AddScoped<ILocatableRepository, LocatableRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserAchievementRepository, UserAchievementRepository>();
             
             services.AddScoped<ILocatableService, LocatableService>();
             services.AddScoped<IUserService, UserService>();
-            
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserAchievementService, UserAchievementService>();
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+           
 
             services.AddAutoMapper(typeof(Startup));
             

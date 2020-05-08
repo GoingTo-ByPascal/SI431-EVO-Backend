@@ -11,7 +11,7 @@ using GoingTo_API.Services;
 
 namespace GoingTo_API.Controllers
 {
-    [Route("/api/[controller]")]
+    [Route("/api/users/{userId}/achievements")]
     public class UserAchievementController : Controller
     {
         private readonly IMapper _mapper;
@@ -34,7 +34,7 @@ namespace GoingTo_API.Controllers
             return resources;
         }
 
-        [HttpPost("{tagId}")]
+        [HttpPost("{achievementId}")]
         public async Task<IActionResult> AssignUserAchievement(int userId, int achievementId)
         {
 
