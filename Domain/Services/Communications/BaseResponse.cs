@@ -5,13 +5,20 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Domain.Services.Communications
 {
-    public class BaseResponse
+    public class BaseResponse<T>
     {
         public bool Success { get; protected set; }
         public string Message { get; protected set; }
-        public BaseResponse(bool success, string message)
+        public T Resource { get; protected set; }
+        public BaseResponse(T resource)
         {
-            Success = success;
+            Resource = resource;
+            Success = true;
+            Message = string.Empty;
+        }
+        public BaseResponse(string message)
+        {
+            Success = false;
             Message = message;
         }
     }
