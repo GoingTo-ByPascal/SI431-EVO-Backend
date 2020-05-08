@@ -52,6 +52,11 @@ namespace GoingTo_API.Services
             return await _placeRepository.ListAsync();
         }
 
+        public async Task<IEnumerable<Place>> ListByCityIdAsync(int cityId)
+        {
+            return await _placeRepository.ListByCityIdAsync(cityId);
+        }
+
         public async Task<PlaceResponse> SaveAsync(Place place)
         {
             try
@@ -85,5 +90,6 @@ namespace GoingTo_API.Services
                 return new PlaceResponse($"An error ocurred while updating place: {ex.Message}");
             }
         }
+
     }
 }

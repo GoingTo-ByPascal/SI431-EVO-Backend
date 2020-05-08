@@ -13,6 +13,8 @@ namespace GoingTo_API.Resources
 
         public LocatableResource Locatable { get; set; }
 
-        //public CityResource City { get; set; } Deberia ir la ciudad?
+        public CityResource City { get; set; } 
+
+        //public CountryResource Country { get; set; } //Creo que no es necsario ya que desde el repository se llama
     }
 }

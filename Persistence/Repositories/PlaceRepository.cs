@@ -17,6 +17,7 @@ namespace GoingTo_API.Persistence.Repositories
         {
             await _context.Places.AddAsync(place);
         }
+       
 
         public async Task<Place> FindById(int id)
         {
@@ -25,8 +26,14 @@ namespace GoingTo_API.Persistence.Repositories
 
         public async Task<IEnumerable<Place>> ListAsync()
         {
-            return await _context.Places.Include(p=>p.Locatable).ToListAsync();
+            return await _context.Places
+                .Include(p=>p.Locatable)
+                .Include(p=>p.City)
+                .Include(p=>p.City.Country.Locatable)//Descubrimiento
+                .ToListAsync();
         }
+
+      
 
         public void Remove(Place place)
         {
@@ -37,5 +44,15 @@ namespace GoingTo_API.Persistence.Repositories
         {
             _context.Places.Update(place);
         }
+
+        public async Task<IEnumerable<Place>> ListByCityIdAsync(int cityId) =>
+            await _context.Places
+                .Where(p => p.CityId == cityId)
+                .Include(p=>p.Locatable)
+                .Include(p => p.City)//Prueba, no estoy seguro
+                .ToListAsync();
+        
+
+  
     }
 }
