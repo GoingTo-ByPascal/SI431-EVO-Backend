@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GoingTo_API.Domain.Models;
 using GoingTo_API.Domain.Services;
+using GoingTo_API.Extensions;
 using GoingTo_API.Resources;
 using Microsoft.AspNetCore.Mvc;
 using System;
