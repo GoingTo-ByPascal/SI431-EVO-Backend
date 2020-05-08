@@ -47,8 +47,10 @@ namespace GoingTo_API
             services.AddScoped<IUserService, UserService>();
             
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            
+            services.AddScoped<IUserAchievementService, UserAchievementService>();
+
             services.AddAutoMapper(typeof(Startup));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
