@@ -18,6 +18,7 @@ namespace GoingTo_API.Mapping
             CreateMap<Reviewable, ReviewableResource>();
             CreateMap<Country, CountryResource>();
             CreateMap<City, CityResource>();
+            CreateMap<Place, PlaceResource>();
         }
     }
 }

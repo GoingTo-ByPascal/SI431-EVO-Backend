@@ -28,17 +28,28 @@ namespace GoingTo_API.Controllers
             return resources;
         }
 
-        [HttpGet("{fullname}")]
-        public async Task<IActionResult> FindByShortName(string fullname)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
-            //Quiza deberiamos implementar un mapa donde verifique 
-            //si el nombre existe, de ser asi pasar el shortname o ID al programa
 
-            var result = await _countryServices.GetByFullNameAsync(fullname);
+            var result = await _countryServices.GetByIdAsync(id);
             if (!result.Success)
                 return BadRequest(result.Message);
             var countryResource = _mapper.Map<Country, CountryResource>(result.Resource);
             return Ok(countryResource);
         }
+
+        //[HttpGet("{fullname}")]
+        //public async Task<IActionResult> FindByShortName(string fullname)
+        //{
+        //    //Quiza deberiamos implementar un mapa donde verifique 
+        //    //si el nombre existe, de ser asi pasar el shortname o ID al programa
+
+        //    var result = await _countryServices.GetByFullNameAsync(fullname);
+        //    if (!result.Success)
+        //        return BadRequest(result.Message);
+        //    var countryResource = _mapper.Map<Country, CountryResource>(result.Resource);
+        //    return Ok(countryResource);
+        //}
     }
 }
