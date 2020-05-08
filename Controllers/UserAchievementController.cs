@@ -16,20 +16,35 @@ namespace GoingTo_API.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IUserAchievementService _userAchievementService;
+        private readonly IAchievementService _achievementService;
 
-        public UserAchievementController(IUserAchievementService UserAchievementService, IMapper mapper)
+        public UserAchievementController(IAchievementService achievementService ,IUserAchievementService userAchievementService, IMapper mapper)
         {
+            _achievementService = achievementService; 
             _mapper = mapper;
-            _userAchievementService = UserAchievementService;
+            _userAchievementService = userAchievementService;
         }
 
-        //[HttpGet]
-        //public async Task<IEnumerable<UserAchievementResource>> GetAllAsync()
-        //{
-        //    var locatables = await _locatableService.ListAsync();
-        //    var resources = _mapper
-        //        .Map<IEnumerable<Locatable>, IEnumerable<LocatableResource>>(locatables);
-        //    return resources;
+        [HttpGet]
+        public async Task<IEnumerable<AchievementResource>> GetAllByUserIdAsync(int userId)
+        {
+            var achievements = await _achievementService.ListByUserIdAsync(userId);
+            var resources = _mapper
+                .Map<IEnumerable<Achievement>, IEnumerable<AchievementResource>>(achievements);
+            return resources;
+        }
+
+        [HttpPost("{tagId}")]
+        public async Task<IActionResult> AssignUserAchievement(int userId, int achievementId)
+        {
+
+            var result = await _userAchievementService.AssignUserAchievement(userId, achievementId);
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            var achievementResource = _mapper.Map<Achievement, AchievementResource>(result.Resource.Achievement);
+            return Ok(achievementResource);
+
         }
 
     }

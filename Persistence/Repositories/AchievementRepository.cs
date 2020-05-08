@@ -13,10 +13,29 @@ namespace GoingTo_API.Persistence
     {
         public AchievementRepository(AppDbContext context) : base(context) { }
 
-        public async Task<IEnumerable<Achievement>> ListAsync() 
+        public async Task AddAsync(Achievement achievement)
+        {
+            await _context.Achievements.AddAsync(achievement);
+        }
+
+        public async Task<Achievement> FindById(int id)
+        {
+            return await _context.Achievements.FindAsync(id);
+        }
+
+        public async Task<IEnumerable<Achievement>> ListAsync()
         {
             return await _context.Achievements.ToListAsync();
         }
-       
+
+        public void Remove(Achievement achievement)
+        {
+            _context.Achievements.Remove(achievement);
+        }
+
+        public void Update(Achievement achievement)
+        {
+            _context.Achievements.Update(achievement);
+        }
     }
 }
