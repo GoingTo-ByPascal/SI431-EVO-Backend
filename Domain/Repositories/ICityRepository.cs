@@ -7,5 +7,6 @@ namespace GoingTo_API.Domain.Repositories
     public interface ICityRepository
     {
         Task<IEnumerable<City>> ListAsync();
+        Task<City> FindById(int id);
     }
 }

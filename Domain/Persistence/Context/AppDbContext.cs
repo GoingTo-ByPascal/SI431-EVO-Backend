@@ -145,6 +145,7 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Locatable>().HasKey(p => p.Id);
             builder.Entity<Locatable>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Locatable>().Property(p => p.Address).IsRequired().HasMaxLength(45);
+            builder.Entity<Locatable>().Property(p => p.Description).HasMaxLength(100);
             builder.Entity<Locatable>().Property(p => p.Latitude);
             builder.Entity<Locatable>().Property(p => p.Longitude);
             builder.Entity<Locatable>().Property(p => p.ReviewableId);
