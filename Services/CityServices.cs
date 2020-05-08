@@ -9,6 +9,7 @@ namespace GoingTo_API.Services
     public class CityServices : ICityServices
     {
         private readonly ICityRepository _cityRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
         public CityServices(ICityRepository cityRepository)
         {

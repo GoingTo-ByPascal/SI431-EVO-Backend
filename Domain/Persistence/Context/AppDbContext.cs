@@ -44,7 +44,7 @@ namespace GoingTo_API.Domain.Persistence.Context
             
             //Tabla Achievements
 
-            builder.Entity<Achievement>().ToTable("achievements");
+            builder.Entity<Achievement>().ToTable("Achievements");
             builder.Entity<Achievement>().HasKey(p => p.Id);
             builder.Entity<Achievement>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Achievement>().Property(p => p.Name).IsRequired().HasMaxLength(45);
@@ -53,7 +53,7 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             //Tabla City
 
-            builder.Entity<City>().ToTable("cities");
+            builder.Entity<City>().ToTable("Cities");
             builder.Entity<City>().HasKey(p => p.Id);
             builder.Entity<City>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<City>().Property(p => p.Name).IsRequired().HasMaxLength(30);
@@ -66,7 +66,7 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             //Tabla Country
 
-            builder.Entity<Country>().ToTable("countries");
+            builder.Entity<Country>().ToTable("Countries");
             builder.Entity<Country>().HasKey(p => p.Id);
             builder.Entity<Country>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Country>().Property(p => p.ShortName).IsRequired().HasMaxLength(3);
@@ -83,7 +83,7 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             //Tabla CountryCurrencies
 
-            builder.Entity<CountryCurrencies>().ToTable("country_currencies");
+            builder.Entity<CountryCurrencies>().ToTable("CountryCurrencies");
             builder.Entity<CountryCurrencies>().HasKey(p => p.Id);
             builder.Entity<CountryCurrencies>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<CountryCurrencies>()
@@ -97,7 +97,7 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             //Tabla CountryLanguages
 
-            builder.Entity<CountryLanguages>().ToTable("country_languages");
+            builder.Entity<CountryLanguages>().ToTable("CountryLanguages");
             builder.Entity<CountryLanguages>().HasKey(p => p.Id);
             builder.Entity<CountryLanguages>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<CountryLanguages>()
@@ -112,7 +112,7 @@ namespace GoingTo_API.Domain.Persistence.Context
          
             //Tabla Currency
 
-            builder.Entity<Currency>().ToTable("currencies");
+            builder.Entity<Currency>().ToTable("Currencies");
             builder.Entity<Currency>().HasKey(p => p.Id);
             builder.Entity<Currency>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Currency>().Property(p => p.ShortName).IsRequired().HasMaxLength(3);
@@ -120,7 +120,7 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             //Tabla Favourite
 
-            builder.Entity<Favourite>().ToTable("favourites");
+            builder.Entity<Favourite>().ToTable("Favourites");
             builder.Entity<Favourite>().HasKey(p => p.Id);
             builder.Entity<Favourite>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Favourite>().Property(p => p.Description).HasMaxLength(45);
@@ -133,7 +133,7 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             //Tabla Language
 
-            builder.Entity<Language>().ToTable("languages");
+            builder.Entity<Language>().ToTable("Languages");
             builder.Entity<Language>().HasKey(p => p.Id);
             builder.Entity<Language>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Language>().Property(p => p.ShortName).IsRequired().HasMaxLength(45);
@@ -141,7 +141,7 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             //Tabla Locatable
 
-            builder.Entity<Locatable>().ToTable("locatables");
+            builder.Entity<Locatable>().ToTable("Locatables");
             builder.Entity<Locatable>().HasKey(p => p.Id);
             builder.Entity<Locatable>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Locatable>().Property(p => p.Address).IsRequired().HasMaxLength(45);
@@ -176,7 +176,7 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             //Tabla Place
 
-            builder.Entity<Place>().ToTable("places");
+            builder.Entity<Place>().ToTable("Places");
             builder.Entity<Place>().HasKey(p => p.Id);
             builder.Entity<Place>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Place>().Property(p => p.CityId).IsRequired();
@@ -187,7 +187,7 @@ namespace GoingTo_API.Domain.Persistence.Context
           
             //Tabla Profile
 
-            builder.Entity<Profile>().ToTable("profiles");
+            builder.Entity<Profile>().ToTable("Profiles");
             builder.Entity<Profile>().HasKey(p => p.Id);
             builder.Entity<Profile>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Profile>().Property(p => p.Name).IsRequired().HasMaxLength(45);
@@ -198,7 +198,7 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             //Tabla Review
 
-            builder.Entity<Review>().ToTable("reviews");
+            builder.Entity<Review>().ToTable("Reviews");
             builder.Entity<Review>().HasKey(p => p.Id);
             builder.Entity<Review>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Review>().Property(p => p.ReviewableId).IsRequired().HasDefaultValue<int>(null);
@@ -213,7 +213,7 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             //Tabla Reviewable
 
-            builder.Entity<Reviewable>().ToTable("reviewables");
+            builder.Entity<Reviewable>().ToTable("Reviewables");
             builder.Entity<Reviewable>().HasKey(p => p.Id);
             builder.Entity<Reviewable>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Reviewable>().Property(p => p.Description).HasMaxLength(500);
@@ -228,21 +228,21 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .HasForeignKey<Locatable>(p => p.ReviewableId);
 
             //Tabla ReviewImage
-            builder.Entity<ReviewImage>().ToTable("review_images");
+            builder.Entity<ReviewImage>().ToTable("ReviewImages");
             builder.Entity<ReviewImage>().HasKey(p => p.Id);
             builder.Entity<ReviewImage>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<ReviewImage>().Property(p => p.Filename).HasMaxLength(45).IsRequired();
 
             //Tabla Tip
 
-            builder.Entity<Tip>().ToTable("tips");
+            builder.Entity<Tip>().ToTable("Tips");
             builder.Entity<Tip>().HasKey(p => p.Id);
             builder.Entity<Tip>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Tip>().Property(p => p.Text).IsRequired().HasMaxLength(100);
             builder.Entity<Tip>().Property(p => p.LocatableId).IsRequired();
             
             //Tabla User
-            builder.Entity<User>().ToTable("users");
+            builder.Entity<User>().ToTable("Users");
             builder.Entity<User>().HasKey(p => p.Id);
             builder.Entity<User>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<User>().Property(p => p.Email).IsRequired().HasMaxLength(45);
@@ -259,7 +259,7 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             //Tabla UserAchievements
 
-            builder.Entity<UserAchievements>().ToTable("user_achievements");
+            builder.Entity<UserAchievements>().ToTable("UserAchievements");
             builder.Entity<UserAchievements>().HasKey(p => p.Id);
             builder.Entity<UserAchievements>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<UserAchievements>().Property(p => p.UserId).IsRequired();
@@ -275,7 +275,7 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             //Tabla Wallet
 
-            builder.Entity<Wallet>().ToTable("wallets");
+            builder.Entity<Wallet>().ToTable("Wallets");
             builder.Entity<Wallet>().HasKey(p => p.Id);
             builder.Entity<Wallet>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Wallet>().Property(p => p.Points).IsRequired();

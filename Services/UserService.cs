@@ -13,6 +13,7 @@ namespace GoingTo_API.Services
     {
         public readonly IUserRepository _userRepository;
         public readonly IUnitOfWork _unitOfWork;
+        public readonly IAchievementRepository achievementRepository;
         
         public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork)
         {
