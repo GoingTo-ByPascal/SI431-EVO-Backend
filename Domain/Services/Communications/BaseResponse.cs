@@ -5,12 +5,11 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Domain.Services.Communications
 {
-    public abstract class BaseResponse<T>
+    public class BaseResponse<T>
     {
         public bool Success { get; protected set; }
         public string Message { get; protected set; }
-        public T Resource { get; set; }
-
+        public T Resource { get; protected set; }
         public BaseResponse(T resource)
         {
             Resource = resource;
@@ -23,3 +22,4 @@ namespace GoingTo_API.Domain.Services.Communications
             Message = message;
         }
     }
+}
