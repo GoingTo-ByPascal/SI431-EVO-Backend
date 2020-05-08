@@ -12,7 +12,7 @@ namespace GoingTo_API.Domain.Models
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public List<Tip> Tips { get; set; }
-        public int reviewable_id { get; set; }
+        public int ReviewableId { get; set; }
         public Reviewable Reviewable { get; set; }
         public Favourite Favourite { get; set; }
         public City City { get; set; }
