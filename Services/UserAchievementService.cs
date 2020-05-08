@@ -14,12 +14,12 @@ namespace GoingTo_API.Services
         private readonly IUserAchievementRepository _userAchievementRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public UserAchievementService(IUserAchievementRepository userAchievementRepository, IUnitOfWork unitOfWork) 
+        public UserAchievementService(IUserAchievementRepository userAchievementRepository, IUnitOfWork unitOfWork)
         {
             _userAchievementRepository = userAchievementRepository;
             _unitOfWork = unitOfWork;
-        } 
-            
+        }
+
         public async Task<IEnumerable<UserAchievement>> ListAsync()
         {
             return await _userAchievementRepository.ListAsync();
@@ -66,3 +66,4 @@ namespace GoingTo_API.Services
             }
         }
     }
+}
