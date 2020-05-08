@@ -29,5 +29,10 @@ namespace GoingTo_API.Services
                 return new CityResponse("City not found");
             return new CityResponse(existingCity);
         }
+
+        public async Task<IEnumerable<City>> ListByCountryIdAsync(int countryId)
+        {
+            return await _cityRepository.ListByCountryIdAsync(countryId);
+        }
     }
 }
