@@ -13,7 +13,7 @@ namespace GoingTo_API.Domain.Models
         public string FullName { get; set; }
 
         public List<City> Cities { get; set; } = new List<City>();
-        public int locatable_id { get; set; }
+        public int LocatableId { get; set; }
         public Locatable Locatable { get; set; }
         public List<Profile> Profiles { get; set; } = new List<Profile>();
         public List<CountryCurrencies> CountryCurrencies { get; set; }
