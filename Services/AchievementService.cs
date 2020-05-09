@@ -16,6 +16,13 @@ namespace GoingTo_API.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IUserAchievementRepository _userAchievementRepository;
 
+        public AchievementService(IAchievementRepository achievementRepository, IUnitOfWork unitOfWork, IUserAchievementRepository userAchievementRepository)
+        {
+            _achievementRepository = achievementRepository;
+            _unitOfWork = unitOfWork;
+            _userAchievementRepository = userAchievementRepository;
+        }
+
         public async Task<AchievementResponse> DeleteAsync(int id)
         {
             var existingTag = await _achievementRepository.FindById(id);

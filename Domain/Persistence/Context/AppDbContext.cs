@@ -38,6 +38,7 @@ namespace GoingTo_API.Domain.Persistence.Context
             optionsBuilder.UseMySQL("server=34.67.198.111;database=goingto_db;port=3306;user=GoingTo;password=admin");
         }
 
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -261,6 +262,7 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             builder.Entity<UserAchievement>().ToTable("UserAchievements");
             builder.Entity<UserAchievement>().HasKey(p => p.Id);
+            builder.Entity<UserAchievement>().HasKey(p => new { p.UserId, p.AchievementId});
             builder.Entity<UserAchievement>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<UserAchievement>().Property(p => p.UserId).IsRequired();
             builder.Entity<UserAchievement>().Property(p => p.AchievementId).IsRequired();

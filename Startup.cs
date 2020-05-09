@@ -43,10 +43,12 @@ namespace GoingTo_API
             services.AddScoped<ILocatableRepository, LocatableRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserAchievementRepository, UserAchievementRepository>();
+            services.AddScoped<IAchievementRepository, AchievementRepository>();
             
             services.AddScoped<ILocatableService, LocatableService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserAchievementService, UserAchievementService>();
+            services.AddScoped<IAchievementService, AchievementService>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
            
