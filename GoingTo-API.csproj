@@ -23,6 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Domain\Models\Business\" />
+    <Folder Include="Domain\Repositories\Business\" />
+    <Folder Include="Domain\Repositories\Interactions\" />
+    <Folder Include="Domain\Services\Business\" />
+    <Folder Include="Domain\Services\Interactions\" />
     <Folder Include="SwaggerExamples\Responses\" />
   </ItemGroup>
 
