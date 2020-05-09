@@ -25,7 +25,9 @@ namespace GoingTo_API.Persistence
 
         public async Task<IEnumerable<User>> ListAsync()
         {
-            return await _context.Users.Include(p=> p.Wallet).ToListAsync();
+            return await _context.Users
+                .Include(p=> p.Wallet)
+                .ToListAsync();
         }
 
         public void Remove(User user)

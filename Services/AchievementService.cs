@@ -86,7 +86,8 @@ namespace GoingTo_API.Services
             if (existingAchievement == null)
                 return new AchievementResponse("Achievement not found");
 
-            existingAchievement.Name = achievement.Name;
+            existingAchievement.Text = achievement.Text;
+            existingAchievement.Points = achievement.Points;
 
             try
             {

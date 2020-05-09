@@ -12,6 +12,7 @@ using GoingTo_API.Extensions;
 namespace GoingTo_API.Controllers
 {
     [Route("/api/[controller]")]
+    [Produces("application/json")]
     public class LocatablesController : Controller
     {
         private readonly IMapper _mapper;
@@ -22,7 +23,11 @@ namespace GoingTo_API.Controllers
             _mapper = mapper;
             _locatableService = locatableService;
         }
-
+        /// <summary>
+        /// Returns all the locatables in the system
+        /// </summary>
+        /// <response code="200">Returns all the locatables in the system</response>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<LocatableResource>> GetAllAsync()
         {

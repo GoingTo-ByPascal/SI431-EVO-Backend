@@ -17,7 +17,11 @@ using GoingTo_API.Persistence;
 using GoingTo_API.Domain.Services;
 using GoingTo_API.Services;
 using GoingTo_API.Persistence.Repositories;
+using Microsoft.OpenApi.Models;
 using AutoMapper;
+using System.IO;
+using System.Reflection;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace GoingTo_API
 {
@@ -33,12 +37,12 @@ namespace GoingTo_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
+
             services.AddControllers();
             services.AddDbContext<AppDbContext>(options =>
             {
-                //options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"))
-                //options.UseInMemoryDatabase("goingto-on-memory");
-
+                options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
             });
             services.AddScoped<ILocatableRepository, LocatableRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
@@ -61,11 +65,32 @@ namespace GoingTo_API
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddAutoMapper(typeof(Startup));
+
+
+            
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "GoingTo API", Version = "v1" });
+                c.ExampleFilters();
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
+
+            services.AddSwaggerExamplesFromAssemblyOf<Startup>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "GoingTo API V1");
+                c.RoutePrefix = string.Empty;
+            });
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

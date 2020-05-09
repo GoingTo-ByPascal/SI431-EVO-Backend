@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 namespace GoingTo_API.Controllers
 {
     [Route("/api/cities/{cityId}/places")]
+    [Produces("application/json")]
     public class CityPlacesController : Controller
     {
         private readonly IPlaceService _placeService;
@@ -22,7 +23,11 @@ namespace GoingTo_API.Controllers
             _placeService = placeService;
             _mapper = mapper;
         }
-
+        /// <summary>
+        /// Returns all the places of one city in the system.
+        /// </summary>
+        /// <param name="cityId">The city id</param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<PlaceResource>> GetAllByCityIdAsync(int cityId)
         {

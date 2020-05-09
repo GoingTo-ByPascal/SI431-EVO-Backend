@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace GoingTo_API.Controllers
 {
     [Route("/api/users/{userId}/locatables")]
+    [Produces("application/json")]
     public class FavouritesController :Controller
     {
         private readonly ILocatableService _locatableService;
@@ -23,6 +24,12 @@ namespace GoingTo_API.Controllers
             _favouriteService = favouriteService;
             _mapper = mapper;
         }
+        /// <summary>
+        /// Returns all the favourites locatables of one user in the system.
+        /// </summary>
+        /// <param name="userId">The user id</param>
+        /// <response code="200">Returns all the favourites locatables of one user in the system. </response>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<LocatableResource>> GetAllByUserIdAsync(int userId)
         {
@@ -30,7 +37,12 @@ namespace GoingTo_API.Controllers
             var resources = _mapper.Map<IEnumerable<Locatable>, IEnumerable<LocatableResource>>(locatables);
             return resources;
         }
-
+        /// <summary>
+        /// Add a locatable to the user's favorites collection.
+        /// </summary>
+        /// <param name="userId"  example="1"></param>
+        /// <param name="locatableId"  example="1"></param>
+        /// <returns></returns>
         [HttpPost("{locatableId}")]
         public async Task<IActionResult> AssignFavourite(int userId, int locatableId)
         {
@@ -40,5 +52,6 @@ namespace GoingTo_API.Controllers
             var locatableResource = _mapper.Map<Locatable, LocatableResource>(result.Resource.Locatable);
             return Ok(locatableResource);
         }
+
     }
 }

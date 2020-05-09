@@ -15,18 +15,23 @@ namespace GoingTo_API.Persistence.Repositories
 
         public async Task<IEnumerable<City>> ListAsync()
         {
-            return await _context.Cities.Include(p=>p.Country).Include(p=>p.Locatable).ToListAsync();
+            return await _context.Cities.Include(p=>p.Country.Locatable).Include(p=>p.Locatable).ToListAsync();
         }
         public async Task<City> FindById(int id)
         {
-            return await _context.Cities.FindAsync(id);
+            return await _context.Cities
+                .Where(p => p.Id == id)
+                .Include(p => p.Locatable)
+                .Include(p => p.Country.Locatable)
+                .FirstAsync();
+                
         }
 
         public async Task<IEnumerable<City>> ListByCountryIdAsync(int countryId) =>
             await _context.Cities
             .Where(p => p.CountryId == countryId)
             .Include(p => p.Locatable)
-            .Include(p => p.Country)
+            .Include(p => p.Country.Locatable)
             .ToListAsync();
     }
 }

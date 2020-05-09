@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace GoingTo_API.Controllers
 {
     [Route("/api/[Controller]")]
+    [Produces("application/json")]
     public class CitiesController : Controller
     {
         private readonly ICityService _cityServices;
@@ -19,7 +20,11 @@ namespace GoingTo_API.Controllers
             _cityServices = cityServices;
             _mapper = mapper;
         }
-
+        /// <summary>
+        /// Returns all the cities in the system
+        /// </summary>
+        /// <response code="200">Returns all the cities in the system</response>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<CityResource>> GetAllAsync()
         {
@@ -27,6 +32,11 @@ namespace GoingTo_API.Controllers
             var resources = _mapper.Map<IEnumerable<City>, IEnumerable<CityResource>>(cities);
             return resources;
         }
+        /// <summary>
+        /// Returns one city by id
+        /// </summary>
+        /// <param name="id" example="1">The city id</param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<ActionResult> GetAsync(int id)
         {

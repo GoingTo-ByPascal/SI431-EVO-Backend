@@ -33,10 +33,10 @@ namespace GoingTo_API.Domain.Persistence.Context
         public DbSet<UserAchievement> UserAchievements { get; set; }
         public DbSet<Wallet> Wallets { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL("server=34.67.198.111;database=goingto_db;port=3306;user=GoingTo;password=admin");
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseMySQL("server=34.67.198.111;database=goingto_db;port=3306;user=GoingTo;password=admin");
+        //}
 
 
         protected override void OnModelCreating(ModelBuilder builder)

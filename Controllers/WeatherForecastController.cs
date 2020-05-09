@@ -22,7 +22,10 @@ namespace GoingTo_API.Controllers
         {
             _logger = logger;
         }
-
+        /// <summary>
+        /// We dont need this one hahaha
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {

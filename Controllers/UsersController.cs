@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace GoingTo_API.Controllers
 {
     [Route("/api/[controller]")]
+    [Produces("application/json")]
     public class UsersController : Controller
     {
         private readonly IUserService _userService;
@@ -21,7 +22,10 @@ namespace GoingTo_API.Controllers
             _userService = userService;
             _mapper = mapper;
         }
-
+        /// <summary>
+        /// Returns all the users on the system.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<UserResource>> GetAllAsync()
         {

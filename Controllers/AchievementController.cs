@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GoingTo_API.Domain.Models;
 using GoingTo_API.Domain.Services;
+using GoingTo_API.Domain.Services.Communications;
 using GoingTo_API.Extensions;
 using GoingTo_API.Resources;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 namespace GoingTo_API.Controllers
 {
     [Route("/api/[controller]")]
+    [Produces("application/json")]
     public class AchievementController: Controller
     {
         private readonly IAchievementService _achievementService;
@@ -22,8 +24,11 @@ namespace GoingTo_API.Controllers
             _achievementService = achievementService;
             _mapper = mapper;
         }
-
-
+        /// <summary>
+        /// Returns all the Achievements in the system.
+        /// </summary>
+        /// <response code="200">Returns all the Achievements in the system.</response>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<AchievementResource>> GetAllAsync()
         {
@@ -33,6 +38,12 @@ namespace GoingTo_API.Controllers
             return resources;
         }
 
+        /// <summary>
+        /// Creates an Achievements in the system.
+        /// </summary>
+        /// <response code="201">Creates an Achievements in the system.</response>
+        /// <response code="400">Unable to create the achievement due to validation.</response>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SaveAchievementResource resource)
         {
@@ -47,7 +58,23 @@ namespace GoingTo_API.Controllers
             var achievementResource = _mapper.Map<Achievement, AchievementResource>(result.Resource);
             return Ok(achievementResource);
         }
+        /// <summary>
+        /// Allows to change the Name,Text or Points of an existing Achievement
+        /// </summary>
+        /// <param name="id">The id of the achievement to update</param>
+        /// <param name="resource"></param>
+        /// <returns></returns>
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateAsync(int id, [FromBody] SaveAchievementResource resource)
+        {
+            var achievement = _mapper.Map<SaveAchievementResource, Achievement>(resource);
+            var result = await _achievementService.UpdateAsync(id, achievement);
 
+            if (!result.Success)
+                return BadRequest(result.Message);
+            var achievementResource = _mapper.Map<Achievement, AchievementResource>(result.Resource);
+            return Ok(achievementResource);
+        }
 
     }
 }
