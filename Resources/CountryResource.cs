@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Resources
 {
-    public class UserResource
+    public class CountryResource
     {
         public int Id { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public WalletResource Wallet { get; set; }
-    
+        public string ShortName { get; set; }
+        public string FullName { get; set; }
+        public LocatableResource Locatable { get; set; }
     }
 }

@@ -11,6 +11,8 @@ namespace GoingTo_API.Services
 {
     public class LocatableService : ILocatableService
     {
+        //Under development
+
         private readonly ILocatableRepository _locatableRepository;
         public readonly IUnitOfWork _unitOfWork;
 

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using GoingTo_API.Domain.Models;
 using GoingTo_API.Domain.Services;
 using GoingTo_API.Resources;
+using GoingTo_API.Extensions;
 
 namespace GoingTo_API.Controllers
 {
@@ -30,6 +31,5 @@ namespace GoingTo_API.Controllers
                 .Map<IEnumerable<Locatable>, IEnumerable<LocatableResource>>(locatables);
             return resources;
         }
-
     }
 }
