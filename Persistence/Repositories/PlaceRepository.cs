@@ -32,7 +32,7 @@ namespace GoingTo_API.Persistence.Repositories
             return await _context.Places
                 .Include(p=>p.Locatable)
                 .Include(p=>p.City)
-                .Include(p=>p.City.Locatable)//Descubrimiento
+                .Include(p=>p.City.Locatable)
                 .ToListAsync();
         }
 
@@ -54,21 +54,5 @@ namespace GoingTo_API.Persistence.Repositories
                 .Include(p=>p.Locatable)
                 .Include(p => p.City)
                 .ToListAsync();
-
-        //Under development
-        //public async Task AssignCityLocatable(int cityId, int locatableId,int id)
-        //{
-        //    Place place = await FindById(id);
-        //    if(place != null)
-        //    {
-        //        place.LocatableId = locatableId;
-        //        place.CityId = cityId;
-
-        //        _context.Places.Update(place);
-        //    }
-
-
-        //}
-       
     }
 }

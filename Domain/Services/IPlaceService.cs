@@ -11,7 +11,6 @@ namespace GoingTo_API.Domain.Services
     {
         Task<IEnumerable<Place>> ListAsync();
         Task<IEnumerable<Place>> ListByCityIdAsync(int cityId); 
-        //Task<PlaceResponse> AssignCityLocatableAsync(int cityId, int locatableId, int id);
         Task<PlaceResponse> GetByIdAsync(int id);
         Task<PlaceResponse> SaveAsync(Place place);
         Task<PlaceResponse> UpdateAsync(int id, Place place);

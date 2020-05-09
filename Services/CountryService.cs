@@ -40,13 +40,5 @@ namespace GoingTo_API.Services
         {
             return await _countryRepository.ListAsync();
         }
-
-        public Task<CountryResponse> GetByLocatableId(int locatableId)
-        {
-            throw new NotImplementedException();
-            //return await _countryRepository.ListByLocatableIdAsync(locatableId);
-        }
-
-
     }
 }

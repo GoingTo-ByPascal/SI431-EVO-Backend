@@ -15,8 +15,6 @@ namespace GoingTo_API.Persistence.Repositories
         public CountryRepository(AppDbContext context) : base(context) { }
         public async Task<Country> FindById(int id)
         {
-            //return await _context.Countries.FindAsync(id);
-
             return await _context.Countries
                 .Where(p => p.Id == id)
                 .Include(p => p.Locatable)

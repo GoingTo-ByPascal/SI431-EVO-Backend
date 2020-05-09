@@ -31,24 +31,5 @@ namespace GoingTo_API.Controllers
                 .Map<IEnumerable<Locatable>, IEnumerable<LocatableResource>>(locatables);
             return resources;
         }
-
-        // Porcion en desarrolllo, pensada para el uso de los partners
-
-        //[HttpPost]
-        //public async Task<IActionResult> PostAsync([FromBody] SaveLocatableResource resource)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return BadRequest(ModelState.GetErrorMessages());
-        //    var locatable = _mapper.Map<SaveLocatableResource, Locatable>(resource);
-        //    var result = await _locatableService.SaveAsync(locatable);
-        //
-        //    if (!result.Success)
-        //        return BadRequest(result.Message);
-        //
-        //    var locatableresource = _mapper.Map<Locatable, LocatableResource>(result.Resource);
-        //    return Ok(locatableresource);
-        //}
-
-
     }
 }
