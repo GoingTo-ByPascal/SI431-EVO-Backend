@@ -42,8 +42,8 @@ namespace GoingTo_API.Domain.Persistence.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            
-            //Tabla Achievements
+
+            //Achievements Entity
 
             builder.Entity<Achievement>().ToTable("Achievements");
             builder.Entity<Achievement>().HasKey(p => p.Id);
@@ -52,7 +52,7 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Achievement>().Property(p => p.Text).IsRequired().HasMaxLength(100);
             builder.Entity<Achievement>().Property(p => p.Points).HasDefaultValue<int>(null);
 
-            //Tabla City
+            //City Entity
 
             builder.Entity<City>().ToTable("Cities");
             builder.Entity<City>().HasKey(p => p.Id);
@@ -65,7 +65,7 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .WithOne(p => p.City)
                 .HasForeignKey(p => p.CityId);
 
-            //Tabla Country
+            //Country Entity
 
             builder.Entity<Country>().ToTable("Countries");
             builder.Entity<Country>().HasKey(p => p.Id);
@@ -82,7 +82,7 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .WithOne(p => p.Country)
                 .HasForeignKey(p => p.CountryId);
 
-            //Tabla CountryCurrencies
+            //CountryCurrencies Entity
 
             builder.Entity<CountryCurrencies>().ToTable("CountryCurrencies");
             builder.Entity<CountryCurrencies>().HasKey(p => p.Id);
@@ -96,7 +96,7 @@ namespace GoingTo_API.Domain.Persistence.Context
                .WithMany(p => p.CountryCurrencies)
                .HasForeignKey(p => p.CountryId);
 
-            //Tabla CountryLanguages
+            //CountryLanguages Entity
 
             builder.Entity<CountryLanguages>().ToTable("CountryLanguages");
             builder.Entity<CountryLanguages>().HasKey(p => p.Id);
@@ -110,8 +110,8 @@ namespace GoingTo_API.Domain.Persistence.Context
                .WithMany(p => p.CountryLanguages)
                .HasForeignKey(p => p.CountryId);
 
-         
-            //Tabla Currency
+
+            //Currency Entity
 
             builder.Entity<Currency>().ToTable("Currencies");
             builder.Entity<Currency>().HasKey(p => p.Id);
@@ -119,20 +119,28 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Currency>().Property(p => p.ShortName).IsRequired().HasMaxLength(3);
             builder.Entity<Currency>().Property(p => p.Unit).IsRequired().HasMaxLength(45);
 
-            //Tabla Favourite
+            //Favourite Entity
 
             builder.Entity<Favourite>().ToTable("Favourites");
             builder.Entity<Favourite>().HasKey(p => p.Id);
+            builder.Entity<Favourite>().HasKey(pt => new { pt.UserId, pt.LocatableId });
             builder.Entity<Favourite>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Favourite>().Property(p => p.Description).HasMaxLength(45);
             builder.Entity<Favourite>().Property(p => p.UserId).IsRequired();
             builder.Entity<Favourite>().Property(p => p.LocatableId).IsRequired();
+
             builder.Entity<Favourite>()
                 .HasOne(p => p.User)
                 .WithMany(p => p.Favourites)
                 .HasForeignKey(p => p.UserId);
+            builder.Entity<Favourite>()
+                .HasOne(p => p.Locatable)
+                .WithMany(p => p.Favourites)
+                .HasForeignKey(p => p.LocatableId);
 
-            //Tabla Language
+
+
+            //Entity Language
 
             builder.Entity<Language>().ToTable("Languages");
             builder.Entity<Language>().HasKey(p => p.Id);
@@ -140,7 +148,7 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Language>().Property(p => p.ShortName).IsRequired().HasMaxLength(45);
             builder.Entity<Language>().Property(p => p.FullName).IsRequired().HasMaxLength(45);
 
-            //Tabla Locatable
+            //Locatable Entity
 
             builder.Entity<Locatable>().ToTable("Locatables");
             builder.Entity<Locatable>().HasKey(p => p.Id);
@@ -150,11 +158,6 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Locatable>().Property(p => p.Latitude);
             builder.Entity<Locatable>().Property(p => p.Longitude);
             builder.Entity<Locatable>().Property(p => p.ReviewableId).HasDefaultValue<int>(null);
-
-            builder.Entity<Locatable>()
-                .HasOne(p => p.Favourite)
-                .WithOne(p => p.Locatable)
-                .HasForeignKey<Favourite>(p => p.LocatableId);
 
             builder.Entity<Locatable>()
                 .HasOne(p => p.City)
@@ -176,7 +179,7 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .WithOne(p => p.Locatable)
                 .HasForeignKey(p => p.LocatableId);
 
-            //Tabla Place
+            //Place Entity
 
             builder.Entity<Place>().ToTable("Places");
             builder.Entity<Place>().HasKey(p => p.Id);
@@ -186,8 +189,8 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Place>().Property(p => p.Stars);
             builder.Entity<Place>().Property(p => p.LocatableId).IsRequired();
 
-          
-            //Tabla Profile
+
+            //Profile Entity
 
             builder.Entity<Profile>().ToTable("Profiles");
             builder.Entity<Profile>().HasKey(p => p.Id);
@@ -198,7 +201,7 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Profile>().Property(p => p.CountryId).IsRequired();
             builder.Entity<Profile>().Property(p => p.UserId).IsRequired();
 
-            //Tabla Review
+            //Review Entity
 
             builder.Entity<Review>().ToTable("Reviews");
             builder.Entity<Review>().HasKey(p => p.Id);
@@ -213,7 +216,7 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .WithOne(p => p.Review)
                 .HasForeignKey(p => p.ReviewId);
 
-            //Tabla Reviewable
+            //Reviewable Entity
 
             builder.Entity<Reviewable>().ToTable("Reviewables");
             builder.Entity<Reviewable>().HasKey(p => p.Id);
@@ -229,13 +232,13 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .WithOne(p => p.Reviewable)
                 .HasForeignKey<Locatable>(p => p.ReviewableId);
 
-            //Tabla ReviewImage
+            //ReviewImage Entity
             builder.Entity<ReviewImage>().ToTable("ReviewImages");
             builder.Entity<ReviewImage>().HasKey(p => p.Id);
             builder.Entity<ReviewImage>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<ReviewImage>().Property(p => p.Filename).HasMaxLength(45).IsRequired();
 
-            //Tabla Tip
+            //Tip Entity
 
             builder.Entity<Tip>().ToTable("Tips");
             builder.Entity<Tip>().HasKey(p => p.Id);
@@ -243,7 +246,7 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Tip>().Property(p => p.Text).IsRequired().HasMaxLength(100);
             builder.Entity<Tip>().Property(p => p.LocatableId).IsRequired();
             
-            //Tabla User
+            //User Entity
             builder.Entity<User>().ToTable("Users");
             builder.Entity<User>().HasKey(p => p.Id);
             builder.Entity<User>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
@@ -258,8 +261,12 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .HasMany(p => p.Reviews)
                 .WithOne(p => p.User)
                 .HasForeignKey(p => p.UserId);
+            builder.Entity<User>()
+                .HasMany(p => p.Favourites)
+                .WithOne(p => p.User)
+                .HasForeignKey(p => p.UserId);
 
-            //Tabla UserAchievements
+            //UserAchievements Entity 
 
             builder.Entity<UserAchievement>().ToTable("UserAchievements");
             builder.Entity<UserAchievement>().HasKey(p => p.Id);
@@ -276,7 +283,7 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .WithMany(p => p.UserAchievements)
                 .HasForeignKey(p => p.AchievementId);
 
-            //Tabla Wallet
+            //Wallet Entity
 
             builder.Entity<Wallet>().ToTable("Wallets");
             builder.Entity<Wallet>().HasKey(p => p.Id);

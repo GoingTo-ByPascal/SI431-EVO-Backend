@@ -47,12 +47,14 @@ namespace GoingTo_API
             services.AddScoped<ICountryRepository,CountryRepository>();
             services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<IPlaceRepository, PlaceRepository>();
+            services.AddScoped<IFavouriteRepository, FavouriteRepository>();
             
             services.AddScoped<ILocatableService, LocatableService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ICountryService,CountryService>();
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IPlaceService, PlaceService>();
+            services.AddScoped<IFavouriteService, FavouriteService>();
             services.AddScoped<IUserAchievementService, UserAchievementService>();
             services.AddScoped<IAchievementService, AchievementService>();
 

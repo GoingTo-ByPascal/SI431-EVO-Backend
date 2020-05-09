@@ -11,15 +11,15 @@ namespace GoingTo_API.Services
 {
     public class LocatableService : ILocatableService
     {
-        //Under development
-
         private readonly ILocatableRepository _locatableRepository;
+        private readonly IFavouriteRepository _favouriteRepository;
         public readonly IUnitOfWork _unitOfWork;
 
-        public LocatableService(ILocatableRepository locatableRepository,IUnitOfWork unitOfWork)
+        public LocatableService(ILocatableRepository locatableRepository,IUnitOfWork unitOfWork, IFavouriteRepository favouriteRepository)
         {
             _locatableRepository = locatableRepository;
             _unitOfWork = unitOfWork;
+            _favouriteRepository = favouriteRepository;
         }
 
         public async Task<IEnumerable<Locatable>> ListAsync()
@@ -93,5 +93,13 @@ namespace GoingTo_API.Services
                 return new LocatableResponse($"An error ocurred while searching locatable: {ex.Message}");
             }
         }
+
+        public async Task<IEnumerable<Locatable>> ListByUserIdAsync(int userId)
+        {
+            var userIds = await _favouriteRepository.ListByUserIdAsync(userId);
+            var locatables = userIds.Select(p => p.Locatable).ToList();
+            return locatables;
+        }
+
     }
 }
