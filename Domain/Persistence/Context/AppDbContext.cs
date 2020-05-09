@@ -148,7 +148,7 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Locatable>().Property(p => p.Description).HasMaxLength(100);
             builder.Entity<Locatable>().Property(p => p.Latitude);
             builder.Entity<Locatable>().Property(p => p.Longitude);
-            builder.Entity<Locatable>().Property(p => p.ReviewableId);
+            builder.Entity<Locatable>().Property(p => p.ReviewableId).HasDefaultValue<int>(null);
 
             builder.Entity<Locatable>()
                 .HasOne(p => p.Favourite)

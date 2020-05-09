@@ -20,7 +20,24 @@ namespace GoingTo_API.Services
             _unitOfWork = unitOfWork;
             _placeRepository = placeRepository;
         }
-        
+
+        //Under Development
+        //public async Task<PlaceResponse> AssignCityLocatableAsync(int cityId, int locatableId, int id)
+        //{
+        //    try
+        //    {
+        //        await _placeRepository.AssignCityLocatable(cityId,locatableId,id);
+        //        await _unitOfWork.CompleteAsync();
+
+        //        Place place = await _placeRepository.FindById(id);
+        //        return new PlaceResponse(place);
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        return new PlaceResponse($"An error ocurred while asiggning City and Locatable to a Place: {ex.Message}");
+        //    }
+        //}
+
         public async Task<PlaceResponse> DeleteAsync(int id)
         {
             var existingPlace = await _placeRepository.FindById(id);

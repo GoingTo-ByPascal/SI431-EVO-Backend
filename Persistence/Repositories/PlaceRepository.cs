@@ -17,11 +17,14 @@ namespace GoingTo_API.Persistence.Repositories
         {
             await _context.Places.AddAsync(place);
         }
-       
-
         public async Task<Place> FindById(int id)
         {
-            return await _context.Places.FindAsync(id);
+            return await _context.Places
+                .Where(p => p.Id == id)
+                .Include(p => p.Locatable)
+                .Include(p => p.City.Locatable)
+                .Include(p => p.City.Country.Locatable)
+                .FirstAsync();
         }
 
         public async Task<IEnumerable<Place>> ListAsync()
@@ -29,7 +32,7 @@ namespace GoingTo_API.Persistence.Repositories
             return await _context.Places
                 .Include(p=>p.Locatable)
                 .Include(p=>p.City)
-                .Include(p=>p.City.Country.Locatable)//Descubrimiento
+                .Include(p=>p.City.Locatable)//Descubrimiento
                 .ToListAsync();
         }
 
@@ -49,10 +52,23 @@ namespace GoingTo_API.Persistence.Repositories
             await _context.Places
                 .Where(p => p.CityId == cityId)
                 .Include(p=>p.Locatable)
-                .Include(p => p.City)//Prueba, no estoy seguro
+                .Include(p => p.City)
                 .ToListAsync();
-        
 
-  
+        //Under development
+        //public async Task AssignCityLocatable(int cityId, int locatableId,int id)
+        //{
+        //    Place place = await FindById(id);
+        //    if(place != null)
+        //    {
+        //        place.LocatableId = locatableId;
+        //        place.CityId = cityId;
+
+        //        _context.Places.Update(place);
+        //    }
+
+
+        //}
+       
     }
 }

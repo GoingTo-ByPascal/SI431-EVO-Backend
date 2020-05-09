@@ -15,6 +15,5 @@ namespace GoingTo_API.Resources
 
         public CityResource City { get; set; } 
 
-        //public CountryResource Country { get; set; } //Creo que no es necsario ya que desde el repository se llama
     }
 }
