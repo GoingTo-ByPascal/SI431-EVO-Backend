@@ -13,6 +13,7 @@ namespace GoingTo_API.Mapping
         public ResourceToModelProfile()
         {
             CreateMap<SaveUserResource, User>();
+            CreateMap<SaveAchievementResource, Achievement>();
             CreateMap<SavePlaceResource, Place>();
         }
     }

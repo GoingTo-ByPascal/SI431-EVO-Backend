@@ -42,6 +42,8 @@ namespace GoingTo_API
             });
             services.AddScoped<ILocatableRepository, LocatableRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserAchievementRepository, UserAchievementRepository>();
+            services.AddScoped<IAchievementRepository, AchievementRepository>();
             services.AddScoped<ICountryRepository,CountryRepository>();
             services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<IPlaceRepository, PlaceRepository>();
@@ -51,9 +53,11 @@ namespace GoingTo_API
             services.AddScoped<ICountryService,CountryService>();
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IPlaceService, PlaceService>();
-            
+            services.AddScoped<IUserAchievementService, UserAchievementService>();
+            services.AddScoped<IAchievementService, AchievementService>();
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            
+
             services.AddAutoMapper(typeof(Startup));
         }
 
