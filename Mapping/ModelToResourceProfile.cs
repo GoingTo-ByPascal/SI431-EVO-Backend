@@ -16,6 +16,9 @@ namespace GoingTo_API.Mapping
             CreateMap<User, UserResource>();
             CreateMap<Wallet, WalletResource>();
             CreateMap<Reviewable, ReviewableResource>();
+            CreateMap<Country, CountryResource>();
+            CreateMap<City, CityResource>();
+            CreateMap<Place, PlaceResource>();
         }
     }
 }

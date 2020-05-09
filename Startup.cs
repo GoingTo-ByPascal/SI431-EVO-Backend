@@ -42,9 +42,15 @@ namespace GoingTo_API
             });
             services.AddScoped<ILocatableRepository, LocatableRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICountryRepository,CountryRepository>();
+            services.AddScoped<ICityRepository, CityRepository>();
+            services.AddScoped<IPlaceRepository, PlaceRepository>();
             
             services.AddScoped<ILocatableService, LocatableService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ICountryService,CountryService>();
+            services.AddScoped<ICityService, CityService>();
+            services.AddScoped<IPlaceService, PlaceService>();
             
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             
