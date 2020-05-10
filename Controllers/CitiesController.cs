@@ -21,9 +21,9 @@ namespace GoingTo_API.Controllers
             _mapper = mapper;
         }
         /// <summary>
-        /// Returns all the cities in the system
+        /// returns all the cities in the system
         /// </summary>
-        /// <response code="200">Returns all the cities in the system</response>
+        /// <response code="200">returns all the cities in the system</response>
         /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<CityResource>> GetAllAsync()
@@ -33,7 +33,7 @@ namespace GoingTo_API.Controllers
             return resources;
         }
         /// <summary>
-        /// Returns one city by id
+        /// returns one city by id
         /// </summary>
         /// <param name="id" example="1">The city id</param>
         /// <returns></returns>

@@ -24,9 +24,9 @@ namespace GoingTo_API.Controllers
             _mapper = mapper;
         }
         /// <summary>
-        /// Returns all the places of one city in the system.
+        /// returns all the places of one city in the system.
         /// </summary>
-        /// <param name="cityId">The city id</param>
+        /// <param name="cityId">the city id</param>
         /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<PlaceResource>> GetAllByCityIdAsync(int cityId)

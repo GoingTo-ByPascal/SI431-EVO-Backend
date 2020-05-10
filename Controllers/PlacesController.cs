@@ -26,7 +26,7 @@ namespace GoingTo_API.Controllers
             _placeService = placeService;
         }
         /// <summary>
-        /// Returns al the places in the system.
+        /// returns al the places in the system.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
