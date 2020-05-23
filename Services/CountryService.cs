@@ -1,5 +1,6 @@
 ﻿using GoingTo_API.Domain.Models;
 using GoingTo_API.Domain.Repositories;
+using GoingTo_API.Domain.Repositories.Geographic;
 using GoingTo_API.Domain.Services;
 using GoingTo_API.Domain.Services.Communications;
 using System;
@@ -12,11 +13,13 @@ namespace GoingTo_API.Services
     public class CountryService : ICountryService
     {
         private readonly ICountryRepository _countryRepository;
+        private readonly ICountryCurrencyRepository _countryCurrencyRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public CountryService(ICountryRepository countryRepository,IUnitOfWork unitOfWork)
+        public CountryService(ICountryRepository countryRepository,IUnitOfWork unitOfWork, ICountryCurrencyRepository countryCurrencyRepository)
         {
             _countryRepository = countryRepository;
             _unitOfWork = unitOfWork;
+            _countryCurrencyRepository = countryCurrencyRepository;
         }
         public async Task<CountryResponse> GetByIdAsync(int id)
         {
@@ -39,6 +42,14 @@ namespace GoingTo_API.Services
         public async Task<IEnumerable<Country>> ListAsync()
         {
             return await _countryRepository.ListAsync();
+        }
+
+        public async Task<IEnumerable<Country>> ListByCurrencyIdAsync(int currencyId)
+        {
+            var countryCurrencies = await _countryCurrencyRepository.ListByCurrencyAsync(currencyId);
+            var countries = countryCurrencies.Select(cc => cc.Country).ToList();
+            return countries;
+
         }
     }
 }

@@ -17,7 +17,7 @@ namespace GoingTo_API.Domain.Persistence.Context
         public DbSet<Achievement> Achievements { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Country> Countries { get; set; }
-        public DbSet<CountryCurrencies> CountryCurrencies { get; set; }
+        public DbSet<CountryCurrency> CountryCurrencies { get; set; }
         public DbSet<CountryLanguages> CountryLanguages { get; set; }
         public DbSet<Currency> Currencies { get; set; }
         public DbSet<Favourite> Favourites { get; set; }
@@ -84,14 +84,15 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             //CountryCurrencies Entity
 
-            builder.Entity<CountryCurrencies>().ToTable("CountryCurrencies");
-            builder.Entity<CountryCurrencies>().HasKey(p => p.Id);
-            builder.Entity<CountryCurrencies>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<CountryCurrencies>()
+            builder.Entity<CountryCurrency>().ToTable("CountryCurrencies");
+            builder.Entity<CountryCurrency>().HasKey(p => p.Id);
+            builder.Entity<CountryCurrency>().HasKey(p => new { p.CountryId, p.CurrencyId });
+            builder.Entity<CountryCurrency>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<CountryCurrency>()
                 .HasOne(p => p.Currency)
                 .WithMany(p => p.CountryCurrencies)
                 .HasForeignKey(p => p.CurrencyId);
-            builder.Entity<CountryCurrencies>()
+            builder.Entity<CountryCurrency>()
                .HasOne(p => p.Country)
                .WithMany(p => p.CountryCurrencies)
                .HasForeignKey(p => p.CountryId);
