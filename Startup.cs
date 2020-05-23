@@ -67,8 +67,6 @@ namespace GoingTo_API
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IPlaceService, PlaceService>();
             services.AddScoped<IFavouriteService, FavouriteService>();
-            services.AddScoped<IUserAchievementService, UserAchievementService>();
-            services.AddScoped<IAchievementService, AchievementService>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
