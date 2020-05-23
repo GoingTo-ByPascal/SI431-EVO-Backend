@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Domain.Models
 {
-    public class CountryLanguages
+    public class CountryLanguage
     {
         public int Id { get; set; }
 

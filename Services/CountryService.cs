@@ -1,5 +1,6 @@
 ﻿using GoingTo_API.Domain.Models;
 using GoingTo_API.Domain.Repositories;
+using GoingTo_API.Domain.Repositories.Geographic;
 using GoingTo_API.Domain.Services;
 using GoingTo_API.Domain.Services.Communications;
 using System;
@@ -13,10 +14,12 @@ namespace GoingTo_API.Services
     {
         private readonly ICountryRepository _countryRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public CountryService(ICountryRepository countryRepository,IUnitOfWork unitOfWork)
+        private readonly ICountryLanguageRepository _countryLanguageRepository;
+        public CountryService(ICountryRepository countryRepository,IUnitOfWork unitOfWork, ICountryLanguageRepository countryLanguageRepository)
         {
             _countryRepository = countryRepository;
             _unitOfWork = unitOfWork;
+            _countryLanguageRepository = countryLanguageRepository;
         }
         public async Task<CountryResponse> GetByIdAsync(int id)
         {

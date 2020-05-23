@@ -22,6 +22,8 @@ using AutoMapper;
 using System.IO;
 using System.Reflection;
 using Swashbuckle.AspNetCore.Filters;
+using GoingTo_API.Domain.Repositories.Geographic;
+using GoingTo_API.Domain.Services.Geographic;
 
 namespace GoingTo_API
 {
@@ -49,13 +51,19 @@ namespace GoingTo_API
             services.AddScoped<IUserAchievementRepository, UserAchievementRepository>();
             services.AddScoped<IAchievementRepository, AchievementRepository>();
             services.AddScoped<ICountryRepository,CountryRepository>();
+            services.AddScoped<ICountryLanguageRepository, CountryLanguageRepository>();
+            services.AddScoped<ILanguageRepository, LanguageRepository>();
             services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<IPlaceRepository, PlaceRepository>();
             services.AddScoped<IFavouriteRepository, FavouriteRepository>();
             
             services.AddScoped<ILocatableService, LocatableService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserAchievementService, UserAchievementService>();
+            services.AddScoped<IAchievementService, AchievementService>();
             services.AddScoped<ICountryService,CountryService>();
+            services.AddScoped<ICountryLanguageService, CountryLanguageService>();
+            services.AddScoped<ILanguageService, LanguageService>();
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IPlaceService, PlaceService>();
             services.AddScoped<IFavouriteService, FavouriteService>();
