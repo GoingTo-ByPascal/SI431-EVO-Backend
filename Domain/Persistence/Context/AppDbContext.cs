@@ -210,7 +210,8 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Review>().Property(p => p.Comment).IsRequired();
             builder.Entity<Review>().Property(p => p.Stars).IsRequired();
             builder.Entity<Review>().Property(p => p.ReviewedAt).IsRequired();
-
+      
+             
             //Reviewable Entity
 
             builder.Entity<Reviewable>().ToTable("Reviewables");
@@ -221,6 +222,10 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .HasOne(p => p.Locatable)
                 .WithOne(p => p.Reviewable)
                 .HasForeignKey<Locatable>(p => p.ReviewableId);
+            builder.Entity<Reviewable>()
+                .HasMany(p => p.Reviews)
+                .WithOne(p => p.Reviewable)
+                .HasForeignKey(p => p.ReviewableId);
 
        
 
