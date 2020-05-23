@@ -11,5 +11,6 @@ namespace GoingTo_API.Domain.Repositories.Geographic
         Task<IEnumerable<Language>> ListAsync();
         Task AddAsync(Language language);
         Task<Language> FindById(int id);
+        void Update(Language language);
     }
 }

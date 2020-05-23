@@ -28,6 +28,9 @@ namespace GoingTo_API.Persistence.Repositories
             return await _context.Languages.ToListAsync();
         }
 
-
+        public void Update(Language language)
+        {
+            _context.Languages.Update(language);
+        }
     }
 }

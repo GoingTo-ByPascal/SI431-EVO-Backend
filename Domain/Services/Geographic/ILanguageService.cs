@@ -11,5 +11,6 @@ namespace GoingTo_API.Domain.Services
         Task<IEnumerable<Language>> ListByCountryIdAsync(int countryId);
         Task<LanguageResponse> GetByIdAsync(int id);
         Task<LanguageResponse> SaveAsync(Language language);
+        Task<LanguageResponse> UpdateAsync(int id, Language language);
     }
 }

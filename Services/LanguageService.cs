@@ -58,6 +58,29 @@ namespace GoingTo_API.Services
             }
         }
 
+        public async Task<LanguageResponse> UpdateAsync(int id, Language language)
+        {
+            var existingLanguage = await _languageRepository.FindById(id);
+
+            if (existingLanguage == null)
+                return new LanguageResponse("Language not found");
+
+            existingLanguage.ShortName = language.ShortName;
+            existingLanguage.FullName = language.FullName;
+
+
+            try
+            {
+                _languageRepository.Update(existingLanguage);
+                await _unitOfWork.CompleteAsync();
+
+                return new LanguageResponse(existingLanguage);
+            }
+            catch (Exception ex)
+            {
+                return new LanguageResponse($"An error ocurred while updating Language: {ex.Message}");
+            }
+        }
     }
 }
 
