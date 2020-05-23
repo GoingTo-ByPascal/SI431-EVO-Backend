@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Resources
 {
-    public class SaveUserResource
+    public class SaveReviewResource
     {
         [Required]
         [MaxLength(45)]
-        public string Email { get; set; }
-
+        public string Comment { get; set; }
         [Required]
-        [MaxLength(45)]
-        public int Password { get; set; }
+        public int Stars { get; set; }
     }
 }
