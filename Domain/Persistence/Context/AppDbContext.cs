@@ -27,7 +27,6 @@ namespace GoingTo_API.Domain.Persistence.Context
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Reviewable> Reviewables { get; set; }
-        public DbSet<ReviewImage>ReviewImages { get; set; }
         public DbSet<Tip> Tips { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserAchievement> UserAchievements { get; set; }
@@ -211,10 +210,6 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Review>().Property(p => p.Comment).IsRequired();
             builder.Entity<Review>().Property(p => p.Stars).IsRequired();
             builder.Entity<Review>().Property(p => p.ReviewedAt).IsRequired();
-            builder.Entity<Review>()
-                .HasMany(p => p.ReviewImages)
-                .WithOne(p => p.Review)
-                .HasForeignKey(p => p.ReviewId);
 
             //Reviewable Entity
 
@@ -223,20 +218,11 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Reviewable>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Reviewable>().Property(p => p.Description).HasMaxLength(500);
             builder.Entity<Reviewable>()
-                .HasOne(p => p.Review)
-                .WithOne(p => p.Reviewable)
-                .HasForeignKey<Review>(p => p.ReviewableId);
-
-            builder.Entity<Reviewable>()
                 .HasOne(p => p.Locatable)
                 .WithOne(p => p.Reviewable)
                 .HasForeignKey<Locatable>(p => p.ReviewableId);
 
-            //ReviewImage Entity
-            builder.Entity<ReviewImage>().ToTable("ReviewImages");
-            builder.Entity<ReviewImage>().HasKey(p => p.Id);
-            builder.Entity<ReviewImage>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<ReviewImage>().Property(p => p.Filename).HasMaxLength(45).IsRequired();
+       
 
             //Tip Entity
 
