@@ -13,5 +13,13 @@ namespace GoingTo_API.Resources
         public string Comment { get; set; }
         [Required]
         public int Stars { get; set; }
+
+        [Required]
+        [MaxLength(45)]
+        public string ReviewedAt { get; set; }
+        [Required]
+        public int ReviewableId { get; set; }
+        [Required]
+        public int UserId { get; set; }
     }
 }
