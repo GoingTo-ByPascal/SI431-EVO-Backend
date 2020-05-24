@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 
 namespace GoingTo_API.Resources
 {
-    public class SaveAchievementResource
+    public class SaveLanguageResource
     {
         [Required]
         [MaxLength(45)]
-        public string Name { get; set; }
+        public string ShortName { get; set; }
         [Required]
         [MaxLength(45)]
-        public string Text { get; set; }
-        [Required]
-        public int Points { get; set; }
+        public string FullName { get; set; }
     }
 }
