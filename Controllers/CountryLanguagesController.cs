@@ -40,5 +40,39 @@ namespace GoingTo_API.Controllers
             var resources = _mapper.Map<IEnumerable<Language>, IEnumerable<LanguageResource>>(languages);
             return resources;
         }
+        /// <summary>
+        /// Assign a language to a country
+        /// </summary>
+        /// <param name="countryId"></param>
+        /// <param name="languageId"></param>
+        /// <returns></returns>
+        [HttpPost("{languageId}")]
+        public async Task<IActionResult> AssignCountryLanguage(int countryId, int languageId)
+        {
+
+            var result = await _countryLanguageService.AssignCountryLanguage(countryId, languageId);
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            var languageResource = _mapper.Map<Language, LanguageResource>(result.Resource.Language);
+            return Ok(languageResource);
+
+        }
+        /// <summary>
+        /// Delete a language from one country
+        /// </summary>
+        /// <param name="countryId"></param>
+        /// <param name="languageId"></param>
+        /// <response code="204">the language was unasigned successfully</response>
+        /// <returns></returns>
+        [HttpDelete("languageId")]
+        public async Task<IActionResult> UnasignCountryLanguage(int countryId, int languageId)
+        {
+            var result = await _countryLanguageService.UnassignCountryLanguage(countryId, languageId);
+            if (!result.Success)
+                return BadRequest(result.Message);
+            var languageResource = _mapper.Map<Language, LanguageResource>(result.Resource.Language);
+            return Ok(languageResource);
+        }
     }
 }
