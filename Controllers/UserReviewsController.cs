@@ -1,5 +1,8 @@
-﻿using GoingTo_API.Domain.Repositories;
+﻿using AutoMapper;
+using GoingTo_API.Domain.Models;
+using GoingTo_API.Domain.Repositories;
 using GoingTo_API.Domain.Services.Interactions;
+using GoingTo_API.Resources;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,14 +15,25 @@ namespace GoingTo_API.Controllers
     [Produces("application/json")]
     public class UserReviewsController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
         private readonly IReviewService _reviewService;
 
-        public UserReviewsController(IReviewService reviewService, IUnitOfWork unitOfWork) 
+        public UserReviewsController(IReviewService reviewService, IMapper mapper) 
         {
-            _unitOfWork = unitOfWork;
+            _mapper = mapper;
             _reviewService = reviewService;
         }
-
+        /// <summary>
+        /// returns all the reviews of a user
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IEnumerable<ReviewResource>> GetAllByUserIdAsync(int userId)
+        {
+            var reviews = await _reviewService.ListByUserIdAsync(userId);
+            var resources = _mapper.Map<IEnumerable<Review>, IEnumerable<ReviewResource>>(reviews);
+            return resources;
+        }
     }
 }
