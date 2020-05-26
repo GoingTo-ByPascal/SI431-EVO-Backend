@@ -13,12 +13,14 @@ namespace GoingTo_API.Services
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository;
+        private readonly IPlaceCategoryRepository _placeCategoryRepository;
         public readonly IUnitOfWork _unitOfWork;
 
-        public CategoryService(ICategoryRepository categoryRepository, IUnitOfWork unitOfWork)
+        public CategoryService(ICategoryRepository categoryRepository, IUnitOfWork unitOfWork, IPlaceCategoryRepository placeCategoryRepository)
         {
             _categoryRepository = categoryRepository;
             _unitOfWork = unitOfWork;
+            _placeCategoryRepository = placeCategoryRepository;
         }
 
         public async Task<IEnumerable<Category>> ListAsync()
@@ -93,5 +95,11 @@ namespace GoingTo_API.Services
             }
         }
 
+        public async Task<IEnumerable<Category>> ListByPlaceIdAsync(int placeId)
+        {
+            var placeCategory = await _placeCategoryRepository.ListByPlaceIdAsync(placeId);
+            var categories = placeCategory.Select(pt => pt.Category).ToList();
+            return categories;
+        }
     }
 }

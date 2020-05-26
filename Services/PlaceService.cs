@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GoingTo_API.Domain.Models;
 using GoingTo_API.Domain.Repositories;
+using GoingTo_API.Domain.Repositories.Geographic;
 using GoingTo_API.Domain.Services;
 using GoingTo_API.Domain.Services.Communications;
 using System;
@@ -13,12 +14,15 @@ namespace GoingTo_API.Services
     public class PlaceService : IPlaceService
     {
         private readonly IPlaceRepository _placeRepository;
+        private readonly IPlaceCategoryRepository _placeCategoryRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public PlaceService(IPlaceRepository placeRepository, IUnitOfWork unitOfWork)
+        public PlaceService(IPlaceRepository placeRepository, IUnitOfWork unitOfWork, IPlaceCategoryRepository placeCategoryRepository)
         {
             _unitOfWork = unitOfWork;
             _placeRepository = placeRepository;
+            _placeCategoryRepository = placeCategoryRepository;
+
         }
         public async Task<PlaceResponse> DeleteAsync(int id)
         {
@@ -49,6 +53,13 @@ namespace GoingTo_API.Services
         public async Task<IEnumerable<Place>> ListAsync()
         {
             return await _placeRepository.ListAsync();
+        }
+
+        public async Task<IEnumerable<Place>> ListByCategoryIdAsync(int categoryId)
+        {
+            var placeCategory = await _placeCategoryRepository.ListByCategoryIdAsync(categoryId);
+            var places = placeCategory.Select(pt => pt.Place).ToList();
+            return places;
         }
 
         public async Task<IEnumerable<Place>> ListByCityIdAsync(int cityId)

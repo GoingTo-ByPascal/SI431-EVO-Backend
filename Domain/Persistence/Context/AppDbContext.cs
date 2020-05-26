@@ -16,6 +16,7 @@ namespace GoingTo_API.Domain.Persistence.Context
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<Achievement> Achievements { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<CountryCurrencies> CountryCurrencies { get; set; }
@@ -25,6 +26,7 @@ namespace GoingTo_API.Domain.Persistence.Context
         public DbSet<Language> Languages { get; set; }
         public DbSet<Locatable> Locatables { get; set; }
         public DbSet<Place> Places { get; set; }
+        public DbSet<PlaceCategory> PlaceCategories { get; set; }
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Reviewable> Reviewables { get; set; }
@@ -33,7 +35,8 @@ namespace GoingTo_API.Domain.Persistence.Context
         public DbSet<User> Users { get; set; }
         public DbSet<UserAchievement> UserAchievements { get; set; }
         public DbSet<Wallet> Wallets { get; set; }
-        public DbSet<Category> Categories { get; set; }
+      
+    
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
@@ -301,11 +304,23 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Category>().HasKey(p => p.Id);
             builder.Entity<Category>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Category>().Property(p => p.Name).IsRequired();
-            builder.Entity<Category>().HasData
-                (
-                new Category { Name = "Turistico" },
-                new Category { Name= "Vacacional"}
-                ) ;
+
+            //PlaceCategories Entity
+
+            builder.Entity<PlaceCategory>().ToTable("PlaceCategories");
+            builder.Entity<PlaceCategory>()
+            .HasKey(pt => new { pt.CategoryId, pt.PlaceId });
+           
+            builder.Entity<PlaceCategory>()
+                .HasOne(pt => pt.Category)
+                .WithMany(p => p.PlaceCategories)
+                .HasForeignKey(pt => pt.CategoryId);
+
+            builder.Entity<PlaceCategory>()
+                .HasOne(pt => pt.Place)
+                .WithMany(t => t.PlaceCategories)
+                .HasForeignKey(pt => pt.PlaceId);
+
 
 
             ApplySnakeCaseNamingConvention(builder);

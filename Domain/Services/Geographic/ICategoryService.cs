@@ -14,5 +14,6 @@ namespace GoingTo_API.Domain.Services.Geographic
         Task<CategoryResponse> SaveAsync(Category category);
         Task<CategoryResponse> UpdateAsync(int id, Category category);
         Task<CategoryResponse> DeleteAsync(int id);
+        Task<IEnumerable<Category>> ListByPlaceIdAsync(int placeId);
     }
 }

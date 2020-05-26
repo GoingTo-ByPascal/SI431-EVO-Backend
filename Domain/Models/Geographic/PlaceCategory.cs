@@ -7,8 +7,8 @@ namespace GoingTo_API.Domain.Models.Geographic
 {
     public class PlaceCategory
     {
-        public int CategoriesId { get; set; }
-        public Category Categories { get; set; }
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
         public int PlaceId { get; set; }
         public Place Place { get; set; }
     }
