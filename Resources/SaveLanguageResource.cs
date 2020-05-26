@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GoingTo_API.Domain.Models
+namespace GoingTo_API.Resources
 {
-    public class Language
+    public class SaveLanguageResource
     {
-        public int Id { get; set; }
+        [Required]
+        [MaxLength(45)]
         public string ShortName { get; set; }
+        [Required]
+        [MaxLength(45)]
         public string FullName { get; set; }
-        public List<CountryLanguage> CountryLanguages { get; set; }
     }
 }

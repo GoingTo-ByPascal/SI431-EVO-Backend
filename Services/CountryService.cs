@@ -14,12 +14,15 @@ namespace GoingTo_API.Services
     {
         private readonly ICountryRepository _countryRepository;
         private readonly ICountryCurrencyRepository _countryCurrencyRepository;
+        private readonly ICountryLanguageRepository _countryLanguageRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public CountryService(ICountryRepository countryRepository,IUnitOfWork unitOfWork, ICountryCurrencyRepository countryCurrencyRepository)
+        
+        public CountryService(ICountryRepository countryRepository,IUnitOfWork unitOfWork, ICountryCurrencyRepository countryCurrencyRepository, ICountryLanguageRepository countryLanguageRepository)
         {
             _countryRepository = countryRepository;
             _unitOfWork = unitOfWork;
             _countryCurrencyRepository = countryCurrencyRepository;
+            _countryLanguageRepository = countryLanguageRepository;
         }
         public async Task<CountryResponse> GetByIdAsync(int id)
         {

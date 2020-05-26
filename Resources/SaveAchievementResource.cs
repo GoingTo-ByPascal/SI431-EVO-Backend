@@ -11,7 +11,10 @@ namespace GoingTo_API.Resources
         [Required]
         [MaxLength(45)]
         public string Name { get; set; }
+        [Required]
+        [MaxLength(45)]
         public string Text { get; set; }
+        [Required]
         public int Points { get; set; }
     }
 }

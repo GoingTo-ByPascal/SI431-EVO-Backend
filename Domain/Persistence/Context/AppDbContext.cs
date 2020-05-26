@@ -17,8 +17,8 @@ namespace GoingTo_API.Domain.Persistence.Context
         public DbSet<Achievement> Achievements { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Country> Countries { get; set; }
-        public DbSet<CountryCurrency> CountryCurrencies { get; set; }
-        public DbSet<CountryLanguages> CountryLanguages { get; set; }
+        public DbSet<CountryCurrencies> CountryCurrencies { get; set; }
+        public DbSet<CountryLanguage> CountryLanguages { get; set; }
         public DbSet<Currency> Currencies { get; set; }
         public DbSet<Favourite> Favourites { get; set; }
         public DbSet<Language> Languages { get; set; }
@@ -99,18 +99,20 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             //CountryLanguages Entity
 
-            builder.Entity<CountryLanguages>().ToTable("CountryLanguages");
-            builder.Entity<CountryLanguages>().HasKey(p => p.Id);
-            builder.Entity<CountryLanguages>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<CountryLanguages>()
+            builder.Entity<CountryLanguage>().ToTable("CountryLanguages");
+            builder.Entity<CountryLanguage>().HasKey(p => p.Id);
+            builder.Entity<CountryLanguage>().HasKey(p => new { p.LanguageId, p.CountryId });
+            builder.Entity<CountryLanguage>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<CountryLanguage>().Property(p => p.LanguageId).IsRequired();
+            builder.Entity<CountryLanguage>().Property(p => p.CountryId).IsRequired();
+            builder.Entity<CountryLanguage>()
                 .HasOne(p => p.Language)
                 .WithMany(p => p.CountryLanguages)
                 .HasForeignKey(p => p.LanguageId);
-            builder.Entity<CountryLanguages>()
+            builder.Entity<CountryLanguage>()
                .HasOne(p => p.Country)
                .WithMany(p => p.CountryLanguages)
                .HasForeignKey(p => p.CountryId);
-
 
             //Currency Entity
 
