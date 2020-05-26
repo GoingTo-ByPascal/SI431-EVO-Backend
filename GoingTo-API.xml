@@ -4,77 +4,77 @@
         <name>GoingTo-API</name>
     </assembly>
     <members>
-        <member name="M:GoingTo_API.Controllers.AchievementController.GetAllAsync">
+        <member name="M:GoingTo_API.Controllers.AchievementsController.GetAllAsync">
             <summary>
-            Returns all the Achievements in the system.
+            returns all the Achievements in the system.
             </summary>
-            <response code="200">Returns all the Achievements in the system.</response>
+            <response code="200">returns all the Achievements in the system.</response>
             <returns></returns>
         </member>
-        <member name="M:GoingTo_API.Controllers.AchievementController.PostAsync(GoingTo_API.Resources.SaveAchievementResource)">
+        <member name="M:GoingTo_API.Controllers.AchievementsController.PostAsync(GoingTo_API.Resources.SaveAchievementResource)">
             <summary>
-            Creates an Achievements in the system.
+            creates an Achievement in the system.
             </summary>
-            <response code="201">Creates an Achievements in the system.</response>
-            <response code="400">Unable to create the achievement due to validation.</response>
+            <response code="201">creates an Achievements in the system.</response>
+            <response code="400">unable to create the achievement due to validation.</response>
             <returns></returns>
         </member>
-        <member name="M:GoingTo_API.Controllers.AchievementController.UpdateAsync(System.Int32,GoingTo_API.Resources.SaveAchievementResource)">
+        <member name="M:GoingTo_API.Controllers.AchievementsController.UpdateAsync(System.Int32,GoingTo_API.Resources.SaveAchievementResource)">
             <summary>
-            Allows to change the Name,Text or Points of an existing Achievement
+            allows to change the Name,Text or Points of an existing Achievement
             </summary>
-            <param name="id">The id of the achievement to update</param>
+            <param name="id">the id of the achievement to update</param>
             <param name="resource"></param>
             <returns></returns>
         </member>
         <member name="M:GoingTo_API.Controllers.CitiesController.GetAllAsync">
             <summary>
-            Returns all the cities in the system
+            returns all the cities in the system
             </summary>
-            <response code="200">Returns all the cities in the system</response>
+            <response code="200">returns all the cities in the system</response>
             <returns></returns>
         </member>
         <member name="M:GoingTo_API.Controllers.CitiesController.GetAsync(System.Int32)">
             <summary>
-            Returns one city by id
+            returns one city by id
             </summary>
             <param name="id" example="1">The city id</param>
             <returns></returns>
         </member>
         <member name="M:GoingTo_API.Controllers.CityPlacesController.GetAllByCityIdAsync(System.Int32)">
             <summary>
-            Returns all the places of one city in the system.
+            returns all the places of one city in the system.
             </summary>
-            <param name="cityId">The city id</param>
+            <param name="cityId">the city id</param>
             <returns></returns>
         </member>
         <member name="M:GoingTo_API.Controllers.CountriesController.GetAllAsync">
             <summary>
-            Returns all the countries in the system
+            returns all the countries in the system
             </summary>
-            <response code="200">Returns all the countries in the system</response>
+            <response code="200">returns all the countries in the system</response>
             <returns></returns>
         </member>
         <member name="M:GoingTo_API.Controllers.CountriesController.GetByIdAsync(System.Int32)">
             <summary>
-            Returns a country by searching in id
+            returns a country by searching in id
             </summary>
-            <param name="id" example="1">The country id</param>
+            <param name="id" example="1">the country id</param>
             <returns></returns>
         </member>
         <member name="M:GoingTo_API.Controllers.CountryCitiesController.GetAllByCountryIdAsync(System.Int32)">
             <summary>
-            Returns all the cities in one country
+            returns all the cities in one country
             </summary>
-            <param name="countryId" example = "1">Country Id</param>
+            <param name="countryId" example = "1">country Id</param>
             <returns></returns>
         </member>
         <member name="M:GoingTo_API.Controllers.FavouritesController.GetAllByUserIdAsync(System.Int32)">
             <summary>
-            Returns all the favourites locatables of one user in the system.
+            returns all the favourites locatables of one user in the system.
             </summary>
-            <param name="userId">The user id</param>
-            <response code="200">Returns all the favourites locatables of one user in the system. </response>
+            <param name="userId">the user id</param>
+            <response code="200">returns all the favourites locatables of one user in the system. </response>
             <returns></returns>
         </member>
         <member name="M:GoingTo_API.Controllers.FavouritesController.AssignFavourite(System.Int32,System.Int32)">
@@ -87,14 +87,14 @@
         </member>
         <member name="M:GoingTo_API.Controllers.LocatablesController.GetAllAsync">
             <summary>
-            Returns all the locatables in the system
+            returns all the locatables in the system
             </summary>
-            <response code="200">Returns all the locatables in the system</response>
+            <response code="200">returns all the locatables in the system</response>
             <returns></returns>
         </member>
         <member name="M:GoingTo_API.Controllers.PlacesController.GetAllAsync">
             <summary>
-            Returns al the places in the system.
+            returns al the places in the system.
             </summary>
             <returns></returns>
         </member>
@@ -124,14 +124,14 @@
         </member>
         <member name="M:GoingTo_API.Controllers.UserAchievementController.GetAllByUserIdAsync(System.Int32)">
             <summary>
-            Returns all the achievements of an user
+            returns all the achievements of an user
             </summary>
             <param name="userId"></param>
             <returns></returns>
         </member>
         <member name="M:GoingTo_API.Controllers.UserAchievementController.AssignUserAchievement(System.Int32,System.Int32)">
             <summary>
-            Assign an achievement to an users
+            assign an achievement to an users
             </summary>
             <param name="userId"></param>
             <param name="achievementId"></param>
@@ -139,16 +139,16 @@
         </member>
         <member name="M:GoingTo_API.Controllers.UserAchievementController.UnasignUserAchievement(System.Int32,System.Int32)">
             <summary>
-            Delete an achivement from one user
+            delete an achivement from one user
             </summary>
             <param name="userId"></param>
             <param name="achievementId"></param>
-            <response code="204">The achievement was unasigned successfully</response>
+            <response code="204">the achievement was unasigned successfully</response>
             <returns></returns>
         </member>
         <member name="M:GoingTo_API.Controllers.UsersController.GetAllAsync">
             <summary>
-            Returns all the users on the system.
+            returns all the users on the system.
             </summary>
             <returns></returns>
         </member>
