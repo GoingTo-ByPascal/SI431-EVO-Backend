@@ -24,9 +24,9 @@ namespace GoingTo_API.Controllers
             _cityService = cityService;
         }
         /// <summary>
-        /// returns all the cities in one country
+        /// Returns all the cities in one country
         /// </summary>
-        /// <param name="countryId" example = "1">country Id</param>
+        /// <param name="countryId" example = "1">Country Id</param>
         /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<CityResource>> GetAllByCountryIdAsync(int countryId)
