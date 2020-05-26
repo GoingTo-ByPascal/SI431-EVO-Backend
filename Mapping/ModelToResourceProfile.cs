@@ -21,6 +21,8 @@ namespace GoingTo_API.Mapping
             CreateMap<City, CityResource>();
             CreateMap<Place, PlaceResource>();
             CreateMap<Language, LanguageResource>();
+            CreateMap<Currency, CurrencyResource>();
+
         }
     }
 }

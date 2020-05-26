@@ -14,20 +14,20 @@ namespace GoingTo_API.Controllers
 {
     [Route("/api/[controller]")]
     [Produces("application/json")]
-    public class AchievementsController: Controller
+    public class AchievementController: Controller
     {
         private readonly IAchievementService _achievementService;
         private readonly IMapper _mapper;
 
-        public AchievementsController(IAchievementService achievementService, IMapper mapper)
+        public AchievementController(IAchievementService achievementService, IMapper mapper)
         {
             _achievementService = achievementService;
             _mapper = mapper;
         }
         /// <summary>
-        /// returns all the Achievements in the system.
+        /// Returns all the Achievements in the system.
         /// </summary>
-        /// <response code="200">returns all the Achievements in the system.</response>
+        /// <response code="200">Returns all the Achievements in the system.</response>
         /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<AchievementResource>> GetAllAsync()
@@ -39,10 +39,10 @@ namespace GoingTo_API.Controllers
         }
 
         /// <summary>
-        /// creates an Achievement in the system.
+        /// Creates an Achievements in the system.
         /// </summary>
-        /// <response code="201">creates an Achievements in the system.</response>
-        /// <response code="400">unable to create the achievement due to validation.</response>
+        /// <response code="201">Creates an Achievements in the system.</response>
+        /// <response code="400">Unable to create the achievement due to validation.</response>
         /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SaveAchievementResource resource)
@@ -59,9 +59,9 @@ namespace GoingTo_API.Controllers
             return Ok(achievementResource);
         }
         /// <summary>
-        /// allows to change the Name,Text or Points of an existing Achievement
+        /// Allows to change the Name,Text or Points of an existing Achievement
         /// </summary>
-        /// <param name="id">the id of the achievement to update</param>
+        /// <param name="id">The id of the achievement to update</param>
         /// <param name="resource"></param>
         /// <returns></returns>
         [HttpPut("{id}")]

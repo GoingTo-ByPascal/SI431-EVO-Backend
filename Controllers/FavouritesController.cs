@@ -25,10 +25,10 @@ namespace GoingTo_API.Controllers
             _mapper = mapper;
         }
         /// <summary>
-        /// returns all the favourites locatables of one user in the system.
+        /// Returns all the favourites locatables of one user in the system.
         /// </summary>
-        /// <param name="userId">the user id</param>
-        /// <response code="200">returns all the favourites locatables of one user in the system. </response>
+        /// <param name="userId">The user id</param>
+        /// <response code="200">Returns all the favourites locatables of one user in the system. </response>
         /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<LocatableResource>> GetAllByUserIdAsync(int userId)

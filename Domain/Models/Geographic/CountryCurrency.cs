@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Domain.Models
 {
-    public class CountryCurrencies
+    public class CountryCurrency
     {
         public int Id { get; set; }
         

@@ -56,6 +56,8 @@ namespace GoingTo_API
             services.AddScoped<ICityRepository, CityRepository>();
             services.AddScoped<IPlaceRepository, PlaceRepository>();
             services.AddScoped<IFavouriteRepository, FavouriteRepository>();
+            services.AddScoped<ICurrencyRepository, CurrencyRepository>();
+            services.AddScoped<ICountryCurrencyRepository, CountryCurrencyRepository>();
             
             services.AddScoped<ILocatableService, LocatableService>();
             services.AddScoped<IUserService, UserService>();
@@ -67,6 +69,10 @@ namespace GoingTo_API
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IPlaceService, PlaceService>();
             services.AddScoped<IFavouriteService, FavouriteService>();
+            services.AddScoped<IUserAchievementService, UserAchievementService>();
+            services.AddScoped<IAchievementService, AchievementService>();
+            services.AddScoped<ICurrencyService, CurrencyService>();
+            services.AddScoped<ICountryCurrencyService, CountryCurrencyService>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
