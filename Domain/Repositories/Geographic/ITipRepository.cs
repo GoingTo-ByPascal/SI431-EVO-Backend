@@ -9,7 +9,7 @@ namespace GoingTo_API.Domain.Repositories.Geographic
     {
         Task<IEnumerable<Tip>> ListByLocatableIdAsync(int locatableId);
 
-        Task <Tip> FindByIdAsync(int tipId);
+        Task <Tip> FindById(int tipId);
            
         Task AddAsync(Tip tip);
 

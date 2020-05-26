@@ -23,6 +23,15 @@ namespace GoingTo_API.Services
             return await _tipRepository.ListByLocatableIdAsync(locatableId);
         }
 
+        public async Task<TipResponse> GetByIdAsync(int id)
+        {
+            var existingTip = await _tipRepository.FindById(id);
+
+            if (existingTip == null)
+                return new TipResponse("Tip not found");
+            return new TipResponse(existingTip);
+        }
+
         public async Task<TipResponse> SaveAsync(Tip tip)
         {
             try
@@ -38,7 +47,7 @@ namespace GoingTo_API.Services
         }
         public async Task<TipResponse> UpdateAsync(int tipId, Tip tip)
         {
-            var existingTip = await _tipRepository.FindByIdAsync(tipId);
+            var existingTip = await _tipRepository.FindById(tipId);
 
             if (existingTip == null)
                 return new TipResponse("Tip not found");
@@ -58,7 +67,7 @@ namespace GoingTo_API.Services
         }
         public async Task<TipResponse> DeleteAsync(int tipId)
         {
-            var existingTip = await _tipRepository.FindByIdAsync(tipId);
+            var existingTip = await _tipRepository.FindById(tipId);
 
             if (existingTip == null)
                 return new TipResponse("Tip not found");

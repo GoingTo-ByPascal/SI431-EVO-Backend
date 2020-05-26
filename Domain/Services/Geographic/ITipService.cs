@@ -10,7 +10,7 @@ namespace GoingTo_API.Domain.Services.Geographic
     {
         Task<IEnumerable<Tip>> ListByLocatableIdAsync(int locatableId);
 
-        //Task<TipResponse> GetByIdAsync(int tipId);
+        Task<TipResponse> GetByIdAsync(int tipId);
 
         Task<TipResponse> SaveAsync(Tip tip);
 

@@ -7,6 +7,6 @@ namespace GoingTo_API.Resources
     {
         public int Id { get; set; }
         public string Text { get; set; }
-        public Locatable Locatable { get; set; }
+        public LocatableResource Locatable { get; set; }
     }
 }

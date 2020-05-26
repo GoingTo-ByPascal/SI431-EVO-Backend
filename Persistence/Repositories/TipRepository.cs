@@ -21,7 +21,7 @@ namespace GoingTo_API.Persistence.Repositories
                 .Include(p => p.Locatable)
                 .ToListAsync();
         }
-        public async Task<Tip> FindByIdAsync(int tipId)
+        public async Task<Tip> FindById(int tipId)
         {
             return await _context.Tips.FindAsync(tipId);
         }

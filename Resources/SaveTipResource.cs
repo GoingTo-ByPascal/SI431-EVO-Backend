@@ -11,7 +11,5 @@ namespace GoingTo_API.Resources
         [Required]
         [MaxLength(45)]
         public string Text { get; set; }
-        [Required]
-        public Locatable Locatable { get; set; }
     }
 }
