@@ -19,9 +19,5 @@ namespace GoingTo_API.Domain.Models
         public IList<CountryCurrencies> CountryCurrencies { get; set; }
         public IList<CountryLanguages> CountryLanguages { get; set; }
 
-
-        
-
-
     }
 }
