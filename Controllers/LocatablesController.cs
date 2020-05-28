@@ -36,7 +36,11 @@ namespace GoingTo_API.Controllers
                 .Map<IEnumerable<Locatable>, IEnumerable<LocatableResource>>(locatables);
             return resources;
         }
-
+        /// <summary>
+        /// returns one locatable by id
+        /// </summary>
+        /// <param name="id" example="1">The locatable id</param>
+        /// <returns></returns>
         [HttpGet("{id}")]
 
         public async Task<IActionResult> GetByIdAsync(int id)
