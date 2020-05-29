@@ -20,9 +20,9 @@ namespace GoingTo_API.Mapping
             CreateMap<Country, CountryResource>();
             CreateMap<City, CityResource>();
             CreateMap<Place, PlaceResource>();
+            CreateMap<Review, ReviewResource>();
             CreateMap<Language, LanguageResource>();
             CreateMap<Currency, CurrencyResource>();
-
         }
     }
 }

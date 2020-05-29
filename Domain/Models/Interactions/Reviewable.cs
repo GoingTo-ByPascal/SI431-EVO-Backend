@@ -10,6 +10,7 @@ namespace GoingTo_API.Domain.Models
         public int Id { get; set; }
         public string Description { get; set; }
         public Locatable Locatable { get; set; }
-        public Review Review { get; set; }
+
+        public IList<Review> Reviews { get; set; } = new List<Review>();
     }
 }
