@@ -18,7 +18,7 @@ namespace GoingTo_API.Domain.Persistence.Context
         public DbSet<City> Cities { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<CountryCurrencies> CountryCurrencies { get; set; }
-        public DbSet<CountryLanguages> CountryLanguages { get; set; }
+        public DbSet<CountryLanguage> CountryLanguages { get; set; }
         public DbSet<Currency> Currencies { get; set; }
         public DbSet<Favourite> Favourites { get; set; }
         public DbSet<Language> Languages { get; set; }
@@ -83,32 +83,35 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             //CountryCurrencies Entity
 
-            builder.Entity<CountryCurrencies>().ToTable("CountryCurrencies");
-            builder.Entity<CountryCurrencies>().HasKey(p => p.Id);
-            builder.Entity<CountryCurrencies>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<CountryCurrencies>()
+            builder.Entity<CountryCurrency>().ToTable("CountryCurrencies");
+            builder.Entity<CountryCurrency>().HasKey(p => p.Id);
+            builder.Entity<CountryCurrency>().HasKey(p => new { p.CountryId, p.CurrencyId });
+            builder.Entity<CountryCurrency>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<CountryCurrency>()
                 .HasOne(p => p.Currency)
                 .WithMany(p => p.CountryCurrencies)
                 .HasForeignKey(p => p.CurrencyId);
-            builder.Entity<CountryCurrencies>()
+            builder.Entity<CountryCurrency>()
                .HasOne(p => p.Country)
                .WithMany(p => p.CountryCurrencies)
                .HasForeignKey(p => p.CountryId);
 
             //CountryLanguages Entity
 
-            builder.Entity<CountryLanguages>().ToTable("CountryLanguages");
-            builder.Entity<CountryLanguages>().HasKey(p => p.Id);
-            builder.Entity<CountryLanguages>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<CountryLanguages>()
+            builder.Entity<CountryLanguage>().ToTable("CountryLanguages");
+            builder.Entity<CountryLanguage>().HasKey(p => p.Id);
+            builder.Entity<CountryLanguage>().HasKey(p => new { p.LanguageId, p.CountryId });
+            builder.Entity<CountryLanguage>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<CountryLanguage>().Property(p => p.LanguageId).IsRequired();
+            builder.Entity<CountryLanguage>().Property(p => p.CountryId).IsRequired();
+            builder.Entity<CountryLanguage>()
                 .HasOne(p => p.Language)
                 .WithMany(p => p.CountryLanguages)
                 .HasForeignKey(p => p.LanguageId);
-            builder.Entity<CountryLanguages>()
+            builder.Entity<CountryLanguage>()
                .HasOne(p => p.Country)
                .WithMany(p => p.CountryLanguages)
                .HasForeignKey(p => p.CountryId);
-
 
             //Currency Entity
 

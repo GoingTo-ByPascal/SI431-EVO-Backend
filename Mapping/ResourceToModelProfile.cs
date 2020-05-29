@@ -16,6 +16,8 @@ namespace GoingTo_API.Mapping
             CreateMap<SaveAchievementResource, Achievement>();
             CreateMap<SavePlaceResource, Place>();
             CreateMap<SaveReviewResource, Review>();
+            CreateMap<SaveLanguageResource, Language>();
+            CreateMap<SaveCurrencyResource, Currency>();
         }
     }
 }

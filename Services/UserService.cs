@@ -91,9 +91,5 @@ namespace GoingTo_API.Services
             }
         }
 
-      
-       
-
-      
     }
 }
