@@ -12,7 +12,7 @@ namespace GoingTo_API.Domain.Services.Geographic
         Task<IEnumerable<CountryLanguage>> ListAsync();
         Task<IEnumerable<CountryLanguage>> ListByCountryIdAsync(int countryId);
         Task<IEnumerable<CountryLanguage>> ListByLanguageIdAsync(int languageId);
-        Task<CountryLanguageResponse> AssignCountryLanguage(int countryId, int languageId);
-        Task<CountryLanguageResponse> UnassignCountryLanguage(int countryId, int languageId);
+        Task<CountryLanguageResponse> AssignCountryLanguageAsync(int countryId, int languageId);
+        Task<CountryLanguageResponse> UnassignCountryLanguageAsync(int countryId, int languageId);
     }
 }

@@ -35,7 +35,7 @@ namespace GoingTo_API.Services
             return await _userAchievementRepository.ListByAchievementIdAsync(achievementId);
         }
 
-        public async Task<UserAchievementResponse> AssignUserAchievement(int userId, int achievementId)
+        public async Task<UserAchievementResponse> AssignUserAchievementAsync(int userId, int achievementId)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace GoingTo_API.Services
             }
         }
 
-        public async Task<UserAchievementResponse> UnassignUserAchievement(int userId, int achievementId)
+        public async Task<UserAchievementResponse> UnassignUserAchievementAsync(int userId, int achievementId)
         {
             try
             {

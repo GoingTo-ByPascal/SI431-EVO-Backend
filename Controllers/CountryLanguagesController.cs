@@ -50,7 +50,7 @@ namespace GoingTo_API.Controllers
         public async Task<IActionResult> AssignCountryLanguage(int countryId, int languageId)
         {
 
-            var result = await _countryLanguageService.AssignCountryLanguage(countryId, languageId);
+            var result = await _countryLanguageService.AssignCountryLanguageAsync(countryId, languageId);
             if (!result.Success)
                 return BadRequest(result.Message);
 
@@ -68,7 +68,7 @@ namespace GoingTo_API.Controllers
         [HttpDelete("languageId")]
         public async Task<IActionResult> UnasignCountryLanguage(int countryId, int languageId)
         {
-            var result = await _countryLanguageService.UnassignCountryLanguage(countryId, languageId);
+            var result = await _countryLanguageService.UnassignCountryLanguageAsync(countryId, languageId);
             if (!result.Success)
                 return BadRequest(result.Message);
             var languageResource = _mapper.Map<Language, LanguageResource>(result.Resource.Language);

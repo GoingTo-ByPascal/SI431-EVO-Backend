@@ -17,7 +17,7 @@ namespace GoingTo_API.Domain.Persistence.Context
         public DbSet<Achievement> Achievements { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Country> Countries { get; set; }
-        public DbSet<CountryCurrencies> CountryCurrencies { get; set; }
+        public DbSet<CountryCurrency> CountryCurrencies { get; set; }
         public DbSet<CountryLanguage> CountryLanguages { get; set; }
         public DbSet<Currency> Currencies { get; set; }
         public DbSet<Favourite> Favourites { get; set; }

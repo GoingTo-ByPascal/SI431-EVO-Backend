@@ -35,7 +35,7 @@ namespace GoingTo_API.Services
             return await _countryLanguageRepository.ListByLanguageIdAsync(languageId);
         }
 
-        public async Task<CountryLanguageResponse> AssignCountryLanguage(int countryId, int languageId)
+        public async Task<CountryLanguageResponse> AssignCountryLanguageAsync(int countryId, int languageId)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace GoingTo_API.Services
             }
         }
 
-        public async Task<CountryLanguageResponse> UnassignCountryLanguage(int countryId, int languageId)
+        public async Task<CountryLanguageResponse> UnassignCountryLanguageAsync(int countryId, int languageId)
         {
             try
             {
