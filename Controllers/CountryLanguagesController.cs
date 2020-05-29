@@ -28,10 +28,10 @@ namespace GoingTo_API.Controllers
             _languageService = languageService;
         }
         /// <summary>
-        /// returns all the languages of one country in the system.
+        /// Returns all the languages of one country in the system.
         /// </summary>
-        /// <param name="countryId">the country id</param>
-        /// <response code="200">returns all the languages of one country in the system. </response>
+        /// <param name="countryId">The country id</param>
+        /// <response code="200">Returns all the languages of one country in the system. </response>
         /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<LanguageResource>> GetAllByCountryIdAsync(int countryId)
@@ -45,6 +45,7 @@ namespace GoingTo_API.Controllers
         /// </summary>
         /// <param name="countryId"></param>
         /// <param name="languageId"></param>
+        /// /// <response code="204">The language was asigned successfully</response>
         /// <returns></returns>
         [HttpPost("{languageId}")]
         public async Task<IActionResult> AssignCountryLanguage(int countryId, int languageId)
@@ -63,7 +64,7 @@ namespace GoingTo_API.Controllers
         /// </summary>
         /// <param name="countryId"></param>
         /// <param name="languageId"></param>
-        /// <response code="204">the language was unasigned successfully</response>
+        /// <response code="204">The language was unasigned successfully</response>
         /// <returns></returns>
         [HttpDelete("languageId")]
         public async Task<IActionResult> UnasignCountryLanguage(int countryId, int languageId)

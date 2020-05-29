@@ -35,9 +35,9 @@ namespace GoingTo_API.Controllers
         }
 
         /// <summary>
-        /// assign a currency to a country
+        /// Assign a currency to a country
         /// </summary>
-        /// <param name="countryId"></param>
+        /// <param name="countryId">CountryId</param>
         /// <param name="currencyId"></param>
         /// <returns></returns>
         [HttpPost("{currencyId}")]

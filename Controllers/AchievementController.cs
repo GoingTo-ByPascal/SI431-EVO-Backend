@@ -25,9 +25,9 @@ namespace GoingTo_API.Controllers
             _mapper = mapper;
         }
         /// <summary>
-        /// Returns all the Achievements in the system.
+        /// Returns all the achievements in the system.
         /// </summary>
-        /// <response code="200">Returns all the Achievements in the system.</response>
+        /// <response code="200">Returns all the achievements in the system.</response>
         /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<AchievementResource>> GetAllAsync()
@@ -39,9 +39,9 @@ namespace GoingTo_API.Controllers
         }
 
         /// <summary>
-        /// Creates an Achievements in the system.
+        /// Creates an achievements in the system.
         /// </summary>
-        /// <response code="201">Creates an Achievements in the system.</response>
+        /// <response code="201">Creates an achievements in the system.</response>
         /// <response code="400">Unable to create the achievement due to validation.</response>
         /// <returns></returns>
         [HttpPost]
@@ -59,7 +59,7 @@ namespace GoingTo_API.Controllers
             return Ok(achievementResource);
         }
         /// <summary>
-        /// Allows to change the Name,Text or Points of an existing Achievement
+        /// Allows to change the Name,Text and/or Points of an existing achievement
         /// </summary>
         /// <param name="id">The id of the achievement to update</param>
         /// <param name="resource"></param>

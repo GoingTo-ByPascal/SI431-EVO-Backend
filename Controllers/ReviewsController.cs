@@ -25,7 +25,7 @@ namespace GoingTo_API.Controllers
         }
 
         /// <summary>
-        /// returns al the reviews in the system.
+        /// Returns al the reviews in the system.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -78,6 +78,7 @@ namespace GoingTo_API.Controllers
         /// Updates a review in the system
         /// </summary>
         /// <param name="resource">A review resource</param>
+        /// <param name="id">The id of the review to update</param>
         /// <response code="201">Updates a review in the system</response>
         /// <response code="400">Unable to update the review due validation</response>
         /// <returns></returns>

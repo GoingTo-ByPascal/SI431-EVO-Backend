@@ -24,9 +24,9 @@ namespace GoingTo_API.Controllers
             _mapper = mapper;
         }
         /// <summary>
-        /// returns all the languages in the system
+        /// Returns all the languages in the system
         /// </summary>
-        /// <response code="200">returns all the languages in the system</response>
+        /// <response code="200">Returns all the languages in the system</response>
         /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<LanguageResource>> GetAllAsync()
@@ -37,7 +37,7 @@ namespace GoingTo_API.Controllers
             return resources;
         }
         /// <summary>
-        /// returns one language by id
+        /// Returns one language by id
         /// </summary>
         /// <param name="id" example="1">The language id</param>
         /// <returns></returns>
@@ -52,10 +52,10 @@ namespace GoingTo_API.Controllers
 
         }
         /// <summary>
-        /// creates a language in the system.
+        /// Creates a language in the system.
         /// </summary>
-        /// <response code="201">creates a language in the system.</response>
-        /// <response code="400">unable to create the language due to validation.</response>
+        /// <response code="201">Creates a language in the system.</response>
+        /// <response code="400">Unable to create the language due to validation.</response>
         /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SaveLanguageResource resource)
@@ -72,9 +72,9 @@ namespace GoingTo_API.Controllers
             return Ok(languageResource);
         }
         /// <summary>
-        /// allows to change the ShortName and/or FullName of an existing Language
+        /// Allows to change the ShortName and/or FullName of an existing Language
         /// </summary>
-        /// <param name="id">the id of the language to update</param>
+        /// <param name="id">The id of the language to update</param>
         /// <param name="resource"></param>
         /// <returns></returns>
         [HttpPut("{id}")]

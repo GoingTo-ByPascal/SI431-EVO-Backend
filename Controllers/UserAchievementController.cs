@@ -52,7 +52,6 @@ namespace GoingTo_API.Controllers
             var result = await _userAchievementService.AssignUserAchievementAsync(userId, achievementId);
             if (!result.Success)
                 return BadRequest(result.Message);
-
             var achievementResource = _mapper.Map<Achievement, AchievementResource>(result.Resource.Achievement);
             return Ok(achievementResource);
 
@@ -65,7 +64,7 @@ namespace GoingTo_API.Controllers
         /// <response code="204">The achievement was unasigned successfully</response>
         /// <returns></returns>
         [HttpDelete("achievementId")]
-        public async Task<IActionResult> UnasignUserAchievement(int userId, int achievementId)
+        public async Task<IActionResult> UnassignUserAchievement(int userId, int achievementId)
         {
             var result = await _userAchievementService.UnassignUserAchievementAsync(userId, achievementId);
             if (!result.Success)

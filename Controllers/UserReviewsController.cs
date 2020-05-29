@@ -24,7 +24,7 @@ namespace GoingTo_API.Controllers
             _reviewService = reviewService;
         }
         /// <summary>
-        /// returns all the reviews of a user
+        /// Returns all the reviews of a user
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>

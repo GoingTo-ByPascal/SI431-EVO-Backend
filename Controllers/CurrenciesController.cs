@@ -24,9 +24,9 @@ namespace GoingTo_API.Controllers
             _mapper = mapper;
         }
         /// <summary>
-        /// returns all the currencies on the system
+        /// Return all the currencies on the system
         /// </summary>
-        /// <response code="200">returns all the Currencies in the system.</response>
+        /// <response code="200">Returns all the Currencies in the system.</response>
         /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<CurrencyResource>> GetAllAsync()
@@ -36,7 +36,7 @@ namespace GoingTo_API.Controllers
             return resources;
         }
         /// <summary>
-        /// return a currency by id
+        /// Return a currency by id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -51,11 +51,11 @@ namespace GoingTo_API.Controllers
                 
         }
         /// <summary>
-        /// create a currency on the system
+        /// Create a currency on the system
         /// </summary>
         /// <param name="resource"></param>
-        /// <response code="201">creates a Currency in the system.</response>
-        /// <response code="400">unable to create the Currency due to validation.</response>
+        /// <response code="201">Creates a Currency in the system.</response>
+        /// <response code="400">Unable to create the Currency due to validation.</response>
         /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SaveCurrencyResource resource)

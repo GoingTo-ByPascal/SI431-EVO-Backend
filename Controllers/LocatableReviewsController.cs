@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
+    //FALTA
     public class LocatableReviewsController : Controller
     {
         private readonly IReviewService _reviewService;
