@@ -81,17 +81,8 @@ namespace GoingTo_API.Services
         {
             var existingLocatable = await _locatableRepository.FindById(id);
             if (existingLocatable == null)
-                return new LocatableResponse("Locatable not found");
-            try
-            {
-                _locatableRepository.Remove(existingLocatable);
-                await _unitOfWork.CompleteAsync();
-                return new LocatableResponse(existingLocatable);
-            }
-            catch(Exception ex)
-            {
-                return new LocatableResponse($"An error ocurred while searching locatable: {ex.Message}");
-            }
+                return new LocatableResponse("Guadian not found");
+            return new LocatableResponse(existingLocatable);
         }
 
         public async Task<IEnumerable<Locatable>> ListByUserIdAsync(int userId)

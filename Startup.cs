@@ -22,8 +22,11 @@ using AutoMapper;
 using System.IO;
 using System.Reflection;
 using Swashbuckle.AspNetCore.Filters;
+<<<<<<< HEAD
 using GoingTo_API.Domain.Repositories.Interactions;
 using GoingTo_API.Domain.Services.Interactions;
+=======
+>>>>>>> CRUD-Tips
 using GoingTo_API.Domain.Repositories.Geographic;
 using GoingTo_API.Domain.Services.Geographic;
 
@@ -79,6 +82,10 @@ namespace GoingTo_API
             services.AddScoped<IReviewService, ReviewService>();
             services.AddScoped<ICurrencyService, CurrencyService>();
             services.AddScoped<ICountryCurrencyService, CountryCurrencyService>();
+
+            //Tip
+            services.AddScoped<ITipRepository, TipRepository>();
+            services.AddScoped<ITipService, TipService>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
