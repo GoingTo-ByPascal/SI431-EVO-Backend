@@ -14,7 +14,6 @@ namespace GoingTo_API.Mapping
             CreateMap<User, UserResource>();
             CreateMap<Profile, ProfileResource>();
             CreateMap<Wallet, WalletResource>();
-            CreateMap<Reviewable, ReviewableResource>();
             CreateMap<Achievement, AchievementResource>();
             CreateMap<Country, CountryResource>();
             CreateMap<City, CityResource>();

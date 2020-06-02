@@ -32,7 +32,7 @@ namespace GoingTo_API.Controllers
         /// <response code="200">returns all tips of a locatable in the system</response>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> GetAllTipsByLocatableIdAsync(int locatableId)
+        public async Task<IActionResult> GetTipsByLocatableIdAsync(int locatableId)
         {
             var existingLocatable = await _locatableService.GetByIdAsync(locatableId);
             if (!existingLocatable.Success)

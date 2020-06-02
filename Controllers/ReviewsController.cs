@@ -25,20 +25,7 @@ namespace GoingTo_API.Controllers
         }
 
         /// <summary>
-        /// Returns al the reviews in the system.
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public async Task<IEnumerable<ReviewResource>> GetAllAsync()
-        {
-            var reviews = await _reviewService.ListAsync();
-            var resources = _mapper
-                .Map<IEnumerable<Review>, IEnumerable<ReviewResource>>(reviews);
-            return resources;
-        }
-
-        /// <summary>
-        /// Returns one review  by id
+        /// returns one review  by id
         /// </summary>
         /// <param name="id" example="1">The review Id</param>
         /// <returns></returns>
@@ -53,7 +40,7 @@ namespace GoingTo_API.Controllers
 
         }
         /// <summary>
-        /// Creates a review in the system
+        /// creates a review in the system
         /// </summary>
         /// <param name="resource">A review resource</param>
         /// <response code="201">Creates a review in the system</response>
@@ -75,7 +62,7 @@ namespace GoingTo_API.Controllers
         }
 
         /// <summary>
-        /// Updates a review in the system
+        /// updates a review in the system
         /// </summary>
         /// <param name="resource">A review resource</param>
         /// <param name="id">The id of the review to update</param>
@@ -94,7 +81,7 @@ namespace GoingTo_API.Controllers
             return Ok(reviewResource);
         }
         /// <summary>
-        /// Deletes a review in the system
+        /// deletes a review in the system
         /// </summary>
         /// <response code="201">Deletes a review in the system</response>
         /// <response code="400">Unable to delete the review due validation</response>

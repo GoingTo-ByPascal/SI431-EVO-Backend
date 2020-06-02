@@ -35,9 +35,9 @@ namespace GoingTo_API.Services
             }
         }
 
-        public async Task<ReviewResponse> UpdateAsync(int id, Review review)
+        public async Task<ReviewResponse> UpdateAsync(int reviewId, Review review)
         {
-            var existingReview = await _reviewRepository.FindById(id);
+            var existingReview = await _reviewRepository.FindById(reviewId);
 
             if (existingReview == null)
                 return new ReviewResponse("Review not found");
@@ -57,9 +57,9 @@ namespace GoingTo_API.Services
                 return new ReviewResponse($"An error ocurred while updating Review: {ex.Message}");
             }
         }
-        public async Task<ReviewResponse> DeleteAsync(int id)
+        public async Task<ReviewResponse> DeleteAsync(int reviewId)
         {
-            var existingReview = await _reviewRepository.FindById(id);
+            var existingReview = await _reviewRepository.FindById(reviewId);
 
             if (existingReview == null)
                 return new ReviewResponse("Review not found");
@@ -77,18 +77,13 @@ namespace GoingTo_API.Services
             }
         }
 
-        public async Task<ReviewResponse> GetByIdAsync(int id)
+        public async Task<ReviewResponse> GetByIdAsync(int reviewId)
         {
-            var existingReview = await _reviewRepository.FindById(id);
+            var existingReview = await _reviewRepository.FindById(reviewId);
 
             if (existingReview == null)
                 return new ReviewResponse("Review not found");
             return new ReviewResponse(existingReview);
-        }
-
-        public async Task<IEnumerable<Review>> ListAsync()
-        {
-            return await _reviewRepository.ListAsync();
         }
 
         public async Task<IEnumerable<Review>> ListByUserIdAsync(int userId)
@@ -96,6 +91,9 @@ namespace GoingTo_API.Services
             return await _reviewRepository.ListByUserIdAsync(userId);
         }
 
-    
+        public async Task<IEnumerable<Review>> ListByLocatableIdAsync(int locatableId)
+        {
+            return await _reviewRepository.ListByLocatableIdAsync(locatableId);
+        }
     }
 }

@@ -16,14 +16,16 @@ namespace GoingTo_API.Persistence
         {
             await _context.Locatables.AddAsync(locatable);
         }
-        public async Task<IEnumerable<Locatable>> ListAsync()
-        {
-            return await _context.Locatables.Include(p=> p.Reviewable).ToListAsync();
-        }
         public async Task<Locatable> FindById(int id)
         {
             return await _context.Locatables.FindAsync(id);
         }
+
+        public async Task<IEnumerable<Locatable>> ListAsync()
+        {
+            return await _context.Locatables.ToListAsync();
+        }
+
         public void Remove(Locatable locatable)
         {
             _context.Locatables.Remove(locatable);

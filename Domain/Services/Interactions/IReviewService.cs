@@ -10,12 +10,10 @@ namespace GoingTo_API.Domain.Services.Interactions
     public interface IReviewService
     {
         Task<ReviewResponse> SaveAsync(Review review);
-        Task<ReviewResponse> UpdateAsync(int id, Review review);
-        Task<ReviewResponse> DeleteAsync(int id);
-        Task<ReviewResponse> GetByIdAsync(int id);
-        Task<IEnumerable<Review>> ListAsync();
+        Task<ReviewResponse> UpdateAsync(int reviewId, Review review);
+        Task<ReviewResponse> DeleteAsync(int reviewId);
+        Task<ReviewResponse> GetByIdAsync(int reviewId);
         Task<IEnumerable<Review>> ListByUserIdAsync(int userId);
-
-
+        Task<IEnumerable<Review>> ListByLocatableIdAsync(int locatableId);
     }
 }
