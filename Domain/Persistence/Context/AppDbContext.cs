@@ -26,7 +26,6 @@ namespace GoingTo_API.Domain.Persistence.Context
         public DbSet<Place> Places { get; set; }
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Review> Reviews { get; set; }
-        public DbSet<Reviewable> Reviewables { get; set; }
         public DbSet<Tip> Tips { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserAchievement> UserAchievements { get; set; }
@@ -159,7 +158,6 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Locatable>().Property(p => p.Description).HasMaxLength(100);
             builder.Entity<Locatable>().Property(p => p.Latitude);
             builder.Entity<Locatable>().Property(p => p.Longitude);
-            builder.Entity<Locatable>().Property(p => p.ReviewableId).HasDefaultValue<int>(null);
 
             builder.Entity<Locatable>()
                 .HasOne(p => p.City)
@@ -178,6 +176,11 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             builder.Entity<Locatable>()
                 .HasMany(p => p.Tips)
+                .WithOne(p => p.Locatable)
+                .HasForeignKey(p => p.LocatableId);
+
+            builder.Entity<Locatable>()
+                .HasMany(p => p.Reviews)
                 .WithOne(p => p.Locatable)
                 .HasForeignKey(p => p.LocatableId);
 
@@ -208,30 +211,12 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Review>().ToTable("Reviews");
             builder.Entity<Review>().HasKey(p => p.Id);
             builder.Entity<Review>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Review>().Property(p => p.ReviewableId).IsRequired().HasDefaultValue<int>(null);
+            builder.Entity<Review>().Property(p => p.LocatableId).IsRequired(); 
             builder.Entity<Review>().Property(p => p.UserId).IsRequired();
             builder.Entity<Review>().Property(p => p.Comment).IsRequired();
             builder.Entity<Review>().Property(p => p.Stars).IsRequired();
             builder.Entity<Review>().Property(p => p.ReviewedAt).IsRequired();
       
-             
-            //Reviewable Entity
-
-            builder.Entity<Reviewable>().ToTable("Reviewables");
-            builder.Entity<Reviewable>().HasKey(p => p.Id);
-            builder.Entity<Reviewable>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Reviewable>().Property(p => p.Description).HasMaxLength(500);
-            builder.Entity<Reviewable>()
-                .HasOne(p => p.Locatable)
-                .WithOne(p => p.Reviewable)
-                .HasForeignKey<Locatable>(p => p.ReviewableId);
-            builder.Entity<Reviewable>()
-                .HasMany(p => p.Reviews)
-                .WithOne(p => p.Reviewable)
-                .HasForeignKey(p => p.ReviewableId);
-
-       
-
             //Tip Entity
 
             builder.Entity<Tip>().ToTable("Tips");

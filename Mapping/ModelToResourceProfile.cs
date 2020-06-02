@@ -15,18 +15,14 @@ namespace GoingTo_API.Mapping
             CreateMap<Locatable, LocatableResource>();
             CreateMap<User, UserResource>();
             CreateMap<Wallet, WalletResource>();
-            CreateMap<Reviewable, ReviewableResource>();
             CreateMap<Achievement, AchievementResource>();
             CreateMap<Country, CountryResource>();
             CreateMap<City, CityResource>();
             CreateMap<Place, PlaceResource>();
-<<<<<<< HEAD
             CreateMap<Review, ReviewResource>();
             CreateMap<Language, LanguageResource>();
             CreateMap<Currency, CurrencyResource>();
-=======
             CreateMap<Tip, TipResource>();
->>>>>>> CRUD-Tips
         }
     }
 }
