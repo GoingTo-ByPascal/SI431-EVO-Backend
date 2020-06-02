@@ -81,7 +81,7 @@ namespace GoingTo_API.Services
         {
             var existingLocatable = await _locatableRepository.FindById(id);
             if (existingLocatable == null)
-                return new LocatableResponse("Guadian not found");
+                return new LocatableResponse("Locatable not found");
             return new LocatableResponse(existingLocatable);
         }
 

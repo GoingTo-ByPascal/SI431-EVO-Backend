@@ -215,7 +215,7 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Review>().Property(p => p.UserId).IsRequired();
             builder.Entity<Review>().Property(p => p.Comment).IsRequired();
             builder.Entity<Review>().Property(p => p.Stars).IsRequired();
-            builder.Entity<Review>().Property(p => p.ReviewedAt).IsRequired();
+            builder.Entity<Review>().Property(p => p.ReviewedAt);
       
             //Tip Entity
 

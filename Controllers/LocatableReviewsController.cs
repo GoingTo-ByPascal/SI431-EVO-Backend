@@ -17,14 +17,17 @@ namespace GoingTo_API.Controllers
     {
         private readonly IReviewService _reviewService;
         private readonly ILocatableService _locatableService;
+        private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
-        public LocatableReviewsController(IReviewService reviewService, ILocatableService locatableService,IMapper mapper) 
+        public LocatableReviewsController(IReviewService reviewService, ILocatableService locatableService, IUserService userService, IMapper mapper)
         {
             _reviewService = reviewService;
             _locatableService = locatableService;
+            _userService = userService;
             _mapper = mapper;
         }
+
 
         /// <summary>
         /// returns all reviews of a locatable in the system
@@ -50,17 +53,21 @@ namespace GoingTo_API.Controllers
         /// <param name="locatableId"></param>
         /// <param name="resource"></param>
         /// <returns></returns>
-        [HttpPost]
-        public async Task<IActionResult> PostAsync(int locatableId, [FromBody] SaveReviewResource resource)
+        [HttpPost("{userId}")]
+        public async Task<IActionResult> PostAsync(int locatableId, [FromBody] SaveReviewResource resource,int userId)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
             var existingLocatable = await _locatableService.GetByIdAsync(locatableId);
+            var existingUser = await _userService.GetByIdAsync(userId);
             if (!existingLocatable.Success)
                 return BadRequest(existingLocatable.Message);
+            if (!existingUser.Success)
+                return BadRequest(existingUser.Message);
 
             var review = _mapper.Map<SaveReviewResource, Review>(resource);
             review.Locatable = existingLocatable.Resource;
+            review.User = existingUser.Resource;
 
             var result = await _reviewService.SaveAsync(review);
 

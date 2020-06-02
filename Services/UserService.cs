@@ -79,16 +79,17 @@ namespace GoingTo_API.Services
             var existingUser = await _userRepository.FindById(id);
             if (existingUser == null)
                 return new UserResponse("User not found");
-            try
-            {
-                _userRepository.Remove(existingUser);
-                await _unitOfWork.CompleteAsync();
-                return new UserResponse(existingUser);
-            }
-            catch (Exception ex)
-            {
-                return new UserResponse($"An error ocurred while searching category: {ex.Message}");
-            }
+            return new UserResponse(existingUser);
+            //try
+            //{
+            //    _userRepository.Remove(existingUser);
+            //    await _unitOfWork.CompleteAsync();
+            //    return new UserResponse(existingUser);
+            //}
+            //catch (Exception ex)
+            //{
+            //    return new UserResponse($"An error ocurred while searching user: {ex.Message}");
+            //}
         }
 
     }

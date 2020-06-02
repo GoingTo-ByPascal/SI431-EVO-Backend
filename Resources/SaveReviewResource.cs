@@ -12,5 +12,6 @@ namespace GoingTo_API.Resources
         [MaxLength(45)]
         public string Comment { get; set; }
         public int Stars { get; set; }
+        public string ReviewedAt { get; set; }
     }
 }

@@ -25,19 +25,6 @@ namespace GoingTo_API.Controllers
         }
 
         /// <summary>
-        /// returns al the reviews in the system.
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public async Task<IEnumerable<ReviewResource>> GetAllAsync()
-        {
-            var reviews = await _reviewService.ListAsync();
-            var resources = _mapper
-                .Map<IEnumerable<Review>, IEnumerable<ReviewResource>>(reviews);
-            return resources;
-        }
-
-        /// <summary>
         /// returns one review  by id
         /// </summary>
         /// <param name="id" example="1">The review Id</param>
