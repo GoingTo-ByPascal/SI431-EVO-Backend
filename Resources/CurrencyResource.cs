@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GoingTo_API.Domain.Models
+namespace GoingTo_API.Resources
 {
-    public class Language
+    public class CurrencyResource
     {
         public int Id { get; set; }
         public string ShortName { get; set; }
-        public string FullName { get; set; }
-        public List<CountryLanguages> CountryLanguages { get; set; }
+        public string Unit { get; set; }
     }
 }

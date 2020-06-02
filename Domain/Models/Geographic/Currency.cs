@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Domain.Models
 {
-    public class Reviewable
+    public class Currency
     {
         public int Id { get; set; }
-        public string Description { get; set; }
-        public Locatable Locatable { get; set; }
-        public Review Review { get; set; }
+        public string Unit { get; set; }
+        public string ShortName { get; set; }
+
+        public List<CountryCurrency> CountryCurrencies { get; set; }
     }
 }

@@ -10,7 +10,9 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
+
     [Route("/api/countries/{countryId}/cities")]
+    [Produces("application/json")]
     public class CountryCitiesController : Controller
     {
         private readonly ICityService _cityService;
@@ -21,7 +23,11 @@ namespace GoingTo_API.Controllers
             _mapper = mapper;
             _cityService = cityService;
         }
-
+        /// <summary>
+        /// Returns all the cities in one country
+        /// </summary>
+        /// <param name="countryId" example = "1">Country Id</param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<CityResource>> GetAllByCountryIdAsync(int countryId)
         {

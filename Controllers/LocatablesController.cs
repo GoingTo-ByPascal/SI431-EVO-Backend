@@ -12,17 +12,22 @@ using GoingTo_API.Extensions;
 namespace GoingTo_API.Controllers
 {
     [Route("/api/[controller]")]
+    [Produces("application/json")]
     public class LocatablesController : Controller
     {
         private readonly IMapper _mapper;
         private readonly ILocatableService _locatableService;
-       
-        public LocatablesController(ILocatableService locatableService,IMapper mapper)
+
+        public LocatablesController(ILocatableService locatableService, IMapper mapper)
         {
             _mapper = mapper;
             _locatableService = locatableService;
         }
-
+        /// <summary>
+        /// Returns all the locatables in the system
+        /// </summary>
+        /// <response code="200">Returns all the locatables in the system</response>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<LocatableResource>> GetAllAsync()
         {
@@ -30,6 +35,21 @@ namespace GoingTo_API.Controllers
             var resources = _mapper
                 .Map<IEnumerable<Locatable>, IEnumerable<LocatableResource>>(locatables);
             return resources;
+        }
+        /// <summary>
+        /// returns one locatable by id
+        /// </summary>
+        /// <param name="id" example="1">The locatable id</param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+
+        public async Task<IActionResult> GetByIdAsync(int id)
+        {
+            var result = await _locatableService.GetByIdAsync(id);
+            if (!result.Success)
+                return BadRequest(result.Message);
+            var locatableResource = _mapper.Map<Locatable, LocatableResource>(result.Resource);
+            return Ok(locatableResource);
         }
     }
 }

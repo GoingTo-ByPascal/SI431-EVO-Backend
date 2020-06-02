@@ -5,14 +5,12 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Domain.Models
 {
-    public class Tip
+    public class Reviewable
     {
         public int Id { get; set; }
-        public string Text { get; set; }
-        public int LocatableId { get; set; }
+        public string Description { get; set; }
         public Locatable Locatable { get; set; }
 
-       
-
+        public IList<Review> Reviews { get; set; } = new List<Review>();
     }
 }
