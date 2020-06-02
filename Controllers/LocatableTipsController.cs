@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GoingTo_API.Controllers
 {
-    [Route("/api/locatables/{locatableId}")]
+    [Route("/api/locatables/{locatableId}/tips")]
     [Produces("application/json")]
     public class LocatableTipsController : Controller
     {
@@ -31,8 +31,8 @@ namespace GoingTo_API.Controllers
         /// </summary>
         /// <response code="200">returns all tips of a locatable in the system</response>
         /// <returns></returns>
-        [HttpGet("tips")]
-        public async Task<IActionResult> GetTipsByLocatableIdAsync(int locatableId)
+        [HttpGet]
+        public async Task<IActionResult> GetAllTipsByLocatableIdAsync(int locatableId)
         {
             var existingLocatable = await _locatableService.GetByIdAsync(locatableId);
             if (!existingLocatable.Success)
