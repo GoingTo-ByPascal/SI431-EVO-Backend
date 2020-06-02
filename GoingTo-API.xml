@@ -27,6 +27,42 @@
             <param name="resource"></param>
             <returns></returns>
         </member>
+        <member name="M:GoingTo_API.Controllers.CategoriesController.GetAllAsync">
+            <summary>
+            returns all the categories in the system
+            </summary>
+            <response code="200">returns all the categories in the system</response>
+            <returns></returns>
+        </member>
+        <member name="M:GoingTo_API.Controllers.CategoriesController.GetAsync(System.Int32)">
+            <summary>
+            returns a category by id
+            </summary>
+            <param name="id" example="1"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GoingTo_API.Controllers.CategoriesController.PostAsync(GoingTo_API.Resources.SaveCategoryResource)">
+            <summary>
+            add a category in the system
+            </summary>
+            <param name="resource"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GoingTo_API.Controllers.CategoriesController.PutAsync(System.Int32,GoingTo_API.Resources.SaveCategoryResource)">
+            <summary>
+            update a category in the system
+            </summary>
+            <param name="id" example="1"></param>
+            <param name="resource" example="Turismo aventurero"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GoingTo_API.Controllers.CategoriesController.DeleteAsync(System.Int32)">
+            <summary>
+            delete a category in the system
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:GoingTo_API.Controllers.CitiesController.GetAllAsync">
             <summary>
             returns all the cities in the system
@@ -79,7 +115,7 @@
         </member>
         <member name="M:GoingTo_API.Controllers.FavouritesController.AssignFavourite(System.Int32,System.Int32)">
             <summary>
-            Add a locatable to the user's favorites collection.
+            add a locatable to the user's favorites collection.
             </summary>
             <param name="userId"  example="1"></param>
             <param name="locatableId"  example="1"></param>
@@ -90,6 +126,21 @@
             returns all the locatables in the system
             </summary>
             <response code="200">returns all the locatables in the system</response>
+            <returns></returns>
+        </member>
+        <member name="M:GoingTo_API.Controllers.PlaceCategoriesController.GetAllByPlaceIdAsync(System.Int32)">
+            <summary>
+            returns all the place's categories
+            </summary>
+            <param name="placeId" example="1"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GoingTo_API.Controllers.PlaceCategoriesController.AssignPlaceCategory(System.Int32,System.Int32)">
+            <summary>
+            assign a category to one place
+            </summary>
+            <param name="placeId" example="1"></param>
+            <param name="categoryId" example="1"></param>
             <returns></returns>
         </member>
         <member name="M:GoingTo_API.Controllers.PlacesController.GetAllAsync">
