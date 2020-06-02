@@ -11,10 +11,9 @@ namespace GoingTo_API.Domain.Models
         public string Comment { get; set; }
         public float Stars { get; set; }
         public string ReviewedAt { get; set; }
-        public int ReviewableId { get; set; }
-        public Reviewable Reviewable { get; set; }
+        public int LocatableId { get; set; }
+        public Locatable Locatable { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
-    
     }
 }
