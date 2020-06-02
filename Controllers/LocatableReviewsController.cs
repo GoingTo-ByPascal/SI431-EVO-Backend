@@ -52,6 +52,7 @@ namespace GoingTo_API.Controllers
         /// </summary>
         /// <param name="locatableId"></param>
         /// <param name="resource"></param>
+        /// <param name="userId"></param>
         /// <returns></returns>
         [HttpPost("{userId}")]
         public async Task<IActionResult> PostAsync(int locatableId, [FromBody] SaveReviewResource resource,int userId)
