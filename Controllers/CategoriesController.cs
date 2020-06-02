@@ -22,7 +22,11 @@ namespace GoingTo_API.Controllers
             _categoryService = categoryService;
             _mapper = mapper;
         }
-
+        /// <summary>
+        /// returns all the categories in the system
+        /// </summary>
+        /// <response code="200">returns all the categories in the system</response>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<CategoryResource>> GetAllAsync()
         {
@@ -31,7 +35,11 @@ namespace GoingTo_API.Controllers
                 .Map<IEnumerable<Category>, IEnumerable<CategoryResource>>(categories);
             return resources;
         }
-
+        /// <summary>
+        /// returns a category by id
+        /// </summary>
+        /// <param name="id" example="1"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(int id)
         {
@@ -42,7 +50,11 @@ namespace GoingTo_API.Controllers
             return Ok(categoryResource);
 
         }
-
+        /// <summary>
+        /// add a category in the system
+        /// </summary>
+        /// <param name="resource"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SaveCategoryResource resource)
         {
@@ -57,7 +69,12 @@ namespace GoingTo_API.Controllers
             var categoryResource = _mapper.Map<Category, CategoryResource>(result.Resource);
             return Ok(categoryResource);
         }
-
+        /// <summary>
+        /// update a category in the system
+        /// </summary>
+        /// <param name="id" example="1"></param>
+        /// <param name="resource" example="Turismo aventurero"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAsync(int id, [FromBody] SaveCategoryResource resource)
         {
@@ -69,7 +86,11 @@ namespace GoingTo_API.Controllers
             var categoryResource = _mapper.Map<Category, CategoryResource>(result.Resource);
             return Ok(categoryResource);
         }
-
+        /// <summary>
+        /// delete a category in the system
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
