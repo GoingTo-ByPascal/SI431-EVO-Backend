@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Domain.Models
 {
-    public class CountryCurrencies
+    public class CountryLanguage
     {
         public int Id { get; set; }
-        
+
         public Country Country { get; set; }
         public int CountryId { get; set; }
 
-        public Currency Currency { get; set; }
-        public int CurrencyId { get; set; }
+        public Language Language { get; set; }
+        public int LanguageId { get; set; }
     }
 }

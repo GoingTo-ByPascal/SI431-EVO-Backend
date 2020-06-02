@@ -13,13 +13,11 @@ namespace GoingTo_API.Persistence.Repositories
     {
         public UserAchievementRepository(AppDbContext context) : base(context) { }
        
-        //LISTO
         public async Task AddAsync(UserAchievement userAchievement)
         {
             await _context.UserAchievements.AddAsync(userAchievement);
         }
 
-        //LISTO
         public async Task AssignUserAchievement(int userId, int achievementId)
         {
 
@@ -31,13 +29,11 @@ namespace GoingTo_API.Persistence.Repositories
             }        
         }
 
-        //LISTO
         public async Task<UserAchievement> FindByUserIdAndAchievementId(int userId, int achievementId)
         {
             return await _context.UserAchievements.FindAsync(userId, achievementId);
         }
 
-        //LISTO
         public async Task<IEnumerable<UserAchievement>> ListAsync()
         {
             return await _context.UserAchievements
@@ -46,7 +42,6 @@ namespace GoingTo_API.Persistence.Repositories
                 .ToListAsync();
         }
 
-        //LISTO
         public async Task<IEnumerable<UserAchievement>> ListByUserIdAsync(int userId)
         {
             return await _context.UserAchievements
@@ -56,7 +51,6 @@ namespace GoingTo_API.Persistence.Repositories
                 .ToListAsync();
         }
 
-        //LISTO
         public async Task<IEnumerable<UserAchievement>> ListByAchievementIdAsync(int achievementId)
         {
             return await _context.UserAchievements
@@ -66,13 +60,11 @@ namespace GoingTo_API.Persistence.Repositories
                 .ToListAsync();
         }
 
-        //LISTO
         public void Remove(UserAchievement userAchievements)
         {
             _context.UserAchievements.Remove(userAchievements);
         }
 
-        //LISTO
         public async void UnassignUserAchievement(int userId, int achievementId)
         {
             UserAchievement userAchievements = await FindByUserIdAndAchievementId(userId, achievementId);

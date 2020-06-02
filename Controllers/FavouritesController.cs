@@ -12,23 +12,23 @@ namespace GoingTo_API.Controllers
 {
     [Route("/api/users/{userId}/locatables")]
     [Produces("application/json")]
-    public class FavouritesController :Controller
+    public class FavouritesController : Controller
     {
         private readonly ILocatableService _locatableService;
         private readonly IFavouriteService _favouriteService;
         private readonly IMapper _mapper;
 
-        public FavouritesController(ILocatableService locatableService,IFavouriteService favouriteService, IMapper mapper)
+        public FavouritesController(ILocatableService locatableService, IFavouriteService favouriteService, IMapper mapper)
         {
             _locatableService = locatableService;
             _favouriteService = favouriteService;
             _mapper = mapper;
         }
         /// <summary>
-        /// returns all the favourites locatables of one user in the system.
+        /// Returns all the favourites locatables of one user in the system.
         /// </summary>
-        /// <param name="userId">the user id</param>
-        /// <response code="200">returns all the favourites locatables of one user in the system. </response>
+        /// <param name="userId">The user id</param>
+        /// <response code="200">Returns all the favourites locatables of one user in the system. </response>
         /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<LocatableResource>> GetAllByUserIdAsync(int userId)
@@ -52,6 +52,21 @@ namespace GoingTo_API.Controllers
             var locatableResource = _mapper.Map<Locatable, LocatableResource>(result.Resource.Locatable);
             return Ok(locatableResource);
         }
-
+        /// <summary>
+        /// Delete a favourite locatable from one user
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="locatableId"></param>
+        /// <response code="204">The favourite locatable was unasigned successfully</response>
+        /// <returns></returns>
+        [HttpDelete("LocatableId")]
+        public async Task<IActionResult> UnassignFavourite(int userId, int locatableId)
+        {
+            var result = await _favouriteService.UnassignFavouriteAsync(userId, locatableId);
+            if (!result.Success)
+                return BadRequest(result.Message);
+            var locatableResource = _mapper.Map<Locatable, LocatableResource>(result.Resource.Locatable);
+            return Ok(locatableResource);
+        }
     }
 }

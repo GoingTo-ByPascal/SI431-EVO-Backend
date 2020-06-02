@@ -27,42 +27,6 @@
             <param name="resource"></param>
             <returns></returns>
         </member>
-        <member name="M:GoingTo_API.Controllers.CategoriesController.GetAllAsync">
-            <summary>
-            returns all the categories in the system
-            </summary>
-            <response code="200">returns all the categories in the system</response>
-            <returns></returns>
-        </member>
-        <member name="M:GoingTo_API.Controllers.CategoriesController.GetAsync(System.Int32)">
-            <summary>
-            returns a category by id
-            </summary>
-            <param name="id" example="1"></param>
-            <returns></returns>
-        </member>
-        <member name="M:GoingTo_API.Controllers.CategoriesController.PostAsync(GoingTo_API.Resources.SaveCategoryResource)">
-            <summary>
-            add a category in the system
-            </summary>
-            <param name="resource"></param>
-            <returns></returns>
-        </member>
-        <member name="M:GoingTo_API.Controllers.CategoriesController.PutAsync(System.Int32,GoingTo_API.Resources.SaveCategoryResource)">
-            <summary>
-            update a category in the system
-            </summary>
-            <param name="id" example="1"></param>
-            <param name="resource" example="Turismo aventurero"></param>
-            <returns></returns>
-        </member>
-        <member name="M:GoingTo_API.Controllers.CategoriesController.DeleteAsync(System.Int32)">
-            <summary>
-            delete a category in the system
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
         <member name="M:GoingTo_API.Controllers.CitiesController.GetAllAsync">
             <summary>
             returns all the cities in the system
@@ -105,6 +69,45 @@
             <param name="countryId" example = "1">country Id</param>
             <returns></returns>
         </member>
+        <member name="M:GoingTo_API.Controllers.CountryCurrenciesController.AssignCountryCurrency(System.Int32,System.Int32)">
+            <summary>
+            assign a currency to a country
+            </summary>
+            <param name="countryId"></param>
+            <param name="currencyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GoingTo_API.Controllers.CountryCurrenciesController.UnassignCountryCurrency(System.Int32,System.Int32)">
+            <summary>
+            unassign a currency to a country
+            </summary>
+            <param name="countryId"></param>
+            <param name="currencyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GoingTo_API.Controllers.CurrenciesController.GetAllAsync">
+            <summary>
+            returns all the currencies on the system
+            </summary>
+            <response code="200">returns all the Currencies in the system.</response>
+            <returns></returns>
+        </member>
+        <member name="M:GoingTo_API.Controllers.CurrenciesController.GetAsync(System.Int32)">
+            <summary>
+            return a currency by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GoingTo_API.Controllers.CurrenciesController.PostAsync(GoingTo_API.Resources.SaveCurrencyResource)">
+            <summary>
+            create a currency on the system
+            </summary>
+            <param name="resource"></param>
+            <response code="201">creates a Currency in the system.</response>
+            <response code="400">unable to create the Currency due to validation.</response>
+            <returns></returns>
+        </member>
         <member name="M:GoingTo_API.Controllers.FavouritesController.GetAllByUserIdAsync(System.Int32)">
             <summary>
             returns all the favourites locatables of one user in the system.
@@ -115,7 +118,7 @@
         </member>
         <member name="M:GoingTo_API.Controllers.FavouritesController.AssignFavourite(System.Int32,System.Int32)">
             <summary>
-            add a locatable to the user's favorites collection.
+            Add a locatable to the user's favorites collection.
             </summary>
             <param name="userId"  example="1"></param>
             <param name="locatableId"  example="1"></param>
@@ -126,21 +129,6 @@
             returns all the locatables in the system
             </summary>
             <response code="200">returns all the locatables in the system</response>
-            <returns></returns>
-        </member>
-        <member name="M:GoingTo_API.Controllers.PlaceCategoriesController.GetAllByPlaceIdAsync(System.Int32)">
-            <summary>
-            returns all the place's categories
-            </summary>
-            <param name="placeId" example="1"></param>
-            <returns></returns>
-        </member>
-        <member name="M:GoingTo_API.Controllers.PlaceCategoriesController.AssignPlaceCategory(System.Int32,System.Int32)">
-            <summary>
-            assign a category to one place
-            </summary>
-            <param name="placeId" example="1"></param>
-            <param name="categoryId" example="1"></param>
             <returns></returns>
         </member>
         <member name="M:GoingTo_API.Controllers.PlacesController.GetAllAsync">

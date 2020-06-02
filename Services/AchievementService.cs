@@ -25,17 +25,17 @@ namespace GoingTo_API.Services
 
         public async Task<AchievementResponse> DeleteAsync(int id)
         {
-            var existingTag = await _achievementRepository.FindById(id);
+            var existingAchievement = await _achievementRepository.FindById(id);
 
-            if (existingTag == null)
+            if (existingAchievement == null)
                 return new AchievementResponse("Achievement not found");
 
             try
             {
-                _achievementRepository.Remove(existingTag);
+                _achievementRepository.Remove(existingAchievement);
                 await _unitOfWork.CompleteAsync();
 
-                return new AchievementResponse(existingTag);
+                return new AchievementResponse(existingAchievement);
             }
             catch (Exception ex)
             {
@@ -45,11 +45,11 @@ namespace GoingTo_API.Services
 
         public async Task<AchievementResponse> GetByIdAsync(int id)
         {
-            var existingTag = await _achievementRepository.FindById(id);
+            var existingAchievement = await _achievementRepository.FindById(id);
 
-            if (existingTag == null)
+            if (existingAchievement == null)
                 return new AchievementResponse("Achievement not found");
-            return new AchievementResponse(existingTag);
+            return new AchievementResponse(existingAchievement);
         }
 
         public async Task<IEnumerable<Achievement>> ListAsync()
