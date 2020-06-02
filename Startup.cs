@@ -22,11 +22,8 @@ using AutoMapper;
 using System.IO;
 using System.Reflection;
 using Swashbuckle.AspNetCore.Filters;
-<<<<<<< HEAD
 using GoingTo_API.Domain.Repositories.Interactions;
 using GoingTo_API.Domain.Services.Interactions;
-=======
->>>>>>> CRUD-Tips
 using GoingTo_API.Domain.Repositories.Geographic;
 using GoingTo_API.Domain.Services.Geographic;
 
