@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GoingTo_API.Persistence
+namespace GoingTo_API.Persistence.Repositories
 {
     public class AchievementRepository : BaseRepository, IAchievementRepository
     {

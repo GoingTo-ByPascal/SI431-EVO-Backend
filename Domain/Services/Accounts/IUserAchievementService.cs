@@ -12,7 +12,7 @@ namespace GoingTo_API.Domain.Services
         Task<IEnumerable<UserAchievement>> ListAsync();
         Task<IEnumerable<UserAchievement>> ListByUserIdAsync(int userId);
         Task<IEnumerable<UserAchievement>> ListByAchievementIdAsync(int achievementId);
-        Task<UserAchievementResponse> AssignUserAchievement(int userId, int achievementId);
-        Task<UserAchievementResponse> UnassignUserAchievement(int userId, int achievementId);
+        Task<UserAchievementResponse> AssignUserAchievementAsync(int userId, int achievementId);
+        Task<UserAchievementResponse> UnassignUserAchievementAsync(int userId, int achievementId);
     }
 }

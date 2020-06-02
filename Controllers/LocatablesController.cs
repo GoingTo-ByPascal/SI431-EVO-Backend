@@ -24,9 +24,9 @@ namespace GoingTo_API.Controllers
             _locatableService = locatableService;
         }
         /// <summary>
-        /// returns all the locatables in the system
+        /// Returns all the locatables in the system
         /// </summary>
-        /// <response code="200">returns all the locatables in the system</response>
+        /// <response code="200">Returns all the locatables in the system</response>
         /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<LocatableResource>> GetAllAsync()

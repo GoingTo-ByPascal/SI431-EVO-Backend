@@ -26,7 +26,7 @@ namespace GoingTo_API.Controllers
             _userAchievementService = userAchievementService;
         }
         /// <summary>
-        /// returns all the achievements of an user
+        /// Returns all the achievements of an user
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
@@ -40,7 +40,7 @@ namespace GoingTo_API.Controllers
         }
 
         /// <summary>
-        /// assign an achievement to an users
+        /// Assign an achievement to an users
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="achievementId"></param>
@@ -49,25 +49,24 @@ namespace GoingTo_API.Controllers
         public async Task<IActionResult> AssignUserAchievement(int userId, int achievementId)
         {
 
-            var result = await _userAchievementService.AssignUserAchievement(userId, achievementId);
+            var result = await _userAchievementService.AssignUserAchievementAsync(userId, achievementId);
             if (!result.Success)
                 return BadRequest(result.Message);
-
             var achievementResource = _mapper.Map<Achievement, AchievementResource>(result.Resource.Achievement);
             return Ok(achievementResource);
 
         }
         /// <summary>
-        /// delete an achivement from one user
+        /// Delete an achivement from one user
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="achievementId"></param>
-        /// <response code="204">the achievement was unasigned successfully</response>
+        /// <response code="204">The achievement was unasigned successfully</response>
         /// <returns></returns>
         [HttpDelete("achievementId")]
-        public async Task<IActionResult> UnasignUserAchievement(int userId, int achievementId)
+        public async Task<IActionResult> UnassignUserAchievement(int userId, int achievementId)
         {
-            var result = await _userAchievementService.UnassignUserAchievement(userId, achievementId);
+            var result = await _userAchievementService.UnassignUserAchievementAsync(userId, achievementId);
             if (!result.Success)
                 return BadRequest(result.Message);
             var achievementResource = _mapper.Map<Achievement, AchievementResource>(result.Resource.Achievement);

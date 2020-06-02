@@ -23,7 +23,7 @@ namespace GoingTo_API.Controllers
             _mapper = mapper;
         }
         /// <summary>
-        /// returns all the users on the system.
+        /// Returns all the users on the system.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
