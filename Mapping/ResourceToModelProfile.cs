@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GoingTo_API.Domain.Models;
+using GoingTo_API.Domain.Models.Geographic;
 using GoingTo_API.Resources;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace GoingTo_API.Mapping
             CreateMap<SaveUserResource, User>();
             CreateMap<SaveAchievementResource, Achievement>();
             CreateMap<SavePlaceResource, Place>();
+            CreateMap<SaveCategoryResource, Category>();
             CreateMap<SaveReviewResource, Review>();
             CreateMap<SaveLanguageResource, Language>();
             CreateMap<SaveCurrencyResource, Currency>();

@@ -15,5 +15,6 @@ namespace GoingTo_API.Domain.Services
         Task<PlaceResponse> SaveAsync(Place place);
         Task<PlaceResponse> UpdateAsync(int id, Place place);
         Task<PlaceResponse> DeleteAsync(int id);
+        Task<IEnumerable<Place>> ListByCategoryIdAsync(int categoryId);
     }
 }
