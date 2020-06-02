@@ -58,6 +58,20 @@ namespace GoingTo_API.Controllers
             return Ok(categoryResource);
 
         }
-        
+        /// <summary>
+        /// unnasign a category from one place
+        /// </summary>
+        /// <param name="placeId" example="1"></param>
+        /// <param name="categoryId" example="1"></param>
+        /// <returns></returns>
+        [HttpDelete("categoryId")]
+        public async Task<IActionResult> UnasignPlaceCategory(int placeId, int categoryId)
+        {
+            var result = await _placeCategoryService.UnassignPlaceCategoryAsync(placeId, categoryId);
+            if (!result.Success)
+                return BadRequest(result.Message);
+            var categoryResource = _mapper.Map<Category, CategoryResource>(result.Resource.Category);
+            return Ok(categoryResource);
+        }
     }
 }
