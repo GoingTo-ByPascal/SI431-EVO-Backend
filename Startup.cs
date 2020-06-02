@@ -56,7 +56,8 @@ namespace GoingTo_API
             services.AddScoped<IPlaceRepository, PlaceRepository>();
             services.AddScoped<IFavouriteRepository, FavouriteRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-            
+            services.AddScoped<IPlaceCategoryRepository, PlaceCategoryRepository>();
+
             services.AddScoped<ILocatableService, LocatableService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ICountryService,CountryService>();
@@ -66,6 +67,7 @@ namespace GoingTo_API
             services.AddScoped<IUserAchievementService, UserAchievementService>();
             services.AddScoped<IAchievementService, AchievementService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IPlaceCategoryService, PlaceCategoryService>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 

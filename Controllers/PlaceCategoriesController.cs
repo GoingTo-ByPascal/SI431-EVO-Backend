@@ -36,7 +36,7 @@ namespace GoingTo_API.Controllers
             return resources;
         }
 
-        [HttpPost("{tagId}")]
+        [HttpPost("{categoryId}")]
         public async Task<IActionResult> AssignPlaceCategory(int placeId, int categoryId)
         {
 
@@ -48,12 +48,13 @@ namespace GoingTo_API.Controllers
             return Ok(categoryResource);
 
         }
-        public async Task<IEnumerable<PlaceResource>> GetAllByCategoryIdAsync(int categoryId)
-        {
-            var places = await _placeService.ListByCategoryIdAsync(categoryId);
-            var resources = _mapper
-                .Map<IEnumerable<Place>, IEnumerable<PlaceResource>>(places);
-            return resources;
-        }
+        //[HttpGet("{categoryId}")]
+        //public async Task<IEnumerable<PlaceResource>> GetAllByCategoryIdAsync(int categoryId)
+        //{
+        //    var places = await _placeService.ListByCategoryIdAsync(categoryId);
+        //    var resources = _mapper
+        //        .Map<IEnumerable<Place>, IEnumerable<PlaceResource>>(places);
+        //    return resources;
+        //}
     }
 }
