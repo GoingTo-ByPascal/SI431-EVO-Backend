@@ -1,11 +1,8 @@
-﻿
-using GoingTo_API.Domain.Models;
+
 using GoingTo_API.Domain.Models.Geographic;
+using GoingTo_API.Domain.Models;
+
 using GoingTo_API.Resources;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GoingTo_API.Mapping
 {
@@ -15,6 +12,7 @@ namespace GoingTo_API.Mapping
         {
             CreateMap<Locatable, LocatableResource>();
             CreateMap<User, UserResource>();
+            CreateMap<Profile, ProfileResource>();
             CreateMap<Wallet, WalletResource>();
             CreateMap<Reviewable, ReviewableResource>();
             CreateMap<Achievement, AchievementResource>();

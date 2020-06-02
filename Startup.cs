@@ -30,6 +30,7 @@ using GoingTo_API.Domain.Repositories.Geographic;
 using GoingTo_API.Domain.Models.Geographic;
 using GoingTo_API.Domain.Services.Geographic;
 
+
 namespace GoingTo_API
 {
     public class Startup
@@ -53,6 +54,8 @@ namespace GoingTo_API
             });
             services.AddScoped<ILocatableRepository, LocatableRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IProfileRepository, ProfileRepository>();
+            services.AddScoped<IWalletRepository, WalletRepository>();
             services.AddScoped<IUserAchievementRepository, UserAchievementRepository>();
             services.AddScoped<IAchievementRepository, AchievementRepository>();
             services.AddScoped<ICountryRepository,CountryRepository>();

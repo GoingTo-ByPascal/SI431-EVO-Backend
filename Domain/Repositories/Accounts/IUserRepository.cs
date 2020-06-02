@@ -1,7 +1,5 @@
 ﻿using GoingTo_API.Domain.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace GoingTo_API.Domain.Repositories
@@ -10,8 +8,10 @@ namespace GoingTo_API.Domain.Repositories
     {
         Task<IEnumerable<User>> ListAsync();
         Task AddAsync(User user);
+
         Task<User> FindById(int id);
         void Update(User user);
+
         void Remove(User user);
     }
 }

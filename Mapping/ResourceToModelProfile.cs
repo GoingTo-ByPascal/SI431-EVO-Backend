@@ -1,11 +1,7 @@
-﻿using AutoMapper;
+﻿using GoingTo.API.Resources.Accounts;
 using GoingTo_API.Domain.Models;
 using GoingTo_API.Domain.Models.Geographic;
 using GoingTo_API.Resources;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GoingTo_API.Mapping
 {
@@ -14,6 +10,9 @@ namespace GoingTo_API.Mapping
         public ResourceToModelProfile()
         {
             CreateMap<SaveUserResource, User>();
+            CreateMap<SaveProfileResource, Domain.Models.Profile>();
+            CreateMap<SaveWalletResource, Wallet>();
+
             CreateMap<SaveAchievementResource, Achievement>();
             CreateMap<SavePlaceResource, Place>();
             CreateMap<SaveCategoryResource, Category>();
@@ -24,3 +23,4 @@ namespace GoingTo_API.Mapping
         }
     }
 }
+

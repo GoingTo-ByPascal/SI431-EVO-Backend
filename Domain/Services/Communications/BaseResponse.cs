@@ -9,6 +9,7 @@ namespace GoingTo_API.Domain.Services.Communications
     {
         public bool Success { get; protected set; }
         public string Message { get; protected set; }
+
         public T Resource { get; protected set; }
         public BaseResponse(T resource)
         {
@@ -19,7 +20,7 @@ namespace GoingTo_API.Domain.Services.Communications
         public BaseResponse(string message)
         {
             Success = false;
-            Message = message;
+            Message = message;  
         }
     }
 }
