@@ -2,12 +2,10 @@
 using GoingTo_API.Domain.Persistence.Context;
 using GoingTo_API.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace GoingTo_API.Persistence
+namespace GoingTo_API.Persistence.Repositories
 {
     public class UserRepository : BaseRepository, IUserRepository
     {

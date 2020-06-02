@@ -194,12 +194,14 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             builder.Entity<Profile>().ToTable("Profiles");
             builder.Entity<Profile>().HasKey(p => p.Id);
-            builder.Entity<Profile>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Profile>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd().HasMaxLength(11);
+            builder.Entity<Profile>().Property(p => p.UserId).IsRequired();
             builder.Entity<Profile>().Property(p => p.Name).IsRequired().HasMaxLength(45);
             builder.Entity<Profile>().Property(p => p.Surname).IsRequired().HasMaxLength(45);
-            builder.Entity<Profile>().Property(p => p.Birthdate).IsRequired();
+            builder.Entity<Profile>().Property(p => p.BirthDate);
+            builder.Entity<Profile>().Property(p => p.Gender).HasMaxLength(6);
+            builder.Entity<Profile>().Property(p => p.CreatedAt);
             builder.Entity<Profile>().Property(p => p.CountryId).IsRequired();
-            builder.Entity<Profile>().Property(p => p.UserId).IsRequired();
 
             //Review Entity
 
@@ -252,11 +254,12 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<User>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<User>().Property(p => p.Email).IsRequired().HasMaxLength(45);
             builder.Entity<User>().Property(p => p.Password).IsRequired().HasMaxLength(45);
-            builder.Entity<User>().Property(p => p.WalletId).IsRequired();
+            builder.Entity<User>().Property(p => p.WalletId);
             builder.Entity<User>()
                 .HasOne(p => p.Profile)
                 .WithOne(p => p.User)
                 .HasForeignKey<Profile>(p => p.UserId);
+
             builder.Entity<User>()
                 .HasMany(p => p.Reviews)
                 .WithOne(p => p.User)
@@ -288,7 +291,7 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Wallet>().ToTable("Wallets");
             builder.Entity<Wallet>().HasKey(p => p.Id);
             builder.Entity<Wallet>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Wallet>().Property(p => p.Points).IsRequired();
+            builder.Entity<Wallet>().Property(p => p.Points);
             builder.Entity<Wallet>()
                 .HasOne(p => p.User)
                 .WithOne(p => p.Wallet)

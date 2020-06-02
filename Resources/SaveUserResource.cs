@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace GoingTo_API.Resources
 {
     public class SaveUserResource
     {
+        [Required]
+        [MaxLength(50)]
         public string Email { get; set; }
-        public int Password { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string Password { get; set; }
+
+        public int WalletId { get; set; }
     }
 }
