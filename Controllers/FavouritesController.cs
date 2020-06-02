@@ -38,7 +38,7 @@ namespace GoingTo_API.Controllers
             return resources;
         }
         /// <summary>
-        /// Add a locatable to the user's favorites collection.
+        /// add a locatable to the user's favorites collection.
         /// </summary>
         /// <param name="userId"  example="1"></param>
         /// <param name="locatableId"  example="1"></param>

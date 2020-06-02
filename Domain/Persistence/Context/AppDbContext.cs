@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using GoingTo_API.Domain.Models;
+using GoingTo_API.Domain.Models.Geographic;
 using GoingTo_API.Extensions;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,7 @@ namespace GoingTo_API.Domain.Persistence.Context
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<Achievement> Achievements { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<CountryCurrency> CountryCurrencies { get; set; }
@@ -24,12 +26,15 @@ namespace GoingTo_API.Domain.Persistence.Context
         public DbSet<Language> Languages { get; set; }
         public DbSet<Locatable> Locatables { get; set; }
         public DbSet<Place> Places { get; set; }
+        public DbSet<PlaceCategory> PlaceCategories { get; set; }
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Tip> Tips { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserAchievement> UserAchievements { get; set; }
         public DbSet<Wallet> Wallets { get; set; }
+      
+    
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
@@ -199,12 +204,14 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             builder.Entity<Profile>().ToTable("Profiles");
             builder.Entity<Profile>().HasKey(p => p.Id);
-            builder.Entity<Profile>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Profile>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd().HasMaxLength(11);
+            builder.Entity<Profile>().Property(p => p.UserId).IsRequired();
             builder.Entity<Profile>().Property(p => p.Name).IsRequired().HasMaxLength(45);
             builder.Entity<Profile>().Property(p => p.Surname).IsRequired().HasMaxLength(45);
-            builder.Entity<Profile>().Property(p => p.Birthdate).IsRequired();
+            builder.Entity<Profile>().Property(p => p.BirthDate);
+            builder.Entity<Profile>().Property(p => p.Gender).HasMaxLength(6);
+            builder.Entity<Profile>().Property(p => p.CreatedAt);
             builder.Entity<Profile>().Property(p => p.CountryId).IsRequired();
-            builder.Entity<Profile>().Property(p => p.UserId).IsRequired();
 
             //Review Entity
 
@@ -231,11 +238,12 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<User>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<User>().Property(p => p.Email).IsRequired().HasMaxLength(45);
             builder.Entity<User>().Property(p => p.Password).IsRequired().HasMaxLength(45);
-            builder.Entity<User>().Property(p => p.WalletId).IsRequired();
+            builder.Entity<User>().Property(p => p.WalletId);
             builder.Entity<User>()
                 .HasOne(p => p.Profile)
                 .WithOne(p => p.User)
                 .HasForeignKey<Profile>(p => p.UserId);
+
             builder.Entity<User>()
                 .HasMany(p => p.Reviews)
                 .WithOne(p => p.User)
@@ -267,11 +275,34 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Wallet>().ToTable("Wallets");
             builder.Entity<Wallet>().HasKey(p => p.Id);
             builder.Entity<Wallet>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Wallet>().Property(p => p.Points).IsRequired();
+            builder.Entity<Wallet>().Property(p => p.Points);
             builder.Entity<Wallet>()
                 .HasOne(p => p.User)
                 .WithOne(p => p.Wallet)
                 .HasForeignKey<User>(p => p.WalletId);
+            
+            //Category Entity
+            builder.Entity<Category>().ToTable("Categories");
+            builder.Entity<Category>().HasKey(p => p.Id);
+            builder.Entity<Category>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Category>().Property(p => p.Name).IsRequired();
+
+            //PlaceCategories Entity
+
+            builder.Entity<PlaceCategory>().ToTable("PlaceCategories");
+            builder.Entity<PlaceCategory>()
+            .HasKey(pt => new { pt.CategoryId, pt.PlaceId });
+           
+            builder.Entity<PlaceCategory>()
+                .HasOne(pt => pt.Category)
+                .WithMany(p => p.PlaceCategories)
+                .HasForeignKey(pt => pt.CategoryId);
+
+            builder.Entity<PlaceCategory>()
+                .HasOne(pt => pt.Place)
+                .WithMany(t => t.PlaceCategories)
+                .HasForeignKey(pt => pt.PlaceId);
+
 
 
             ApplySnakeCaseNamingConvention(builder);

@@ -7,7 +7,7 @@ namespace GoingTo_API.Resources
     public class SaveTipResource
     {
         [Required]
-        [MaxLength(45)]
+        [MaxLength(140)]
         public string Text { get; set; }
     }
 }

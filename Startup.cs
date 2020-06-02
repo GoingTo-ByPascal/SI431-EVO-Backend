@@ -20,6 +20,10 @@ using GoingTo_API.Domain.Repositories.Interactions;
 using GoingTo_API.Domain.Services.Interactions;
 using GoingTo_API.Domain.Repositories.Geographic;
 using GoingTo_API.Domain.Services.Geographic;
+using GoingTo_API.Domain.Repositories.Geographic;
+using GoingTo_API.Domain.Models.Geographic;
+using GoingTo_API.Domain.Services.Geographic;
+
 
 namespace GoingTo_API
 {
@@ -44,6 +48,8 @@ namespace GoingTo_API
             });
             services.AddScoped<ILocatableRepository, LocatableRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IProfileRepository, ProfileRepository>();
+            services.AddScoped<IWalletRepository, WalletRepository>();
             services.AddScoped<IUserAchievementRepository, UserAchievementRepository>();
             services.AddScoped<IAchievementRepository, AchievementRepository>();
             services.AddScoped<ICountryRepository,CountryRepository>();
@@ -57,7 +63,10 @@ namespace GoingTo_API
             services.AddScoped<IReviewRepository, ReviewRepository>();
             services.AddScoped<ICurrencyRepository, CurrencyRepository>();
             services.AddScoped<ICountryCurrencyRepository, CountryCurrencyRepository>();
-            
+            services.AddScoped<ITipRepository, TipRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IPlaceCategoryRepository, PlaceCategoryRepository>();
+
             services.AddScoped<ILocatableService, LocatableService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserAchievementService, UserAchievementService>();
@@ -73,10 +82,9 @@ namespace GoingTo_API
             services.AddScoped<IReviewService, ReviewService>();
             services.AddScoped<ICurrencyService, CurrencyService>();
             services.AddScoped<ICountryCurrencyService, CountryCurrencyService>();
-
-            //Tip
-            services.AddScoped<ITipRepository, TipRepository>();
             services.AddScoped<ITipService, TipService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IPlaceCategoryService, PlaceCategoryService>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
