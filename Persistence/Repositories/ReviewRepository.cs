@@ -44,9 +44,12 @@ namespace GoingTo_API.Persistence.Repositories
                 .ToListAsync();
         }
 
-        public Task<IEnumerable<Review>> ListByUserIdAsync(int userId)
+        public async Task<IEnumerable<Review>> ListByUserIdAsync(int userId)
         {
-            throw new NotImplementedException();
+            return await _context.Reviews
+                .Where(p => p.UserId == userId)
+                .Include(p=> p.User)
+                .ToListAsync();
         }
     }
 }
