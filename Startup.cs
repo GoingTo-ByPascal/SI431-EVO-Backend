@@ -20,9 +20,7 @@ using GoingTo_API.Domain.Repositories.Interactions;
 using GoingTo_API.Domain.Services.Interactions;
 using GoingTo_API.Domain.Repositories.Geographic;
 using GoingTo_API.Domain.Services.Geographic;
-using GoingTo_API.Domain.Repositories.Geographic;
-using GoingTo_API.Domain.Models.Geographic;
-using GoingTo_API.Domain.Services.Geographic;
+
 
 
 namespace GoingTo_API

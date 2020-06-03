@@ -15,7 +15,7 @@ namespace GoingTo_API.Services
         private readonly ICountryRepository _countryRepository;
         private readonly ICountryCurrencyRepository _countryCurrencyRepository;
         
-        public CountryService(ICountryRepository countryRepository, ICountryCurrencyRepository countryCurrencyRepository)
+        public CountryService(ICountryRepository countryRepository,ICountryCurrencyRepository countryCurrencyRepository)
         {
             _countryRepository = countryRepository;
             _countryCurrencyRepository = countryCurrencyRepository;
