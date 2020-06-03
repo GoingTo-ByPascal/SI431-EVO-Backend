@@ -1,6 +1,7 @@
-﻿using GoingTo_API.Domain.Models;
+﻿using GoingTo_API.Domain.Models.Accounts;
 using GoingTo_API.Domain.Repositories;
-using GoingTo_API.Domain.Services;
+using GoingTo_API.Domain.Repositories.Accounts;
+using GoingTo_API.Domain.Services.Accounts;
 using GoingTo_API.Domain.Services.Communications;
 using System;
 using System.Collections.Generic;

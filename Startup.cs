@@ -20,10 +20,8 @@ using GoingTo_API.Domain.Repositories.Interactions;
 using GoingTo_API.Domain.Services.Interactions;
 using GoingTo_API.Domain.Repositories.Geographic;
 using GoingTo_API.Domain.Services.Geographic;
-using GoingTo_API.Domain.Repositories.Geographic;
-using GoingTo_API.Domain.Models.Geographic;
-using GoingTo_API.Domain.Services.Geographic;
-
+using GoingTo_API.Domain.Repositories.Accounts;
+using GoingTo_API.Domain.Services.Accounts;
 
 namespace GoingTo_API
 {
@@ -69,6 +67,8 @@ namespace GoingTo_API
 
             services.AddScoped<ILocatableService, LocatableService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IProfileService, ProfileService>();
+            services.AddScoped<IWalletService, WalletService>();
             services.AddScoped<IUserAchievementService, UserAchievementService>();
             services.AddScoped<IAchievementService, AchievementService>();
             services.AddScoped<ICountryService,CountryService>();

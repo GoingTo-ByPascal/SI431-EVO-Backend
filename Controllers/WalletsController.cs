@@ -1,14 +1,13 @@
 ﻿using AutoMapper;
-using GoingTo.API.Resources.Accounts;
-using GoingTo_API.Domain.Models;
-using GoingTo_API.Domain.Services;
+using GoingTo_API.Domain.Models.Accounts;
+using GoingTo_API.Domain.Services.Accounts;
 using GoingTo_API.Extensions;
 using GoingTo_API.Resources;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace GoingTo.API.Controllers.Accounts
+namespace GoingTo_API.Controllers
 {
     [Route("/api/[controller]")]
     public class WalletsController : Controller
@@ -23,7 +22,7 @@ namespace GoingTo.API.Controllers.Accounts
         }
 
 
-        //GET
+
         [HttpGet]
         public async Task<IEnumerable<WalletResource>> GetAllAsync()
         {
@@ -32,7 +31,8 @@ namespace GoingTo.API.Controllers.Accounts
             return resource;
         }
 
-        //POST
+
+
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SaveWalletResource resource)
         {
@@ -48,7 +48,8 @@ namespace GoingTo.API.Controllers.Accounts
             return Ok(walletResource);
         }
 
-        //PUT
+
+
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAsync(int id, [FromBody] SaveWalletResource resource)
         {
@@ -62,7 +63,8 @@ namespace GoingTo.API.Controllers.Accounts
             return Ok(walletResource);
         }
 
-        //DELETE
+
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {

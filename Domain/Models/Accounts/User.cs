@@ -1,16 +1,14 @@
 ﻿using System.Collections.Generic;
 
-namespace GoingTo_API.Domain.Models
+namespace GoingTo_API.Domain.Models.Accounts
 {
     public class User
     {
-        // atributes
         public int Id { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public Wallet Wallet { get; set; }
 
-        // relational
         public int WalletId { get; set; }
         public Profile Profile { get; set; }
         public IList<Review> Reviews { get; set; } = new List<Review>();

@@ -1,12 +1,13 @@
-﻿using GoingTo_API.Domain.Models;
+﻿using GoingTo_API.Domain.Models.Accounts;
 using GoingTo_API.Domain.Repositories;
-using GoingTo_API.Domain.Services;
+using GoingTo_API.Domain.Repositories.Accounts;
+using GoingTo_API.Domain.Services.Accounts;
 using GoingTo_API.Domain.Services.Communications;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace GoingTo.API.Services.Accounts
+namespace GoingTo_API.Services
 {
     public class WalletService : IWalletService
     {
