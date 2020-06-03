@@ -39,8 +39,9 @@ namespace GoingTo_API.Controllers
         /// </summary>
         /// <param name="countryId">CountryId</param>
         /// <param name="currencyId"></param>
+        /// <response code="204">The currency was asigned successfully</response>
         /// <returns></returns>
-        [HttpPost("{currencyId}")]
+        [HttpPut("{currencyId}")]
         public async Task<IActionResult> AssignCountryCurrency(int countryId, int currencyId)
         {
             var result = await _countryCurrencyService.AssignCountryCurrencyAsync(countryId, currencyId);
@@ -49,7 +50,6 @@ namespace GoingTo_API.Controllers
 
             var currencyResource = _mapper.Map<Currency, CurrencyResource>(result.Resource.Currency);
             return Ok(currencyResource);
-            //Creo que está bien(? Retorna un codigo 204, un poco raro pero hace su trabajo xD
         }
         /// <summary>
         /// unassign a currency to a country

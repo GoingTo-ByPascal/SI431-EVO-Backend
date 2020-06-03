@@ -21,7 +21,7 @@ namespace GoingTo_API.Controllers
         private readonly ICountryLanguageService _countryLanguageService;
         private readonly ILanguageService _languageService;
 
-        public CountryLanguagesController(ICountryLanguageService countryLanguageService,ILanguageService languageService, IMapper mapper)
+        public CountryLanguagesController(ICountryLanguageService countryLanguageService, ILanguageService languageService, IMapper mapper)
         {
             _mapper = mapper;
             _countryLanguageService = countryLanguageService;
@@ -45,9 +45,9 @@ namespace GoingTo_API.Controllers
         /// </summary>
         /// <param name="countryId"></param>
         /// <param name="languageId"></param>
-        /// /// <response code="204">The language was asigned successfully</response>
+        /// <response code="204">The language was asigned successfully</response>
         /// <returns></returns>
-        [HttpPost("{languageId}")]
+        [HttpPut("{languageId}")]
         public async Task<IActionResult> AssignCountryLanguage(int countryId, int languageId)
         {
 
