@@ -12,6 +12,6 @@ namespace GoingTo_API.Resources
         [MaxLength(50)]
         public string Password { get; set; }
 
-        public int WalletId { get; set; }
+        public int? WalletId { get; set; }
     }
 }
