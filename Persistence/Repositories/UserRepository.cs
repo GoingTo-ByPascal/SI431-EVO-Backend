@@ -1,6 +1,6 @@
-﻿using GoingTo_API.Domain.Models;
+﻿using GoingTo_API.Domain.Models.Accounts;
 using GoingTo_API.Domain.Persistence.Context;
-using GoingTo_API.Domain.Repositories;
+using GoingTo_API.Domain.Repositories.Accounts;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;

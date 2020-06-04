@@ -1,6 +1,7 @@
-﻿using GoingTo_API.Domain.Models;
+﻿using GoingTo_API.Domain.Models.Accounts;
 using GoingTo_API.Domain.Repositories;
-using GoingTo_API.Domain.Services;
+using GoingTo_API.Domain.Repositories.Accounts;
+using GoingTo_API.Domain.Services.Accounts;
 using GoingTo_API.Domain.Services.Communications;
 using System;
 using System.Collections.Generic;
@@ -67,7 +68,7 @@ namespace GoingTo_API.Services
                 await _unitOfWork.CompleteAsync();
                 return new UserResponse(existingUser);
             }
-            catch(Exception ex)
+            catch(Exception ex) 
             {
                 return new UserResponse($"An error ocurred while deleting user {ex.Message}");
             }
@@ -79,16 +80,6 @@ namespace GoingTo_API.Services
             if (existingUser == null)
                 return new UserResponse("User not found");
             return new UserResponse(existingUser);
-            //try
-            //{
-            //    _userRepository.Remove(existingUser);
-            //    await _unitOfWork.CompleteAsync();
-            //    return new UserResponse(existingUser);
-            //}
-            //catch (Exception ex)
-            //{
-            //    return new UserResponse($"An error ocurred while searching user: {ex.Message}");
-            //}
         }
 
     }

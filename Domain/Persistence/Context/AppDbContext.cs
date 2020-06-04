@@ -1,11 +1,5 @@
-
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using GoingTo_API.Domain.Models;
+using GoingTo_API.Domain.Models.Accounts;
 using GoingTo_API.Domain.Models.Geographic;
 using GoingTo_API.Extensions;
 using Microsoft.EntityFrameworkCore;
