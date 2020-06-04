@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using GoingTo_API.Domain.Models;
-using GoingTo_API.Domain.Services;
+using GoingTo_API.Domain.Models.Accounts;
+using GoingTo_API.Domain.Services.Accounts;
 using GoingTo_API.Extensions;
 using GoingTo_API.Resources;
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +35,8 @@ namespace GoingTo_API.Controllers
             return resource;
         }
 
-        //POST
+
+
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SaveUserResource resource)
         {
@@ -51,7 +52,8 @@ namespace GoingTo_API.Controllers
             return Ok(userResource);
         }
 
-        //PUT
+
+
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAsync(int id, [FromBody] SaveUserResource resource)
         {
@@ -65,7 +67,8 @@ namespace GoingTo_API.Controllers
             return Ok(userResource);
         }
 
-        //DELETE
+
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {

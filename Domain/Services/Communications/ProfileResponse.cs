@@ -1,4 +1,4 @@
-﻿using GoingTo_API.Domain.Models;
+﻿using GoingTo_API.Domain.Models.Accounts;
 
 namespace GoingTo_API.Domain.Services.Communications
 {

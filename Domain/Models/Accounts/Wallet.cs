@@ -1,12 +1,10 @@
-﻿namespace GoingTo_API.Domain.Models
+﻿namespace GoingTo_API.Domain.Models.Accounts
 {
     public class Wallet
     {
-        //atributes
         public int Id { get; set; }
         public int Points { get; set; }
 
-        // relational
         public User User { get; set; }
     }
 }

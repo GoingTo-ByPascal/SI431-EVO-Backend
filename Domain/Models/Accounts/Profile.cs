@@ -1,8 +1,7 @@
-﻿namespace GoingTo_API.Domain.Models
+﻿namespace GoingTo_API.Domain.Models.Accounts
 {
     public class Profile
     {
-        // atributes
         public int Id { get; set; }
         public User User { get; set; }
         public string Name { get; set; }
@@ -12,7 +11,6 @@
         public string CreatedAt { get; set; }
         public Country Country { get; set; }
 
-        // relational
         public int UserId { get; set; }
         public int CountryId { get; set; }
     }

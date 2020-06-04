@@ -1,8 +1,7 @@
-
 using GoingTo_API.Domain.Models.Geographic;
-using GoingTo_API.Domain.Models;
-
+using GoingTo_API.Domain.Models.Accounts;
 using GoingTo_API.Resources;
+using GoingTo_API.Domain.Models;
 
 namespace GoingTo_API.Mapping
 {

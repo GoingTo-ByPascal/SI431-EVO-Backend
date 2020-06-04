@@ -15,7 +15,7 @@ namespace GoingTo_API.Resources
         [MaxLength (45)]
         public string Surname { get; set; }
 
-        public string Birthdate { get; set; }
+        public string BirthDate { get; set; }
 
         [MaxLength(6)]
         public string Gender { get; set; }

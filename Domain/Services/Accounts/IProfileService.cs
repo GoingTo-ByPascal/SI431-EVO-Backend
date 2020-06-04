@@ -1,9 +1,9 @@
-﻿using GoingTo_API.Domain.Models;
+﻿using GoingTo_API.Domain.Models.Accounts;
 using System.Collections.Generic;
 using GoingTo_API.Domain.Services.Communications;
 using System.Threading.Tasks;
 
-namespace GoingTo_API.Domain.Services
+namespace GoingTo_API.Domain.Services.Accounts
 {
     public interface IProfileService
     {
