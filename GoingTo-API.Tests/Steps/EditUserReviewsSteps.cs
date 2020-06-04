@@ -1,6 +1,7 @@
 ﻿using GoingTo_API.Domain.Models;
 using GoingTo_API.Tests.Steps;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Net;
