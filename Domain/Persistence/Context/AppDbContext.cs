@@ -246,6 +246,11 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .HasMany(p => p.Favourites)
                 .WithOne(p => p.User)
                 .HasForeignKey(p => p.UserId);
+            builder.Entity<User>()
+                .HasMany(p => p.Tips)
+                .WithOne(p => p.User)
+                .HasForeignKey(p => p.UserId);
+
 
             //UserAchievements Entity 
 

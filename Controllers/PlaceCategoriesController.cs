@@ -12,20 +12,18 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
-    [Route("/api/places/{placeId}/categories")]
+    [Route("/api/place/{placeId}/categories")]
     public class PlaceCategoriesController : Controller
     {
         private readonly ICategoryService _categoryService;
-        private readonly IPlaceService _placeService;
         private readonly IPlaceCategoryService _placeCategoryService;
         private readonly IMapper _mapper;
 
-        public PlaceCategoriesController(ICategoryService categoryService, IPlaceCategoryService placeCategoryService, IMapper mapper,IPlaceService placeService)
+        public PlaceCategoriesController(ICategoryService categoryService, IPlaceCategoryService placeCategoryService, IMapper mapper)
         {
             _categoryService = categoryService;
             _placeCategoryService = placeCategoryService;
             _mapper = mapper;
-            _placeService = placeService;
         }
         /// <summary>
         /// returns all the place's categories
