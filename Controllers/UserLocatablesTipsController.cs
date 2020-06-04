@@ -32,6 +32,7 @@ namespace GoingTo_API.Controllers
         /// </summary>
         /// <param name="locatableId"></param>
         /// <param name="resource"></param>
+        /// <param name="userId"></param>
         /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> PostAsync(int locatableId,int userId, [FromBody] SaveTipResource resource)
@@ -64,6 +65,7 @@ namespace GoingTo_API.Controllers
         /// <param name="locatableId"></param>
         /// <param name="tipId">the id of the Tip to update</param>
         /// <param name="resource"></param>
+        /// <param name="userId"></param>
         /// <returns></returns>
         [HttpPut("{tipId}")]
         public async Task<IActionResult> PutAsync(int locatableId,int userId,int tipId, [FromBody] SaveTipResource resource)
