@@ -15,7 +15,7 @@ namespace GoingTo_API.Domain.Models.Accounts
         public List<Favourite> Favourites { get; set; } = new List<Favourite>();
         public List<UserAchievement> UserAchievements { get; set; } = new List<UserAchievement>();
         public List<Tip> Tips { get; set; } = new List<Tip>();
-
+        public List<UserPlan> UserPlans { get; set; }
     
     }
 }

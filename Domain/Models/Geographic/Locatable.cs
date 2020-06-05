@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GoingTo_API.Domain.Models.Business;
+using GoingTo_API.Domain.Models.Interactions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,7 +20,8 @@ namespace GoingTo_API.Domain.Models
         public City City { get; set; }
         public Country Country { get; set; }
         public Place Place { get; set; }
-
+        public List<LocatablePromos> LocatablePromos { get; set; }
+        public List<PartnerServices> PartnerServices { get; set; }
 
     }
 }
