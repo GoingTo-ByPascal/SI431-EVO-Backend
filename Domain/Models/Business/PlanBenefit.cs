@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Domain.Models.Business
 {
-    public class PlanBenefits
+    public class PlanBenefit
     {
         public int Id { get; set; }
         public int BenefitId { get; set; }

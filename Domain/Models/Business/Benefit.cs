@@ -10,7 +10,7 @@ namespace GoingTo_API.Domain.Models.Business
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<PlanBenefits> PlanBenefits { get; set; }
-        public List<PartnerBenefits> PartnerBenefits { get; set; }
+        public List<PlanBenefit> PlanBenefits { get; set; }
+        public List<PartnerBenefit> PartnerBenefits { get; set; }
     }
 }

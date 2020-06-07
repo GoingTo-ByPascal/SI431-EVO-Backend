@@ -11,9 +11,9 @@ namespace GoingTo_API.Domain.Models.Business
         public int Id { get; set; }
         public string Name { get; set; }
         public int? PartnerProfileId { get; set; }
-        public Promo Promo { get; set; }
         public PartnerProfile PartnerProfile { get; set; }
-        public List<PartnerBenefits> PartnerBenefits { get; set; }
-        public List<PartnerServices> PartnerServices { get; set; }
+        public List<Promo> Promos { get; set; }
+        public List<PartnerBenefit> PartnerBenefits { get; set; }
+        public List<PartnerService> PartnerServices { get; set; }
     }
 }

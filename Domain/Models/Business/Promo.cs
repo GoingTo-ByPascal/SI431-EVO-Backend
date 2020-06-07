@@ -13,6 +13,6 @@ namespace GoingTo_API.Domain.Models.Business
         public float Discount { get; set; }
         public Partner Partner { get; set; }
         public int PartnerId { get; set; }
-        public List<LocatablePromos> LocatablePromos { get; set; }
+        public List<LocatablePromo> LocatablePromos { get; set; }
     }
 }

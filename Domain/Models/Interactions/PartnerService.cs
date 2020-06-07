@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Domain.Models.Interactions
 {
-    public class PartnerServices
+    public class PartnerService
     {
         public int Id { get; set; }
         public float Points { get; set; }

@@ -20,8 +20,9 @@ namespace GoingTo_API.Domain.Models
         public City City { get; set; }
         public Country Country { get; set; }
         public Place Place { get; set; }
-        public List<LocatablePromos> LocatablePromos { get; set; }
-        public List<PartnerServices> PartnerServices { get; set; }
+        public PartnerService PartnerService { get; set; }
+        public List<LocatablePromo> LocatablePromos { get; set; }
+        public List<PartnerService> PartnerServices { get; set; }
 
     }
 }
