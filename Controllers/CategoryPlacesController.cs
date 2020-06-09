@@ -16,14 +16,14 @@ namespace GoingTo_API.Controllers
     public class CategoryPlacesController : Controller 
     {
         private readonly IPlaceService _placeService;
-        private readonly IPlaceCategoryService _placeCategoryService;
         private readonly IMapper _mapper;
-        public CategoryPlacesController(IPlaceService placeService, IPlaceCategoryService placeCategoryService, IMapper mapper)
+
+        public CategoryPlacesController(IPlaceService placeService, IMapper mapper)
         {
             _placeService = placeService;
-            _placeCategoryService = placeCategoryService;
             _mapper = mapper;
         }
+
         /// <summary>
         /// returns all the places that belong to this category
         /// </summary>

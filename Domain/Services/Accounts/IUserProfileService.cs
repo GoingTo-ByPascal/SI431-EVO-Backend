@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Domain.Services.Accounts
 {
-    public interface IProfileService
+    public interface IUserProfileService
     {
-        Task<IEnumerable<Profile>> ListAsync();
-        Task<ProfileResponse> SaveAsync(Profile profile);
-        Task<ProfileResponse> UpdateAsync(int id, Profile profile);
+        Task<IEnumerable<UserProfile>> ListAsync();
+        Task<ProfileResponse> SaveAsync(UserProfile profile);
+        Task<ProfileResponse> UpdateAsync(int id, UserProfile profile);
         Task<ProfileResponse> DeleteAsync(int id);
     }
 }

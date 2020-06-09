@@ -2,12 +2,12 @@
 
 namespace GoingTo_API.Domain.Services.Communications
 {
-    public class ProfileResponse : BaseResponse<Profile>
+    public class ProfileResponse : BaseResponse<UserProfile>
     {
-        public Profile Profile { get; private set; }
+        public UserProfile Profile { get; private set; }
 
         public ProfileResponse(string message) : base(message) { }
 
-        public ProfileResponse(Profile profile) : base(profile) { }
+        public ProfileResponse(UserProfile profile) : base(profile) { }
     }
 }

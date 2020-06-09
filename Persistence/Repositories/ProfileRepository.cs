@@ -8,38 +8,38 @@ using System.Linq;
 
 namespace GoingTo_API.Persistence.Repositories
 {
-    public class ProfileRepository : BaseRepository, IProfileRepository
+    public class ProfileRepository : BaseRepository, IUserProfileRepository
     {
         public ProfileRepository(AppDbContext context) : base(context) { }
 
-        public async Task AddAsync(Profile profile)
+        public async Task AddAsync(UserProfile profile)
         {
-            await _context.Profiles.AddAsync(profile);
+            await _context.UserProfiles.AddAsync(profile);
         }
 
-        public async Task<IEnumerable<Profile>> ListAsync()
+        public async Task<IEnumerable<UserProfile>> ListAsync()
         {
-            return await _context.Profiles
+            return await _context.UserProfiles
                 .Include(p => p.Country)
                 .ToListAsync();
         }
 
-        public async Task<Profile> FindById(int id)
+        public async Task<UserProfile> FindById(int id)
         {
-            return await _context.Profiles
+            return await _context.UserProfiles
                 .Where(p => p.Id == id)
                 .Include(p=>p.Country)
                 .FirstAsync();
         }
 
-        public void Update(Profile profile)
+        public void Update(UserProfile profile)
         {
-            _context.Profiles.Update(profile);
+            _context.UserProfiles.Update(profile);
         }
 
-        public void Remove(Profile profile)
+        public void Remove(UserProfile profile)
         {
-            _context.Profiles.Remove(profile);
+            _context.UserProfiles.Remove(profile);
         }
     }
 }

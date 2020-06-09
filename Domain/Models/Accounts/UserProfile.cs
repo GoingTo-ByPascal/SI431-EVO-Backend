@@ -1,6 +1,6 @@
 ﻿namespace GoingTo_API.Domain.Models.Accounts
 {
-    public class Profile
+    public class UserProfile
     {
         public int Id { get; set; }
         public User User { get; set; }
