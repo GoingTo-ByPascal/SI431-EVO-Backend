@@ -25,7 +25,7 @@ namespace GoingTo_API.Controllers
             _mapper = mapper;
         }
         /// <summary>
-        /// ceturns all the achievements in the system.
+        /// returns all the achievements in the system.
         /// </summary>
         /// <response code="200">Returns all the achievements in the system.</response>
         /// <returns></returns>
