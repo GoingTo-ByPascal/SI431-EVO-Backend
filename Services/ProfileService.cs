@@ -9,23 +9,23 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Services
 {
-    public class ProfileService : IProfileService
+    public class ProfileService : IUserProfileService
     {
-        private readonly IProfileRepository _profileRepository;
+        private readonly IUserProfileRepository _profileRepository;
         public readonly IUnitOfWork _unitOfWork;
 
-        public ProfileService(IProfileRepository profileRepository, IUnitOfWork unitOfWork)
+        public ProfileService(IUserProfileRepository profileRepository, IUnitOfWork unitOfWork)
         {
             _profileRepository = profileRepository;
             _unitOfWork = unitOfWork;
 
         }
-        public async Task<IEnumerable<Profile>> ListAsync()
+        public async Task<IEnumerable<UserProfile>> ListAsync()
         {
             return await _profileRepository.ListAsync();
         }
 
-        public async Task<ProfileResponse> SaveAsync(Profile profile)
+        public async Task<ProfileResponse> SaveAsync(UserProfile profile)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace GoingTo_API.Services
             }
         }
 
-        public async Task<ProfileResponse> UpdateAsync(int id, Profile profile)
+        public async Task<ProfileResponse> UpdateAsync(int id, UserProfile profile)
         {
             var existingProfile = await _profileRepository.FindById(id);
 

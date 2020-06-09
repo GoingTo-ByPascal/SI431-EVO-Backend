@@ -39,7 +39,6 @@ namespace GoingTo_API.Services
         {
             try
             {
-
                 await _userAchievementRepository.AssignUserAchievement(userId, achievementId);
                 await _unitOfWork.CompleteAsync();
                 UserAchievement userAchievement = await _userAchievementRepository.FindByUserIdAndAchievementId(userId, achievementId);
@@ -62,7 +61,7 @@ namespace GoingTo_API.Services
             }
             catch (Exception ex)
             {
-                return new UserAchievementResponse($"An error ocurred while assigning Achievement to User: {ex.Message}");
+                return new UserAchievementResponse($"An error ocurred while unassigning Achievement to User: {ex.Message}");
             }
         }
     }

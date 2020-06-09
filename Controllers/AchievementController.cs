@@ -25,7 +25,7 @@ namespace GoingTo_API.Controllers
             _mapper = mapper;
         }
         /// <summary>
-        /// Returns all the achievements in the system.
+        /// ceturns all the achievements in the system.
         /// </summary>
         /// <response code="200">Returns all the achievements in the system.</response>
         /// <returns></returns>
@@ -39,18 +39,18 @@ namespace GoingTo_API.Controllers
         }
 
         /// <summary>
-        /// Creates an achievements in the system.
+        /// creates an achievements in the system.
         /// </summary>
-        /// <response code="201">Creates an achievements in the system.</response>
-        /// <response code="400">Unable to create the achievement due to validation.</response>
+        /// <response code="201">creates an achievements in the system.</response>
+        /// <response code="400">unable to create the achievement due to validation.</response>
         /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SaveAchievementResource resource)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
-            var tag = _mapper.Map<SaveAchievementResource, Achievement>(resource);
-            var result = await _achievementService.SaveAsync(tag);
+            var achievement = _mapper.Map<SaveAchievementResource, Achievement>(resource);
+            var result = await _achievementService.SaveAsync(achievement);
 
             if (!result.Success)
                 return BadRequest(result.Message);
@@ -59,9 +59,9 @@ namespace GoingTo_API.Controllers
             return Ok(achievementResource);
         }
         /// <summary>
-        /// Allows to change the Name,Text and/or Points of an existing achievement
+        /// allows to change the Name,Text and/or Points of an existing achievement
         /// </summary>
-        /// <param name="id">The id of the achievement to update</param>
+        /// <param name="id">the id of the achievement to update</param>
         /// <param name="resource"></param>
         /// <returns></returns>
         [HttpPut("{id}")]

@@ -11,7 +11,7 @@ namespace GoingTo_API.Domain.Models
 
         public int LocatableId { get; set; }
         public Locatable Locatable { get; set; }
-        public IList<Profile> Profiles { get; set; } = new List<Profile>();
+        public IList<UserProfile> Profiles { get; set; } = new List<UserProfile>();
         public IList<City> Cities { get; set; } = new List<City>();
         public IList<CountryCurrency> CountryCurrencies { get; set; }
         public IList<CountryLanguage> CountryLanguages { get; set; }

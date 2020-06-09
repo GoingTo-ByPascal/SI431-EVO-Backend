@@ -22,6 +22,8 @@ using GoingTo_API.Domain.Repositories.Geographic;
 using GoingTo_API.Domain.Services.Geographic;
 using GoingTo_API.Domain.Repositories.Accounts;
 using GoingTo_API.Domain.Services.Accounts;
+using GoingTo_API.Domain.Repositories.Business;
+using GoingTo_API.Domain.Services.Business;
 
 namespace GoingTo_API
 {
@@ -46,7 +48,7 @@ namespace GoingTo_API
             });
             services.AddScoped<ILocatableRepository, LocatableRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IProfileRepository, ProfileRepository>();
+            services.AddScoped<IUserProfileRepository, ProfileRepository>();
             services.AddScoped<IWalletRepository, WalletRepository>();
             services.AddScoped<IUserAchievementRepository, UserAchievementRepository>();
             services.AddScoped<IAchievementRepository, AchievementRepository>();
@@ -64,10 +66,12 @@ namespace GoingTo_API
             services.AddScoped<ITipRepository, TipRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IPlaceCategoryRepository, PlaceCategoryRepository>();
+            services.AddScoped<IPlanRepository, PlanRepository>();
+            services.AddScoped<IUserPlanRepository, UserPlanRepository>();
 
             services.AddScoped<ILocatableService, LocatableService>();
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IProfileService, ProfileService>();
+            services.AddScoped<IUserProfileService, ProfileService>();
             services.AddScoped<IWalletService, WalletService>();
             services.AddScoped<IUserAchievementService, UserAchievementService>();
             services.AddScoped<IAchievementService, AchievementService>();
@@ -85,6 +89,8 @@ namespace GoingTo_API
             services.AddScoped<ITipService, TipService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IPlaceCategoryService, PlaceCategoryService>();
+            services.AddScoped<IPlanService, PlanService>();
+            services.AddScoped<IUserPlanService, UserPlanService>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 

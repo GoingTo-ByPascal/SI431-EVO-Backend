@@ -1,7 +1,9 @@
 ﻿using GoingTo_API.Domain.Models;
 using GoingTo_API.Domain.Models.Accounts;
+using GoingTo_API.Domain.Models.Business;
 using GoingTo_API.Domain.Models.Geographic;
 using GoingTo_API.Resources;
+using GoingTo_API.Resources.SaveResources;
 
 namespace GoingTo_API.Mapping
 {
@@ -10,9 +12,8 @@ namespace GoingTo_API.Mapping
         public ResourceToModelProfile()
         {
             CreateMap<SaveUserResource, User>();
-            CreateMap<SaveProfileResource, Domain.Models.Accounts.Profile>();
+            CreateMap<SaveProfileResource, Domain.Models.Accounts.UserProfile>();
             CreateMap<SaveWalletResource, Wallet>();
-
             CreateMap<SaveAchievementResource, Achievement>();
             CreateMap<SavePlaceResource, Place>();
             CreateMap<SaveCategoryResource, Category>();
@@ -20,6 +21,7 @@ namespace GoingTo_API.Mapping
             CreateMap<SaveLanguageResource, Language>();
             CreateMap<SaveCurrencyResource, Currency>();
             CreateMap<SaveTipResource, Tip>();
+            CreateMap<SavePlanResource, Plan>();
         }
     }
 }

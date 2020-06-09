@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 namespace GoingTo_API.Controllers
 {
     [Route("/api/[controller]")]
-    public class ProfilesController : Controller
+    public class UserProfilesController : Controller
     {
-        private readonly IProfileService _profileService;
+        private readonly IUserProfileService _profileService;
         private readonly AutoMapper.IMapper _mapper;
 
-        public ProfilesController(IProfileService profileService, AutoMapper.IMapper mapper)
+        public UserProfilesController(IUserProfileService profileService, AutoMapper.IMapper mapper)
         {
             _profileService = profileService;
             _mapper = mapper;
@@ -25,7 +25,7 @@ namespace GoingTo_API.Controllers
         public async Task<IEnumerable<ProfileResource>> GetAllAsync()
         {
             var profiles = await _profileService.ListAsync();
-            var resource = _mapper.Map<IEnumerable<GoingTo_API.Domain.Models.Accounts.Profile>, IEnumerable<ProfileResource>>(profiles);
+            var resource = _mapper.Map<IEnumerable<GoingTo_API.Domain.Models.Accounts.UserProfile>, IEnumerable<ProfileResource>>(profiles);
             return resource;
         }
 
@@ -36,13 +36,13 @@ namespace GoingTo_API.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages()); 
-            var profile = _mapper.Map<SaveProfileResource, GoingTo_API.Domain.Models.Accounts.Profile>(resource);
+            var profile = _mapper.Map<SaveProfileResource, GoingTo_API.Domain.Models.Accounts.UserProfile>(resource);
             var result = await _profileService.SaveAsync(profile); 
 
             if (!result.Success)
                 return BadRequest(result.Message); 
 
-            var profileResource = _mapper.Map<GoingTo_API.Domain.Models.Accounts.Profile, ProfileResource>(result.Profile); 
+            var profileResource = _mapper.Map<GoingTo_API.Domain.Models.Accounts.UserProfile, ProfileResource>(result.Profile); 
             return Ok(profileResource);
         }
 
@@ -51,13 +51,13 @@ namespace GoingTo_API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAsync(int id, [FromBody] SaveProfileResource resource)
         {
-            var profile = _mapper.Map<SaveProfileResource, GoingTo_API.Domain.Models.Accounts.Profile>(resource);
+            var profile = _mapper.Map<SaveProfileResource, GoingTo_API.Domain.Models.Accounts.UserProfile>(resource);
             var result = await _profileService.UpdateAsync(id, profile);
 
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var profileResource = _mapper.Map<GoingTo_API.Domain.Models.Accounts.Profile, ProfileResource>(result.Profile);
+            var profileResource = _mapper.Map<GoingTo_API.Domain.Models.Accounts.UserProfile, ProfileResource>(result.Profile);
             return Ok(profileResource);
         }
 
@@ -72,7 +72,7 @@ namespace GoingTo_API.Controllers
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var profileResource = _mapper.Map<GoingTo_API.Domain.Models.Accounts.Profile, ProfileResource>(result.Profile);
+            var profileResource = _mapper.Map<GoingTo_API.Domain.Models.Accounts.UserProfile, ProfileResource>(result.Profile);
             return Ok(profileResource);
         }
     }

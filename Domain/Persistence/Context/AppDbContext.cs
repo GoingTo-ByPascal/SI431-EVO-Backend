@@ -32,14 +32,14 @@ namespace GoingTo_API.Domain.Persistence.Context
         public DbSet<PlaceCategory> PlaceCategories { get; set; } 
         public DbSet<Plan> Plans { get; set; } 
         public DbSet<PlanBenefit> PlanBenefits { get; set; }
-        public DbSet<Profile> Profiles { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Promo> Promos { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Tip> Tips { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserAchievement> UserAchievements { get; set; }
-        public DbSet<UserPlan> UserPlans { get; set; }
+        public DbSet<PlanUser> PlanUsers { get; set; }
         public DbSet<Wallet> Wallets { get; set; }
       
         protected override void OnModelCreating(ModelBuilder builder)
@@ -309,7 +309,7 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .HasForeignKey(p => p.PlanId);
 
             builder.Entity<Plan>()
-                .HasMany(p => p.UserPlans)
+                .HasMany(p => p.PlanUsers)
                 .WithOne(p => p.Plan)
                 .HasForeignKey(p => p.PlanId);
 
@@ -320,19 +320,14 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<PlanBenefit>().HasKey(p => p.Id);
             builder.Entity<PlanBenefit>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
 
+            //PlanUsers Entity
 
-            //Profile Entity
-
-            builder.Entity<Profile>().ToTable("Profiles");
-            builder.Entity<Profile>().HasKey(p => p.Id);
-            builder.Entity<Profile>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd().HasMaxLength(11);
-            builder.Entity<Profile>().Property(p => p.UserId).IsRequired();
-            builder.Entity<Profile>().Property(p => p.Name).IsRequired().HasMaxLength(45);
-            builder.Entity<Profile>().Property(p => p.Surname).IsRequired().HasMaxLength(45);
-            builder.Entity<Profile>().Property(p => p.BirthDate);
-            builder.Entity<Profile>().Property(p => p.Gender).HasMaxLength(6);
-            builder.Entity<Profile>().Property(p => p.CreatedAt);
-            builder.Entity<Profile>().Property(p => p.CountryId).IsRequired();
+            builder.Entity<PlanUser>().ToTable("PlanUsers");
+            builder.Entity<PlanUser>().HasKey(p => p.Id);
+            builder.Entity<PlanUser>().HasKey(p => new { p.UserId, p.PlanId });
+            builder.Entity<PlanUser>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<PlanUser>().Property(p => p.StartDate);
+            builder.Entity<PlanUser>().Property(p => p.EndDate);
 
             //Promo Entity
 
@@ -347,7 +342,6 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .WithOne(p => p.Promo)
                 .HasForeignKey(p => p.PromoId);
                 
-
 
             //Review Entity
 
@@ -391,7 +385,7 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<User>()
                 .HasOne(p => p.Profile)
                 .WithOne(p => p.User)
-                .HasForeignKey<Profile>(p => p.UserId);
+                .HasForeignKey<UserProfile>(p => p.UserId);
 
             builder.Entity<User>()
                 .HasMany(p => p.Reviews)
@@ -424,13 +418,20 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .WithMany(p => p.UserAchievements)
                 .HasForeignKey(p => p.AchievementId);
 
-            //UserPlan Entity
+            
 
-            builder.Entity<UserPlan>().ToTable("UserPlans");
-            builder.Entity<UserPlan>().HasKey(p => p.Id);
-            builder.Entity<UserPlan>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<UserPlan>().Property(p => p.StartDate);
-            builder.Entity<UserPlan>().Property(p => p.EndDate);
+            //UserProfile Entity
+
+            builder.Entity<UserProfile>().ToTable("UserProfiles");
+            builder.Entity<UserProfile>().HasKey(p => p.Id);
+            builder.Entity<UserProfile>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd().HasMaxLength(11);
+            builder.Entity<UserProfile>().Property(p => p.UserId).IsRequired();
+            builder.Entity<UserProfile>().Property(p => p.Name).IsRequired().HasMaxLength(45);
+            builder.Entity<UserProfile>().Property(p => p.Surname).IsRequired().HasMaxLength(45);
+            builder.Entity<UserProfile>().Property(p => p.BirthDate);
+            builder.Entity<UserProfile>().Property(p => p.Gender).HasMaxLength(6);
+            builder.Entity<UserProfile>().Property(p => p.CreatedAt);
+            builder.Entity<UserProfile>().Property(p => p.CountryId).IsRequired();
 
 
             //Wallet Entity

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Domain.Models.Accounts
 {
-    public class UserPlan
+    public class PlanUser
     {
         public int Id { get; set; }
         public User User { get; set; }

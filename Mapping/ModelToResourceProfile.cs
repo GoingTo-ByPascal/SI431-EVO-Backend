@@ -2,6 +2,7 @@ using GoingTo_API.Domain.Models.Geographic;
 using GoingTo_API.Domain.Models.Accounts;
 using GoingTo_API.Resources;
 using GoingTo_API.Domain.Models;
+using GoingTo_API.Domain.Models.Business;
 
 namespace GoingTo_API.Mapping
 {
@@ -11,7 +12,7 @@ namespace GoingTo_API.Mapping
         {
             CreateMap<Locatable, LocatableResource>();
             CreateMap<User, UserResource>();
-            CreateMap<Profile, ProfileResource>();
+            CreateMap<UserProfile, ProfileResource>();
             CreateMap<Wallet, WalletResource>();
             CreateMap<Achievement, AchievementResource>();
             CreateMap<Country, CountryResource>();
@@ -22,6 +23,8 @@ namespace GoingTo_API.Mapping
             CreateMap<Language, LanguageResource>();
             CreateMap<Currency, CurrencyResource>();
             CreateMap<Tip, TipResource>();
+            CreateMap<Plan, PlanResource>();
+            CreateMap<PlanUser, UserPlanResource>();
         }
     }
 }
