@@ -1,4 +1,5 @@
 ﻿using GoingTo_API.Domain.Models;
+using GoingTo_API.Domain.Models.Accounts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

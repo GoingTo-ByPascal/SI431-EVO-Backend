@@ -8,6 +8,7 @@ using GoingTo_API.Domain.Models;
 using GoingTo_API.Domain.Services;
 using GoingTo_API.Resources;
 using GoingTo_API.Services;
+using GoingTo_API.Domain.Models.Accounts;
 
 namespace GoingTo_API.Controllers
 {
