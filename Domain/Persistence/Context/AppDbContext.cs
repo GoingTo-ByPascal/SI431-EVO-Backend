@@ -241,6 +241,11 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .WithOne(p => p.Partner)
                 .HasForeignKey(p => p.PartnerId);
 
+            builder.Entity<Partner>()
+                .HasOne(p => p.PartnerProfile)
+                .WithOne(p => p.Partner)
+                .HasForeignKey<PartnerProfile>(p => p.PartnerId);
+
             //PartnerBenefit Entity
 
             builder.Entity<PartnerBenefit>().ToTable("PartnerBenefits");
@@ -257,12 +262,6 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<PartnerProfile>().Property(p => p.Telephone);
             builder.Entity<PartnerProfile>().Property(p => p.Email);
             builder.Entity<PartnerProfile>().Property(p => p.Address);
-
-            builder.Entity<PartnerProfile>()
-                .HasOne(p => p.Partner)
-                .WithOne(p => p.PartnerProfile)
-                .HasForeignKey<Partner>(p => p.PartnerProfileId);
-                
 
             //PartnerService Entity
 

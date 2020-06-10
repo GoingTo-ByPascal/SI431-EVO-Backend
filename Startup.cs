@@ -68,6 +68,7 @@ namespace GoingTo_API
             services.AddScoped<IPlaceCategoryRepository, PlaceCategoryRepository>();
             services.AddScoped<IPlanRepository, PlanRepository>();
             services.AddScoped<IUserPlanRepository, UserPlanRepository>();
+            services.AddScoped<IPartnerRepository, PartnerRepository>();
 
             services.AddScoped<ILocatableService, LocatableService>();
             services.AddScoped<IUserService, UserService>();
@@ -91,6 +92,7 @@ namespace GoingTo_API
             services.AddScoped<IPlaceCategoryService, PlaceCategoryService>();
             services.AddScoped<IPlanService, PlanService>();
             services.AddScoped<IUserPlanService, UserPlanService>();
+            services.AddScoped<IPartnerService, PartnerService>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
