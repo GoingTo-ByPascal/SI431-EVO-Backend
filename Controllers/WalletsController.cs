@@ -22,7 +22,10 @@ namespace GoingTo_API.Controllers
         }
 
 
-
+        /// <summary>
+        /// returns all the wallets in the system
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<WalletResource>> GetAllAsync()
         {
@@ -31,7 +34,11 @@ namespace GoingTo_API.Controllers
             return resource;
         }
 
-
+        /// <summary>
+        /// add a wallet in the system
+        /// </summary>
+        /// <param name="resource"></param>
+        /// <returns></returns>
 
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SaveWalletResource resource)
@@ -48,7 +55,12 @@ namespace GoingTo_API.Controllers
             return Ok(walletResource);
         }
 
-
+        /// <summary>
+        /// modify a wallet in the system
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="resource"></param>
+        /// <returns></returns>
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAsync(int id, [FromBody] SaveWalletResource resource)
@@ -63,7 +75,11 @@ namespace GoingTo_API.Controllers
             return Ok(walletResource);
         }
 
-
+        /// <summary>
+        /// remove a wallet in the system
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)

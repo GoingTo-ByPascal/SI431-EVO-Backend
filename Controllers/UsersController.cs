@@ -24,7 +24,7 @@ namespace GoingTo_API.Controllers
         }
 
         /// <summary>
-        /// Returns all the users on the system.
+        /// returns all the users on the system.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -36,7 +36,11 @@ namespace GoingTo_API.Controllers
         }
 
 
-
+        /// <summary>
+        /// add an user in the system
+        /// </summary>
+        /// <param name="resource"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SaveUserResource resource)
         {
@@ -52,7 +56,12 @@ namespace GoingTo_API.Controllers
             return Ok(userResource);
         }
 
-
+        /// <summary>
+        /// modify an user in the system
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="resource"></param>
+        /// <returns></returns>
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAsync(int id, [FromBody] SaveUserResource resource)
@@ -67,7 +76,11 @@ namespace GoingTo_API.Controllers
             return Ok(userResource);
         }
 
-
+        /// <summary>
+        /// remove an user in the system
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)

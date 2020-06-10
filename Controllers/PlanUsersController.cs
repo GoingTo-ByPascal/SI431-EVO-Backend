@@ -24,9 +24,6 @@ namespace GoingTo_API.Controllers
             _mapper = mapper;
         }
 
-        //httpget de todos los usuarios pertenecientes a un plan 
-        //donde EndDate debe ser menor a la actual whattheactualfuck???????????? :o
-
         /// <summary>
         /// assign a plan to an user in the system
         /// </summary>

@@ -27,7 +27,7 @@ namespace GoingTo_API.Controllers
         /// <summary>
         /// returns one review  by id
         /// </summary>
-        /// <param name="id" example="1">The review Id</param>
+        /// <param name="id" example="1">the review Id</param>
         /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(int id)
@@ -42,9 +42,9 @@ namespace GoingTo_API.Controllers
         /// <summary>
         /// creates a review in the system
         /// </summary>
-        /// <param name="resource">A review resource</param>
-        /// <response code="201">Creates a review in the system</response>
-        /// <response code="400">Unable to create the review due validation</response>
+        /// <param name="resource">a review resource</param>
+        /// <response code="201">creates a review in the system</response>
+        /// <response code="400">unable to create the review due validation</response>
         /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SaveReviewResource resource)

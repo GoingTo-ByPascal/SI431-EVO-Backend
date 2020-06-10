@@ -26,7 +26,7 @@ namespace GoingTo_API.Controllers
             _placeService = placeService;
         }
         /// <summary>
-        /// Returns al the places in the system.
+        /// returns al the places in the system.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -38,11 +38,11 @@ namespace GoingTo_API.Controllers
         }
 
         /// <summary>
-        /// Creates a place in the system
+        /// creates a place in the system
         /// </summary>
-        /// <param name="resource">A place resource</param>
-        /// <response code="201">Creates a place in the system</response>
-        /// <response code="400">Unable to create the place due validation</response>
+        /// <param name="resource">a place resource</param>
+        /// <response code="201">creates a place in the system</response>
+        /// <response code="400">unable to create the place due validation</response>
         /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SavePlaceResource resource)
@@ -59,9 +59,9 @@ namespace GoingTo_API.Controllers
             return Ok(placeResource);
         }
         /// <summary>
-        /// Returns one place  by id
+        /// returns one place  by id
         /// </summary>
-        /// <param name="id" example="1">The place Id</param>
+        /// <param name="id" example="1">the place Id</param>
         /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> FindById(int id)
@@ -73,7 +73,7 @@ namespace GoingTo_API.Controllers
             return Ok(placeResource);
         }
         /// <summary>
-        /// Allows to change the name of a place
+        /// allows to change the name of a place
         /// </summary>
         /// <param name="id"></param>
         /// <param name="resource"></param>

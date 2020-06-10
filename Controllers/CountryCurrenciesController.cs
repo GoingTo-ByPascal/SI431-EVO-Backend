@@ -35,11 +35,11 @@ namespace GoingTo_API.Controllers
         }
 
         /// <summary>
-        /// Assign a currency to a country
+        /// assign a currency to a country
         /// </summary>
-        /// <param name="countryId">CountryId</param>
+        /// <param name="countryId">countryId</param>
         /// <param name="currencyId"></param>
-        /// <response code="204">The currency was asigned successfully</response>
+        /// <response code="204">the currency was asigned successfully</response>
         /// <returns></returns>
         [HttpPut("{currencyId}")]
         public async Task<IActionResult> AssignCountryCurrency(int countryId, int currencyId)

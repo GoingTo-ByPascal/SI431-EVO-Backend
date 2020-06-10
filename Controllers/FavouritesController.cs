@@ -25,10 +25,10 @@ namespace GoingTo_API.Controllers
             _mapper = mapper;
         }
         /// <summary>
-        /// Returns all the favourites locatables of one user in the system.
+        /// returns all the favourites locatables of one user in the system.
         /// </summary>
-        /// <param name="userId">The user id</param>
-        /// <response code="200">Returns all the favourites locatables of one user in the system. </response>
+        /// <param name="userId">the user id</param>
+        /// <response code="200">returns all the favourites locatables of one user in the system. </response>
         /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<LocatableResource>> GetAllByUserIdAsync(int userId)
@@ -53,11 +53,11 @@ namespace GoingTo_API.Controllers
             return Ok(locatableResource);
         }
         /// <summary>
-        /// Delete a favourite locatable from one user
+        /// delete a favourite locatable from one user
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="locatableId"></param>
-        /// <response code="204">The favourite locatable was unasigned successfully</response>
+        /// <response code="204">the favourite locatable was unasigned successfully</response>
         /// <returns></returns>
         [HttpDelete("LocatableId")]
         public async Task<IActionResult> UnassignFavourite(int userId, int locatableId)

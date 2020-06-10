@@ -28,7 +28,7 @@ namespace GoingTo_API.Controllers
         /// returns all the places that belong to this category
         /// </summary>
         /// <param name="categoryId" example="1"></param>
-        /// <response code="200">Returns all the places in the category.</response>
+        /// <response code="200">returns all the places in the category.</response>
         /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<PlaceResource>> GetAllByCategoryIdAsync(int categoryId)

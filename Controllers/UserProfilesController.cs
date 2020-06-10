@@ -20,7 +20,10 @@ namespace GoingTo_API.Controllers
         }
 
 
-
+        /// <summary>
+        /// returns all the profiles in the system
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<ProfileResource>> GetAllAsync()
         {
@@ -30,7 +33,11 @@ namespace GoingTo_API.Controllers
         }
 
 
-
+        /// <summary>
+        /// add a profile in the system
+        /// </summary>
+        /// <param name="resource"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SaveProfileResource resource)
         {
@@ -47,7 +54,12 @@ namespace GoingTo_API.Controllers
         }
 
 
-
+        /// <summary>
+        /// modify a profile in the system
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="resource"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAsync(int id, [FromBody] SaveProfileResource resource)
         {
@@ -62,7 +74,11 @@ namespace GoingTo_API.Controllers
         }
 
 
-
+        /// <summary>
+        /// remove a profile in the system
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)

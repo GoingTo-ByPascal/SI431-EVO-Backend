@@ -27,7 +27,7 @@ namespace GoingTo_API.Controllers
         /// <summary>
         /// returns all the achievements in the system.
         /// </summary>
-        /// <response code="200">Returns all the achievements in the system.</response>
+        /// <response code="200">returns all the achievements in the system.</response>
         /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<AchievementResource>> GetAllAsync()

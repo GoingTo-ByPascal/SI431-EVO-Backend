@@ -21,9 +21,9 @@ namespace GoingTo_API.Controllers
             _mapper = mapper;
         }
         /// <summary>
-        /// Returns all the countries in the system
+        /// returns all the countries in the system
         /// </summary>
-        /// <response code="200">Returns all the countries in the system</response>
+        /// <response code="200">returns all the countries in the system</response>
         /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<CountryResource>> GetAllAsync()
@@ -33,9 +33,9 @@ namespace GoingTo_API.Controllers
             return resources;
         }
         /// <summary>
-        /// Returns a country by searching in id
+        /// returns a country by searching in id
         /// </summary>
-        /// <param name="id" example="1">The country id</param>
+        /// <param name="id" example="1">the country id</param>
         /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)

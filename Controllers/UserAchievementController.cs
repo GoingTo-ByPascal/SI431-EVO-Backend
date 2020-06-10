@@ -26,7 +26,7 @@ namespace GoingTo_API.Controllers
             _userAchievementService = userAchievementService;
         }
         /// <summary>
-        /// Returns all the achievements of an user
+        /// returns all the achievements of an user
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
@@ -40,7 +40,7 @@ namespace GoingTo_API.Controllers
         }
 
         /// <summary>
-        /// Assign an achievement to an users
+        /// assign an achievement to an users
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="achievementId"></param>
@@ -57,11 +57,11 @@ namespace GoingTo_API.Controllers
 
         }
         /// <summary>
-        /// Delete an achivement from one user
+        /// delete an achivement from one user
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="achievementId"></param>
-        /// <response code="204">The achievement was unasigned successfully</response>
+        /// <response code="204">the achievement was unasigned successfully</response>
         /// <returns></returns>
         [HttpDelete("achievementId")]
         public async Task<IActionResult> UnassignUserAchievement(int userId, int achievementId)
