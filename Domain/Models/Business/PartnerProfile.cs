@@ -12,6 +12,7 @@ namespace GoingTo_API.Domain.Models.Business
         public string Telephone { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
+        public int PartnerId { get; set; }
         public Partner Partner { get; set; }
     }
 }
