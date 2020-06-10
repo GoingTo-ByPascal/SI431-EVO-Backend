@@ -23,6 +23,7 @@ namespace GoingTo_API.Mapping
             CreateMap<SaveTipResource, Tip>();
             CreateMap<SavePlanResource, Plan>();
             CreateMap<SavePartnerResource, Partner>();
+            CreateMap<SaveBenefitResource, Benefit>();
         }
     }
 }

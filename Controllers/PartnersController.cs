@@ -16,12 +16,12 @@ using Ubiety.Dns.Core.Records.NotUsed;
 namespace GoingTo_API.Controllers
 {
     [Route ("/api/partners")]
-    public class PartnerController : Controller
+    public class PartnersController : Controller
     {
         private readonly IPartnerService _partnerService;
         private readonly IMapper _mapper;
 
-        public PartnerController(IPartnerService partnerService, IMapper mapper)
+        public PartnersController(IPartnerService partnerService, IMapper mapper)
         {
             _partnerService = partnerService;
             _mapper = mapper;

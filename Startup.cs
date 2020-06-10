@@ -24,6 +24,7 @@ using GoingTo_API.Domain.Repositories.Accounts;
 using GoingTo_API.Domain.Services.Accounts;
 using GoingTo_API.Domain.Repositories.Business;
 using GoingTo_API.Domain.Services.Business;
+using GoingTo_API.Domain.Models.Business;
 
 namespace GoingTo_API
 {
@@ -69,6 +70,7 @@ namespace GoingTo_API
             services.AddScoped<IPlanRepository, PlanRepository>();
             services.AddScoped<IUserPlanRepository, UserPlanRepository>();
             services.AddScoped<IPartnerRepository, PartnerRepository>();
+            services.AddScoped<IBenefitRepository, BenefitRepository>();
 
             services.AddScoped<ILocatableService, LocatableService>();
             services.AddScoped<IUserService, UserService>();
@@ -93,6 +95,7 @@ namespace GoingTo_API
             services.AddScoped<IPlanService, PlanService>();
             services.AddScoped<IUserPlanService, UserPlanService>();
             services.AddScoped<IPartnerService, PartnerService>();
+            services.AddScoped<IBenefitService, BenefitService>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 

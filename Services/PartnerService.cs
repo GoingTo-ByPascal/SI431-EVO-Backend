@@ -66,7 +66,7 @@ namespace GoingTo_API.Services
             }
             catch(Exception ex)
             {
-                return new PartnerResponse($"An error ocurred while saving the user: {ex.Message}");
+                return new PartnerResponse($"An error ocurred while saving the partner: {ex.Message}");
             }
         }
 

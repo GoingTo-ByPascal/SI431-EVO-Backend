@@ -26,6 +26,7 @@ namespace GoingTo_API.Mapping
             CreateMap<Plan, PlanResource>();
             CreateMap<PlanUser, UserPlanResource>();
             CreateMap<Partner, PartnerResource>();
+            CreateMap<Benefit, BenefitResource>();
         }
     }
 }
