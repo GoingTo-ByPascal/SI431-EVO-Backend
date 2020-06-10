@@ -317,7 +317,10 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             builder.Entity<PlanBenefit>().ToTable("PlanBenefits");
             builder.Entity<PlanBenefit>().HasKey(p => p.Id);
+            builder.Entity<PlanBenefit>().HasKey(p => new { p.BenefitId, p.PlanId });
             builder.Entity<PlanBenefit>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<PlanBenefit>().Property(p => p.StartDate).HasDefaultValueSql("getdate()");
+            builder.Entity<PlanBenefit>().Property(p => p.EndDate);
 
             //PlanUsers Entity
 
