@@ -1,4 +1,5 @@
 ﻿using GoingTo_API.Domain.Models;
+using GoingTo_API.Domain.Models.Accounts;
 using GoingTo_API.Domain.Persistence.Context;
 using GoingTo_API.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
