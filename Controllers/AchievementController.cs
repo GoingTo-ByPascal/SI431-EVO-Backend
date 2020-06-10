@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GoingTo_API.Domain.Models;
+using GoingTo_API.Domain.Models.Accounts;
 using GoingTo_API.Domain.Services;
 using GoingTo_API.Domain.Services.Communications;
 using GoingTo_API.Extensions;

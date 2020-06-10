@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using GoingTo_API.Domain.Models;
+using GoingTo_API.Domain.Models.Accounts;
 
 namespace GoingTo_API.Domain.Repositories
 {
