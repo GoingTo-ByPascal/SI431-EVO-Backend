@@ -30,6 +30,7 @@ namespace GoingTo_API.Mapping
             CreateMap<PlanBenefit, ViewPlanBenefitResource>();
             CreateMap<PlanBenefit, PlanBenefitResource>();
             CreateMap<PartnerProfile, PartnerProfileResource>();
+            CreateMap<Promo, PromoResource>();
         }
     }
 }

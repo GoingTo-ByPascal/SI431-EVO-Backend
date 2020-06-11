@@ -25,6 +25,7 @@ namespace GoingTo_API.Mapping
             CreateMap<SavePartnerResource, Partner>();
             CreateMap<SaveBenefitResource, Benefit>();
             CreateMap<SavePartnerProfileResource, PartnerProfile>();
+            CreateMap<SavePromoResource, Promo>();
         }
     }
 }
