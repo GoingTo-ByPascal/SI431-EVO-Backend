@@ -245,6 +245,10 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .HasOne(p => p.PartnerProfile)
                 .WithOne(p => p.Partner)
                 .HasForeignKey<PartnerProfile>(p => p.PartnerId);
+            builder.Entity<Partner>()
+                .HasMany(p => p.PartnerServices)
+                .WithOne(p => p.Partner)
+                .HasForeignKey(p => p.PartnerId);
 
             //PartnerBenefit Entity
 
@@ -268,8 +272,6 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<PartnerService>().ToTable("PartnerServices");
             builder.Entity<PartnerService>().HasKey(p => p.Id);
             builder.Entity<PartnerService>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<PartnerService>().Property(p => p.Points);
-
             //Place Entity
 
             builder.Entity<Place>().ToTable("Places");
