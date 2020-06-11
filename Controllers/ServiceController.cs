@@ -22,7 +22,10 @@ namespace GoingTo_API.Controllers
             _serviceService = serviceService;
             _mapper = mapper;
         }
-
+        /// <summary>
+        /// returns all the services in the system
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
@@ -32,7 +35,11 @@ namespace GoingTo_API.Controllers
             var resources = _mapper.Map<IEnumerable<Service>, IEnumerable<ServiceResource>>(services);
             return Ok(resources);
         }
-
+        /// <summary>
+        /// returns a service by id.
+        /// </summary>
+        /// <param name="serviceId"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(int serviceId)
         {
@@ -42,7 +49,11 @@ namespace GoingTo_API.Controllers
             var resource = _mapper.Map<Service, ServiceResource>(service.Resource);
             return Ok(resource);
         }
-
+        /// <summary>
+        /// create a service in the system.
+        /// </summary>
+        /// <param name="resource"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody]SaveServiceResource resource)
         {
@@ -56,7 +67,12 @@ namespace GoingTo_API.Controllers
             var serviceResource = _mapper.Map<Service, ServiceResource>(result.Resource);
             return Ok(serviceResource);
         }
-
+        /// <summary>
+        /// modify a service in the system.
+        /// </summary>
+        /// <param name="resource"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAsync([FromBody] SaveServiceResource resource, int id )
         {

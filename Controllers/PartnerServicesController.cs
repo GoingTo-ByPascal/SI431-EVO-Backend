@@ -16,19 +16,25 @@ namespace GoingTo_API.Controllers
     [Route("/api/partners/{partnerId}/locatable/{locatableId}/services")]
     public class PartnerServicesController : Controller
     {
-        private readonly ILocatableService _locatableService;
         private readonly IServiceService _serviceService;
         private readonly IPartnerServiceService _partnerServiceService;
         private readonly IMapper _mapper;
 
-        public PartnerServicesController(ILocatableService locatableService, IServiceService serviceService, IPartnerServiceService partnerServiceService, IMapper mapper)
+        public PartnerServicesController(IServiceService serviceService, IPartnerServiceService partnerServiceService, IMapper mapper)
         {
-            _locatableService = locatableService;
             _serviceService = serviceService;
             _partnerServiceService = partnerServiceService;
             _mapper = mapper;
         }
 
+
+
+        /// <summary>
+        /// returns services by partner and locatables in the system
+        /// </summary>
+        /// <param name="partnerId"></param>
+        /// <param name="locatableId"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> GetServicesByPartnerIdAndLocatableId(int partnerId, int locatableId)
         {
@@ -39,6 +45,13 @@ namespace GoingTo_API.Controllers
             return Ok(resources);
         }
 
+        /// <summary>
+        /// assign a service to a partner in the system
+        /// </summary>
+        /// <param name="partnerId"></param>
+        /// <param name="locatableId"></param>
+        /// <param name="serviceId"></param>
+        /// <returns></returns>
         [HttpPost("{serviceId}")]
         public async Task<IActionResult> AssignPartnerService(int partnerId,int locatableId, int serviceId)
         {
@@ -50,6 +63,13 @@ namespace GoingTo_API.Controllers
             return Ok(partnerService);
         }
 
+        /// <summary>
+        /// unassign a service to a partner in the system
+        /// </summary>
+        /// <param name="partnerId"></param>
+        /// <param name="locatableId"></param>
+        /// <param name="serviceId"></param>
+        /// <returns></returns>
         [HttpDelete("{serviceId}")]
         public async Task<IActionResult> UnassignPartnerService(int partnerId, int locatableId, int serviceId)
         {
