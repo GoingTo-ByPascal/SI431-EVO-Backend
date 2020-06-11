@@ -25,7 +25,6 @@ namespace GoingTo_API.Domain.Persistence.Context
         public DbSet<Locatable> Locatables { get; set; }
         public DbSet<LocatablePromo> LocatablePromos { get; set; } 
         public DbSet<Partner> Partners { get; set; }
-        public DbSet<PartnerBenefit> PartnerBenefits { get; set; }
         public DbSet<PartnerProfile> PartnerProfiles { get; set; }
         public DbSet<PartnerService> PartnerServices { get; set; }
         public DbSet<Place> Places { get; set; }
@@ -63,16 +62,6 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Benefit>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Benefit>().Property(p => p.Name).IsRequired();
             builder.Entity<Benefit>().Property(p => p.Description).IsRequired();
-
-            builder.Entity<Benefit>()
-                .HasMany(p => p.PartnerBenefits)
-                .WithOne(p => p.Benefit)
-                .HasForeignKey(p => p.BenefitId);
-
-            builder.Entity<Benefit>()
-                .HasMany(p => p.PlanBenefits)
-                .WithOne(p => p.Benefit)
-                .HasForeignKey(p => p.BenefitId);
 
             //City Entity
 
@@ -231,10 +220,6 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Partner>().HasKey(p => p.Id);
             builder.Entity<Partner>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
 
-            builder.Entity<Partner>()
-                .HasMany(p => p.PartnerBenefits)
-                .WithOne(p => p.Partner)
-                .HasForeignKey(p => p.PartnetId);
             
             builder.Entity<Partner>()
                 .HasMany(p => p.Promos)
@@ -245,14 +230,6 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .HasOne(p => p.PartnerProfile)
                 .WithOne(p => p.Partner)
                 .HasForeignKey<PartnerProfile>(p => p.PartnerId);
-
-            //PartnerBenefit Entity
-
-            builder.Entity<PartnerBenefit>().ToTable("PartnerBenefits");
-            builder.Entity<PartnerBenefit>().HasKey(p => p.Id);
-            builder.Entity<PartnerBenefit>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<PartnerBenefit>().Property(p => p.StartDate);
-            builder.Entity<PartnerBenefit>().Property(p => p.EndDate);
 
             //PartnerProfile Entity
 
