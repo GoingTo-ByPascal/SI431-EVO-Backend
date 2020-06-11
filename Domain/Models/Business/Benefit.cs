@@ -11,6 +11,5 @@ namespace GoingTo_API.Domain.Models.Business
         public string Name { get; set; }
         public string Description { get; set; }
         public List<PlanBenefit> PlanBenefits { get; set; }
-        public List<PartnerBenefit> PartnerBenefits { get; set; }
     }
 }
