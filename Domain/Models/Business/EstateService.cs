@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Domain.Models.Interactions
 {
-    public class PartnerService
+    public class EstateService
     {
         public int Id { get; set; }
+        public string Text { get; set; }
         public Service Service { get; set; }
         public int ServiceId { get; set; }
-        public Partner Partner { get; set; }
-        public int PartnerId { get; set; }
-        public Locatable Locatable { get; set; }
-        public int LocatableId { get; set; }
+        public int EstateId { get; set; }
+        public Estate Estate { get; set; }
     }
 }
