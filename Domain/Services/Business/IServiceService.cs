@@ -9,7 +9,6 @@ namespace GoingTo_API.Domain.Services.Business
     public interface IServiceService
     {
         Task<IEnumerable<Service>> ListAllAsync();
-        Task<IEnumerable<Service>> ListByPartnerIdAndLocatableIdAsync(int partnerId, int locatableId);
         Task<ServiceResponse> GetByIdAsync(int serviceId);
         Task<ServiceResponse> SaveAsync(Service service);
         Task<ServiceResponse> UpdateAsync(int serviceId, Service service);

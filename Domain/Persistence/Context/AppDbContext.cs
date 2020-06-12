@@ -5,6 +5,7 @@ using GoingTo_API.Domain.Models.Geographic;
 using GoingTo_API.Domain.Models.Interactions;
 using GoingTo_API.Extensions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GoingTo_API.Domain.Persistence.Context
@@ -20,13 +21,14 @@ namespace GoingTo_API.Domain.Persistence.Context
         public DbSet<CountryCurrency> CountryCurrencies { get; set; }
         public DbSet<CountryLanguage> CountryLanguages { get; set; }
         public DbSet<Currency> Currencies { get; set; }
+        public DbSet<Estate> Estates { get; set; }
+        public DbSet<EstateService> EstateServices { get; set; }
         public DbSet<Favourite> Favourites { get; set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<Locatable> Locatables { get; set; }
         public DbSet<LocatablePromo> LocatablePromos { get; set; } 
         public DbSet<Partner> Partners { get; set; }
         public DbSet<PartnerProfile> PartnerProfiles { get; set; }
-        public DbSet<PartnerService> PartnerServices { get; set; }
         public DbSet<Place> Places { get; set; }
         public DbSet<PlaceCategory> PlaceCategories { get; set; } 
         public DbSet<Plan> Plans { get; set; } 
@@ -133,6 +135,27 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Currency>().Property(p => p.ShortName).IsRequired().HasMaxLength(3);
             builder.Entity<Currency>().Property(p => p.Unit).IsRequired().HasMaxLength(45);
 
+
+            //Estate Entity
+
+            builder.Entity<Estate>().ToTable("Estates");
+            builder.Entity<Estate>().HasKey(p => p.Id);
+            builder.Entity<Estate>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Estate>().Property(p => p.Name).IsRequired();
+            builder.Entity<Estate>().Property(p => p.Description).IsRequired();
+
+            builder.Entity<Estate>()
+                .HasMany(p => p.EstateServices)
+                .WithOne(p => p.Estate)
+                .HasForeignKey(p => p.EstateId);
+
+            //EstateService Entity
+
+            builder.Entity<EstateService>().ToTable("EstateServices");
+            builder.Entity<EstateService>().HasKey(p => p.Id);
+            builder.Entity<EstateService>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<EstateService>().Property(p => p.Text);
+
             //Favourite Entity
 
             builder.Entity<Favourite>().ToTable("Favourites");
@@ -203,9 +226,9 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .HasForeignKey(p => p.LocatableId);
 
             builder.Entity<Locatable>()
-                .HasOne(p => p.PartnerService)
+                .HasOne(p => p.Estate)
                 .WithOne(p => p.Locatable)
-                .HasForeignKey<PartnerService>(p => p.LocatableId);
+                .HasForeignKey<Estate>(p => p.LocatableId);
                 
 
             //LocatablePromo Entity
@@ -231,7 +254,7 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .WithOne(p => p.Partner)
                 .HasForeignKey<PartnerProfile>(p => p.PartnerId);
             builder.Entity<Partner>()
-                .HasMany(p => p.PartnerServices)
+                .HasMany(p => p.Estates)
                 .WithOne(p => p.Partner)
                 .HasForeignKey(p => p.PartnerId);
 
@@ -244,11 +267,7 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<PartnerProfile>().Property(p => p.Email);
             builder.Entity<PartnerProfile>().Property(p => p.Address);
 
-            //PartnerService Entity
-
-            builder.Entity<PartnerService>().ToTable("PartnerServices");
-            builder.Entity<PartnerService>().HasKey(p => p.Id);
-            builder.Entity<PartnerService>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            
             //Place Entity
 
             builder.Entity<Place>().ToTable("Places");
@@ -343,7 +362,7 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Service>().Property(p => p.Name).IsRequired();
 
             builder.Entity<Service>()
-                .HasMany(p => p.PartnerServices)
+                .HasMany(p => p.EstateServices)
                 .WithOne(p => p.Service)
                 .HasForeignKey(p => p.ServiceId);
 
