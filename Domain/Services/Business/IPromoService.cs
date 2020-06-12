@@ -15,5 +15,6 @@ namespace GoingTo_API.Domain.Services.Business
         Task<PromoResponse> DeleteAsync(int id);
         Task<PromoResponse> GetByIdAsync(int id);
         Task<IEnumerable<Promo>> ListPromoByPartnerId(int partnerId);
+        Task<IEnumerable<Promo>> ListByLocatableId(int locatableId);
     }
 }

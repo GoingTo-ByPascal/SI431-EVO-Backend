@@ -14,11 +14,13 @@ namespace GoingTo_API.Services
     public class PromoService : IPromoService
     {
         private readonly IPromoRepository _promoRepository;
+        private readonly ILocatablePromoRepository _locatablePromoRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public PromoService(IPromoRepository promoRepository, IUnitOfWork unitOfWork)
+        public PromoService(IPromoRepository promoRepository,ILocatablePromoRepository locatablePromoRepository ,IUnitOfWork unitOfWork)
         {
             _promoRepository = promoRepository;
+            _locatablePromoRepository = locatablePromoRepository;
             _unitOfWork = unitOfWork;
         }
 
@@ -52,6 +54,13 @@ namespace GoingTo_API.Services
         public async Task<IEnumerable<Promo>> ListAsync()
         {
             return await _promoRepository.ListAsync();
+        }
+
+        public async Task<IEnumerable<Promo>> ListByLocatableId(int locatableId)
+        {
+            var locatablePromo = await _locatablePromoRepository.ListByLocatableIdAsync(locatableId);
+            var promos = locatablePromo.Select(p => p.Promo).ToList();
+            return promos;
         }
 
         public async Task<IEnumerable<Promo>> ListPromoByPartnerId(int partnerId)
