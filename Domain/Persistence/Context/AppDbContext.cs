@@ -153,6 +153,7 @@ namespace GoingTo_API.Domain.Persistence.Context
 
             builder.Entity<EstateService>().ToTable("EstateServices");
             builder.Entity<EstateService>().HasKey(p => p.Id);
+            builder.Entity<EstateService>().HasKey(p => new { p.EstateId, p.ServiceId });
             builder.Entity<EstateService>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<EstateService>().Property(p => p.Text);
 
