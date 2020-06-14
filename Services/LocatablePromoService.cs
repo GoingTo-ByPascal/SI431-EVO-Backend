@@ -56,6 +56,7 @@ namespace GoingTo_API.Services
             {
                 LocatablePromo locatablePromo = await _locatablePromoRepository.FindByLocatableIdAndPromoId(locatableId, promoId);
                 _locatablePromoRepository.Remove(locatablePromo);
+                await _unitOfWork.CompleteAsync();
                 return new LocatablePromoResponse(locatablePromo);
             }
             catch (Exception ex)

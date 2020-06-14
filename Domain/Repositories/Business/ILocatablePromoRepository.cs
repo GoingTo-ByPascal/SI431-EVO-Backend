@@ -9,7 +9,7 @@ namespace GoingTo_API.Domain.Repositories.Business
     {
         Task<IEnumerable<LocatablePromo>> ListAsync();
         Task<IEnumerable<LocatablePromo>> ListByLocatableIdAsync(int locatableId);
-        Task<IEnumerable<LocatablePromo>> ListByPromoIdAsync(int locatableId);
+        Task<IEnumerable<LocatablePromo>> ListByPromoIdAsync(int promoId);
         Task<LocatablePromo> FindByLocatableIdAndPromoId(int locatableId, int promoId);
         Task AddAsync(LocatablePromo locatablePromo);
         void Remove(LocatablePromo locatablePromo);
