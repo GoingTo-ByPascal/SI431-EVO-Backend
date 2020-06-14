@@ -213,6 +213,8 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<LocatablePromo>().ToTable("LocatablePromos");
             builder.Entity<LocatablePromo>().HasKey(p => p.Id);
             builder.Entity<LocatablePromo>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<LocatablePromo>().HasKey(p => new { p.LocatableId, p.PromoId });
+
 
             //Partner Entity
 

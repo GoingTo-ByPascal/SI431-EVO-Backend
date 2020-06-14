@@ -23,6 +23,11 @@ namespace GoingTo_API.Persistence.Repositories
         public async Task AssignLocatablePromo(int locatableId, int promoId)
         {
             LocatablePromo locatablePromo = await FindByLocatableIdAndPromoId(locatableId, promoId);
+            if(locatablePromo==null)
+            {
+                locatablePromo = new LocatablePromo { LocatableId = locatableId, PromoId = promoId };
+                await AddAsync(locatablePromo);
+            }
         }
 
         public async Task<LocatablePromo> FindByLocatableIdAndPromoId(int locatableId, int promoId)
