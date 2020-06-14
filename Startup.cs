@@ -71,6 +71,13 @@ namespace GoingTo_API
             services.AddScoped<IUserPlanRepository, UserPlanRepository>();
             services.AddScoped<IPartnerRepository, PartnerRepository>();
             services.AddScoped<IBenefitRepository, BenefitRepository>();
+            services.AddScoped<IPlanBenefitRepository, PlanBenefitRepository>();
+            services.AddScoped<IPartnerProfileRepository, PartnerProfileRepository>();
+            services.AddScoped<IPromoRepository, PromoRepository>();
+            services.AddScoped<ILocatablePromoRepository, LocatablePromoRepository>();
+            services.AddScoped<IEstateRepository, EstateRepository>();
+            services.AddScoped<IEstateServiceRepository, EstateServiceRepository>();
+
 
             services.AddScoped<ILocatableService, LocatableService>();
             services.AddScoped<IUserService, UserService>();
@@ -96,6 +103,13 @@ namespace GoingTo_API
             services.AddScoped<IUserPlanService, UserPlanService>();
             services.AddScoped<IPartnerService, PartnerService>();
             services.AddScoped<IBenefitService, BenefitService>();
+            services.AddScoped<IPlanBenefitService, PlanBenefitService>();
+            services.AddScoped<IPartnerProfileService, PartnerProfileService>();
+            services.AddScoped<IPromoService, PromoService>();
+            services.AddScoped<ILocatablePromoService, LocatablePromoService>();
+            services.AddScoped<IEstateService, EstateService>();
+            services.AddScoped<IEstateServiceService, EstateServiceService>();
+
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 

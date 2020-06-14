@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GoingTo_API.Domain.Models.Business
+namespace GoingTo_API.Resources.SaveResources
 {
-    public class Benefit
+    public class SaveEstateResource
     {
-        public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
+        [MaxLength(500)]
         public string Description { get; set; }
-        public List<PlanBenefit> PlanBenefits { get; set; }
     }
 }

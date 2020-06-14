@@ -3,6 +3,7 @@ using GoingTo_API.Domain.Models.Accounts;
 using GoingTo_API.Resources;
 using GoingTo_API.Domain.Models;
 using GoingTo_API.Domain.Models.Business;
+using GoingTo_API.Domain.Models.Interactions;
 
 namespace GoingTo_API.Mapping
 {
@@ -27,6 +28,12 @@ namespace GoingTo_API.Mapping
             CreateMap<PlanUser, UserPlanResource>();
             CreateMap<Partner, PartnerResource>();
             CreateMap<Benefit, BenefitResource>();
+            CreateMap<PlanBenefit, ViewPlanBenefitResource>();
+            CreateMap<PlanBenefit, PlanBenefitResource>();
+            CreateMap<PartnerProfile, PartnerProfileResource>();
+            CreateMap<Promo, PromoResource>();
+            CreateMap<Estate, EstateResource>();
+            CreateMap<EstateService, EstateServiceResource>();
         }
     }
 }
