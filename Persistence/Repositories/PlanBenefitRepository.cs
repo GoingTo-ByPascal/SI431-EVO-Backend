@@ -11,9 +11,8 @@ namespace GoingTo_API.Persistence.Repositories
 {
     public class PlanBenefitRepository : BaseRepository, IPlanBenefitRepository
     {
-        public PlanBenefitRepository(AppDbContext context) : base(context)
-        {
-        }
+        public PlanBenefitRepository(AppDbContext context) : base(context) { }
+       
 
         public async Task AddAsync(PlanBenefit planBenefit)
         {
@@ -69,7 +68,7 @@ namespace GoingTo_API.Persistence.Repositories
         public async void UnassignPlanBenefit(int planId, int benefitId)
         {
             PlanBenefit planBenefit = await FindByPlanIdAndBenefitId(planId, benefitId);
-            if (planBenefit == null)
+            if (planBenefit != null)
                 Remove(planBenefit);
         }
     }

@@ -15,13 +15,11 @@ namespace GoingTo_API.Services
     public class ServiceService : IServiceService
     {
         private readonly IServiceRepository _serviceRepository;
-        private readonly IPartnerServiceRepository _partnerServiceRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public ServiceService( IServiceRepository serviceRepository,IPartnerServiceRepository partnerServiceRepository, IUnitOfWork unitOfWork)
+        public ServiceService( IServiceRepository serviceRepository, IUnitOfWork unitOfWork)
         {
             _serviceRepository = serviceRepository;
-            _partnerServiceRepository = partnerServiceRepository;
             _unitOfWork = unitOfWork;
         }
 
@@ -85,13 +83,6 @@ namespace GoingTo_API.Services
             {
                 return new ServiceResponse($"An error ocurred while updating service: {ex.Message}");
             }
-        }
-
-        public async Task<IEnumerable<Service>> ListByPartnerIdAndLocatableIdAsync(int partnerId, int locatableId)
-        {
-            var partnerService = await _partnerServiceRepository.ListByLocatableIdAndPartnerIdAsync(locatableId,partnerId);
-            var services = partnerService.Select(p => p.Service).ToList();
-            return services;
         }
 
     }
