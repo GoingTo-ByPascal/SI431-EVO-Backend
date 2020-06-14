@@ -87,7 +87,7 @@ namespace GoingTo_API.Controllers
             return Ok(categoryResource);
         }
         /// <summary>
-        /// delete a category in the system
+        /// delete a category from the system
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
