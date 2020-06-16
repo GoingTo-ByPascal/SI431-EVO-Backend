@@ -9686,11 +9686,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Universidad\\5to Ciclo\\going-to\\goingto-api\\SI653-AW-API\\GoingTo-Test\\GoingTo-Test.csproj",
+      "projectUniqueName": "D:\\Universidad\\5to Ciclo\\going-to\\goingto-api\\GoingTo-Test\\GoingTo-Test.csproj",
       "projectName": "GoingTo-Test",
-      "projectPath": "D:\\Universidad\\5to Ciclo\\going-to\\goingto-api\\SI653-AW-API\\GoingTo-Test\\GoingTo-Test.csproj",
+      "projectPath": "D:\\Universidad\\5to Ciclo\\going-to\\goingto-api\\GoingTo-Test\\GoingTo-Test.csproj",
       "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-      "outputPath": "D:\\Universidad\\5to Ciclo\\going-to\\goingto-api\\SI653-AW-API\\GoingTo-Test\\obj\\",
+      "outputPath": "D:\\Universidad\\5to Ciclo\\going-to\\goingto-api\\GoingTo-Test\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9706,8 +9706,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\Universidad\\5to Ciclo\\going-to\\goingto-api\\SI653-AW-API\\GoingTo-API\\GoingTo-API.csproj": {
-              "projectPath": "D:\\Universidad\\5to Ciclo\\going-to\\goingto-api\\SI653-AW-API\\GoingTo-API\\GoingTo-API.csproj"
+            "D:\\Universidad\\5to Ciclo\\going-to\\goingto-api\\GoingTo-API\\GoingTo-API.csproj": {
+              "projectPath": "D:\\Universidad\\5to Ciclo\\going-to\\goingto-api\\GoingTo-API\\GoingTo-API.csproj"
             }
           }
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YMfE1p3kSp5BnpVb0ttl3Pojc08VSxUv8SmSHt9BSGNwIVIPnQlSHEmHTTTaDoe15HKvZDP7UXn1gV6pMwI4Fg==",
+  "dgSpecHash": "xqw6SATP4B+3D7lukTG6/F1X6jmsD0I7/dqSGohjPjWpGbBnxngkPk5sx5X1ai+mBCucyjmJBk35nWN7I+BFqQ==",
   "success": true,
-  "projectFilePath": "D:\\Universidad\\5to Ciclo\\going-to\\goingto-api\\SI653-AW-API\\GoingTo-Test\\GoingTo-Test.csproj",
+  "projectFilePath": "D:\\Universidad\\5to Ciclo\\going-to\\goingto-api\\GoingTo-Test\\GoingTo-Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USUARIO\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\USUARIO\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
