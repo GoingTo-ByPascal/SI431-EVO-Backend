@@ -23,4 +23,8 @@
     <Folder Include="Tests\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GoingTo-API\GoingTo-API.csproj" />
+  </ItemGroup>
+
 </Project>
