@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoingTo-API", "GoingTo-API.csproj", "{AB90C932-1238-439C-B01B-8F4993169C4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoingTo-Test", "..\GoingTo-Test\GoingTo-Test.csproj", "{DD3DE195-3B07-46B4-9C3B-4CFD2BED0027}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoingTo-Test", "..\GoingTo-Test\GoingTo-Test.csproj", "{DD3DE195-3B07-46B4-9C3B-4CFD2BED0027}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
