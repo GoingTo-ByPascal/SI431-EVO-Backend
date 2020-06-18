@@ -1,3 +1,4 @@
+using GoingTo_API.Domain.Models;
 using GoingTo_API.Domain.Models.Geographic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
@@ -40,5 +41,18 @@ namespace GoingTo_Test
 
             var response = client.Execute<Category>(request).Content;
         }
+
+        [TestMethod]
+        public void TestMethod3()
+        {
+            var client = new RestClient("https://goingto.azurewebsites.net/api");
+
+            var request = new RestRequest("/estates/{estateId}/reviews", Method.GET);
+            request.AddUrlSegment("estateId", 1);
+
+            var response = client.Execute<Review>(request).Content;
+        }
+
+
     }
 }
