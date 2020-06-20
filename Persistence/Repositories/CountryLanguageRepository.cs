@@ -36,7 +36,7 @@ namespace GoingTo_API.Persistence.Repositories
         public async Task<IEnumerable<CountryLanguage>> ListAsync()
         {
             return await _context.CountryLanguages
-             .Include(ua => ua.Country)
+             .Include(ua => ua.Country.Locatable)
              .Include(ua => ua.Language)
              .ToListAsync();
         }
@@ -45,7 +45,7 @@ namespace GoingTo_API.Persistence.Repositories
         {
             return await _context.CountryLanguages
              .Where(ua => ua.CountryId == countryId)
-             .Include(ua => ua.Country)
+             .Include(ua => ua.Country.Locatable)
              .Include(ua => ua.Language)
              .ToListAsync();
         }
@@ -54,7 +54,7 @@ namespace GoingTo_API.Persistence.Repositories
         {
             return await _context.CountryLanguages
            .Where(ua => ua.LanguageId == languageId)
-           .Include(ua => ua.Country)
+           .Include(ua => ua.Country.Locatable)
            .Include(ua => ua.Language)
            .ToListAsync();
         }
