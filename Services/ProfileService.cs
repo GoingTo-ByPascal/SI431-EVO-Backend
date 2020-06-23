@@ -88,5 +88,13 @@ namespace GoingTo_API.Services
                 return new ProfileResponse($"An error ocurred while deleting profile : {ex.Message}");
             }
         }
+
+        public async Task<ProfileResponse> FindById(int userProfileId)
+        {
+            var existingUserProfile = await _profileRepository.FindById(userProfileId);
+            if (existingUserProfile == null)
+                return new ProfileResponse("Profile not found");
+            return new ProfileResponse(existingUserProfile);
+        }
     }
 }

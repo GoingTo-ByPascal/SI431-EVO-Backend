@@ -28,7 +28,10 @@ namespace GoingTo_API.Persistence.Repositories
         }
         public async Task<Review> FindById(int id)
         {
-            return await _context.Reviews.FindAsync(id);
+            return await _context.Reviews
+                .Where(p=>p.Id == id)
+                .Include(p=>p.UserProfile)
+                .FirstAsync();
         }
 
         public async Task<IEnumerable<Review>> ListAsync()
@@ -40,15 +43,15 @@ namespace GoingTo_API.Persistence.Repositories
             return await _context.Reviews
                 .Where(p => p.LocatableId == locatableId)
                 .Include(p => p.Locatable)
-                .Include(p=>p.User)
+                .Include(p=>p.UserProfile)
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Review>> ListByUserIdAsync(int userId)
+        public async Task<IEnumerable<Review>> ListByUserProfileIdAsync(int userProfileId)
         {
             return await _context.Reviews
-                .Where(p => p.UserId == userId)
-                .Include(p=> p.User)
+                .Where(p => p.UserProfileId == userProfileId)
+                .Include(p=> p.UserProfile)
                 .ToListAsync();
         }
     }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
-    [Route("/api/users/{userId}/reviews")]
+    [Route("/api/userprofile/{userProfileId}/reviews")]
     [Produces("application/json")]
     public class UserReviewsController : Controller
     {
@@ -26,12 +26,12 @@ namespace GoingTo_API.Controllers
         /// <summary>
         /// returns all the reviews of a user
         /// </summary>
-        /// <param name="userId"></param>
+        /// <param name="userProfileId"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IEnumerable<ReviewResource>> GetAllByUserIdAsync(int userId)
+        public async Task<IEnumerable<ReviewResource>> GetAllByUserIdAsync(int userProfileId)
         {
-            var reviews = await _reviewService.ListByUserIdAsync(userId);
+            var reviews = await _reviewService.ListByUserProfileIdAsync(userProfileId);
             var resources = _mapper.Map<IEnumerable<Review>, IEnumerable<ReviewResource>>(reviews);
             return resources;
         }

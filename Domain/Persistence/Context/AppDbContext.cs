@@ -65,6 +65,12 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Benefit>().Property(p => p.Name).IsRequired();
             builder.Entity<Benefit>().Property(p => p.Description).IsRequired();
 
+            //Category Entity
+            builder.Entity<Category>().ToTable("Categories");
+            builder.Entity<Category>().HasKey(p => p.Id);
+            builder.Entity<Category>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Category>().Property(p => p.Name).IsRequired();
+
             //City Entity
 
             builder.Entity<City>().ToTable("Cities");
@@ -338,7 +344,7 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<Review>().HasKey(p => p.Id);
             builder.Entity<Review>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Review>().Property(p => p.LocatableId).IsRequired(); 
-            builder.Entity<Review>().Property(p => p.UserId).IsRequired();
+            builder.Entity<Review>().Property(p => p.UserProfileId).IsRequired();
             builder.Entity<Review>().Property(p => p.Comment).IsRequired();
             builder.Entity<Review>().Property(p => p.Stars).IsRequired();
             builder.Entity<Review>().Property(p => p.ReviewedAt);
@@ -377,17 +383,10 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .HasForeignKey<UserProfile>(p => p.UserId);
 
             builder.Entity<User>()
-                .HasMany(p => p.Reviews)
-                .WithOne(p => p.User)
-                .HasForeignKey(p => p.UserId);
-            builder.Entity<User>()
                 .HasMany(p => p.Favourites)
                 .WithOne(p => p.User)
                 .HasForeignKey(p => p.UserId);
-            builder.Entity<User>()
-                .HasMany(p => p.Tips)
-                .WithOne(p => p.User)
-                .HasForeignKey(p => p.UserId);
+            
 
 
             //UserAchievements Entity 
@@ -420,6 +419,15 @@ namespace GoingTo_API.Domain.Persistence.Context
             builder.Entity<UserProfile>().Property(p => p.CreatedAt);
             builder.Entity<UserProfile>().Property(p => p.CountryId).IsRequired();
 
+            builder.Entity<UserProfile>()
+                .HasMany(p => p.Reviews)
+                .WithOne(p => p.UserProfile)
+                .HasForeignKey(p => p.UserProfileId);
+
+            builder.Entity<UserProfile>()
+                .HasMany(p => p.Tips)
+                .WithOne(p => p.UserProfile)
+                .HasForeignKey(p => p.UserProfileId);
 
             //Wallet Entity
 
@@ -432,11 +440,7 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .WithOne(p => p.Wallet)
                 .HasForeignKey<User>(p => p.WalletId);
             
-            //Category Entity
-            builder.Entity<Category>().ToTable("Categories");
-            builder.Entity<Category>().HasKey(p => p.Id);
-            builder.Entity<Category>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Category>().Property(p => p.Name).IsRequired();
+           
 
             
 
