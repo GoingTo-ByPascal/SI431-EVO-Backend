@@ -11,5 +11,6 @@ namespace GoingTo_API.Domain.Services
         Task<CountryResponse> GetByFullNameAsync(string fullname);
         Task<CountryResponse> GetByIdAsync(int id);
         Task<IEnumerable<Country>> ListByCurrencyIdAsync(int currencyId);
+        Task<IEnumerable<Country>> ListByLanguageIdAsync(int languageId);
     }
 }

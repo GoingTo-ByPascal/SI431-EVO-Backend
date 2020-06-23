@@ -3,6 +3,7 @@ using GoingTo_API.Domain.Repositories;
 using GoingTo_API.Domain.Repositories.Geographic;
 using GoingTo_API.Domain.Services;
 using GoingTo_API.Domain.Services.Communications;
+using GoingTo_API.Domain.Services.Geographic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +15,15 @@ namespace GoingTo_API.Services
     {
         private readonly ICountryRepository _countryRepository;
         private readonly ICountryCurrencyRepository _countryCurrencyRepository;
-        
-        public CountryService(ICountryRepository countryRepository,ICountryCurrencyRepository countryCurrencyRepository)
+        private readonly ICountryLanguageService _countryLanguageService;
+
+        public CountryService(ICountryRepository countryRepository, ICountryCurrencyRepository countryCurrencyRepository, ICountryLanguageService countryLanguageService)
         {
             _countryRepository = countryRepository;
             _countryCurrencyRepository = countryCurrencyRepository;
+            _countryLanguageService = countryLanguageService;
         }
+
         public async Task<CountryResponse> GetByIdAsync(int id)
         {
             var existingCountry = await _countryRepository.FindById(id);
@@ -49,6 +53,13 @@ namespace GoingTo_API.Services
             var countries = countryCurrencies.Select(cc => cc.Country).ToList();
             return countries;
 
+        }
+
+        public async Task<IEnumerable<Country>> ListByLanguageIdAsync(int languageId)
+        {
+            var countryLanguages = await _countryLanguageService.ListByLanguageIdAsync(languageId);
+            var countries = countryLanguages.Select(cl => cl.Country).ToList();
+            return countries;
         }
     }
 }

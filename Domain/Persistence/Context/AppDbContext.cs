@@ -98,9 +98,7 @@ namespace GoingTo_API.Domain.Persistence.Context
             //CountryCurrencies Entity
 
             builder.Entity<CountryCurrency>().ToTable("CountryCurrencies");
-            builder.Entity<CountryCurrency>().HasKey(p => p.Id);
             builder.Entity<CountryCurrency>().HasKey(p => new { p.CountryId, p.CurrencyId });
-            builder.Entity<CountryCurrency>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<CountryCurrency>()
                 .HasOne(p => p.Currency)
                 .WithMany(p => p.CountryCurrencies)
@@ -113,9 +111,7 @@ namespace GoingTo_API.Domain.Persistence.Context
             //CountryLanguages Entity
 
             builder.Entity<CountryLanguage>().ToTable("CountryLanguages");
-            builder.Entity<CountryLanguage>().HasKey(p => p.Id);
             builder.Entity<CountryLanguage>().HasKey(p => new { p.LanguageId, p.CountryId });
-            builder.Entity<CountryLanguage>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<CountryLanguage>().Property(p => p.LanguageId).IsRequired();
             builder.Entity<CountryLanguage>().Property(p => p.CountryId).IsRequired();
             builder.Entity<CountryLanguage>()
@@ -152,17 +148,13 @@ namespace GoingTo_API.Domain.Persistence.Context
             //EstateService Entity
 
             builder.Entity<EstateService>().ToTable("EstateServices");
-            builder.Entity<EstateService>().HasKey(p => p.Id);
             builder.Entity<EstateService>().HasKey(p => new { p.EstateId, p.ServiceId });
-            builder.Entity<EstateService>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<EstateService>().Property(p => p.Text);
 
             //Favourite Entity
 
             builder.Entity<Favourite>().ToTable("Favourites");
-            builder.Entity<Favourite>().HasKey(p => p.Id);
             builder.Entity<Favourite>().HasKey(pt => new { pt.UserId, pt.LocatableId });
-            builder.Entity<Favourite>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Favourite>().Property(p => p.Description).HasMaxLength(45);
             builder.Entity<Favourite>().Property(p => p.UserId).IsRequired();
             builder.Entity<Favourite>().Property(p => p.LocatableId).IsRequired();
@@ -235,8 +227,6 @@ namespace GoingTo_API.Domain.Persistence.Context
             //LocatablePromo Entity
 
             builder.Entity<LocatablePromo>().ToTable("LocatablePromos");
-            builder.Entity<LocatablePromo>().HasKey(p => p.Id);
-            builder.Entity<LocatablePromo>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<LocatablePromo>().HasKey(p => new { p.LocatableId, p.PromoId });
 
 
@@ -317,18 +307,14 @@ namespace GoingTo_API.Domain.Persistence.Context
             //PlanBenefits Entity
 
             builder.Entity<PlanBenefit>().ToTable("PlanBenefits");
-            builder.Entity<PlanBenefit>().HasKey(p => p.Id);
             builder.Entity<PlanBenefit>().HasKey(p => new { p.BenefitId, p.PlanId });
-            builder.Entity<PlanBenefit>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<PlanBenefit>().Property(p => p.StartDate).HasDefaultValueSql("getdate()");
+            builder.Entity<PlanBenefit>().Property(p => p.StartDate);
             builder.Entity<PlanBenefit>().Property(p => p.EndDate);
 
             //PlanUsers Entity
 
             builder.Entity<PlanUser>().ToTable("PlanUsers");
-            builder.Entity<PlanUser>().HasKey(p => p.Id);
             builder.Entity<PlanUser>().HasKey(p => new { p.UserId, p.PlanId });
-            builder.Entity<PlanUser>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<PlanUser>().Property(p => p.StartDate);
             builder.Entity<PlanUser>().Property(p => p.EndDate);
 
@@ -407,9 +393,7 @@ namespace GoingTo_API.Domain.Persistence.Context
             //UserAchievements Entity 
 
             builder.Entity<UserAchievement>().ToTable("UserAchievements");
-            builder.Entity<UserAchievement>().HasKey(p => p.Id);
             builder.Entity<UserAchievement>().HasKey(p => new { p.UserId, p.AchievementId});
-            builder.Entity<UserAchievement>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<UserAchievement>().Property(p => p.UserId).IsRequired();
             builder.Entity<UserAchievement>().Property(p => p.AchievementId).IsRequired();
             builder.Entity<UserAchievement>()

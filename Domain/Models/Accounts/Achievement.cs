@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GoingTo_API.Domain.Models
+namespace GoingTo_API.Domain.Models.Accounts
 {
     public class Achievement
     {
@@ -14,3 +14,4 @@ namespace GoingTo_API.Domain.Models
         public List<UserAchievement> UserAchievements { get; set; }
     }
 }
+

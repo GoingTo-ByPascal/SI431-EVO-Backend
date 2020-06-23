@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GoingTo_API.Domain.Models;
+using GoingTo_API.Domain.Models.Accounts;
 using GoingTo_API.Domain.Services;
 using GoingTo_API.Domain.Services.Communications;
 using GoingTo_API.Extensions;
@@ -14,12 +15,12 @@ namespace GoingTo_API.Controllers
 {
     [Route("/api/[controller]")]
     [Produces("application/json")]
-    public class AchievementController: Controller
+    public class AchievementsController: Controller
     {
         private readonly IAchievementService _achievementService;
         private readonly IMapper _mapper;
 
-        public AchievementController(IAchievementService achievementService, IMapper mapper)
+        public AchievementsController(IAchievementService achievementService, IMapper mapper)
         {
             _achievementService = achievementService;
             _mapper = mapper;
