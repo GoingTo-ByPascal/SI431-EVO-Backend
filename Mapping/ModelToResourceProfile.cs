@@ -13,7 +13,6 @@ namespace GoingTo_API.Mapping
         {
             CreateMap<Locatable, LocatableResource>();
             CreateMap<User, UserResource>();
-            CreateMap<UserProfile, ProfileResource>();
             CreateMap<Wallet, WalletResource>();
             CreateMap<Achievement, AchievementResource>();
             CreateMap<Country, CountryResource>();
@@ -35,7 +34,6 @@ namespace GoingTo_API.Mapping
             CreateMap<Estate, EstateResource>();
             CreateMap<EstateService, EstateServiceResource>();
             CreateMap<UserProfile, UserProfileResource>();
-            CreateMap<UserProfile, ProfileResource>();
         }
     }
 }

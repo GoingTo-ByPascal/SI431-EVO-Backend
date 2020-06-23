@@ -25,10 +25,10 @@ namespace GoingTo_API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IEnumerable<ProfileResource>> GetAllAsync()
+        public async Task<IEnumerable<UserProfileResource>> GetAllAsync()
         {
             var profiles = await _profileService.ListAsync();
-            var resource = _mapper.Map<IEnumerable<GoingTo_API.Domain.Models.Accounts.UserProfile>, IEnumerable<ProfileResource>>(profiles);
+            var resource = _mapper.Map<IEnumerable<GoingTo_API.Domain.Models.Accounts.UserProfile>, IEnumerable<UserProfileResource>>(profiles);
             return resource;
         }
 
@@ -49,7 +49,7 @@ namespace GoingTo_API.Controllers
             if (!result.Success)
                 return BadRequest(result.Message); 
 
-            var profileResource = _mapper.Map<GoingTo_API.Domain.Models.Accounts.UserProfile, ProfileResource>(result.Profile); 
+            var profileResource = _mapper.Map<GoingTo_API.Domain.Models.Accounts.UserProfile, UserProfileResource>(result.Profile); 
             return Ok(profileResource);
         }
 
@@ -69,7 +69,7 @@ namespace GoingTo_API.Controllers
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var profileResource = _mapper.Map<GoingTo_API.Domain.Models.Accounts.UserProfile, ProfileResource>(result.Profile);
+            var profileResource = _mapper.Map<GoingTo_API.Domain.Models.Accounts.UserProfile, UserProfileResource>(result.Profile);
             return Ok(profileResource);
         }
 
@@ -88,7 +88,7 @@ namespace GoingTo_API.Controllers
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var profileResource = _mapper.Map<GoingTo_API.Domain.Models.Accounts.UserProfile, ProfileResource>(result.Profile);
+            var profileResource = _mapper.Map<GoingTo_API.Domain.Models.Accounts.UserProfile, UserProfileResource>(result.Profile);
             return Ok(profileResource);
         }
     }
