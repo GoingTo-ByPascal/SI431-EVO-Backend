@@ -1,4 +1,5 @@
-﻿using GoingTo_API.Domain.Models.Accounts;
+﻿using AutoMapper;
+using GoingTo_API.Domain.Models.Accounts;
 
 namespace GoingTo_API.Domain.Models
 {
@@ -10,8 +11,8 @@ namespace GoingTo_API.Domain.Models
         public string ReviewedAt { get; set; }
         public int LocatableId { get; set; }
         public Locatable Locatable { get; set; }
-        public int UserId { get; set; }
-        public User User { get; set; }
-    
+        public int UserProfileId { get; set; }
+        public UserProfile UserProfile { get; set; }
+
     }
 }

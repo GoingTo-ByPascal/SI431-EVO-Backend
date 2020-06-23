@@ -86,9 +86,9 @@ namespace GoingTo_API.Services
             return new ReviewResponse(existingReview);
         }
 
-        public async Task<IEnumerable<Review>> ListByUserIdAsync(int userId)
+        public async Task<IEnumerable<Review>> ListByUserProfileIdAsync(int userProfileId)
         {
-            return await _reviewRepository.ListByUserIdAsync(userId);
+            return await _reviewRepository.ListByUserProfileIdAsync(userProfileId);
         }
 
         public async Task<IEnumerable<Review>> ListByLocatableIdAsync(int locatableId)

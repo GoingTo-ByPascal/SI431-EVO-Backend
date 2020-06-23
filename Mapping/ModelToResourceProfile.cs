@@ -34,6 +34,8 @@ namespace GoingTo_API.Mapping
             CreateMap<Promo, PromoResource>();
             CreateMap<Estate, EstateResource>();
             CreateMap<EstateService, EstateServiceResource>();
+            CreateMap<UserProfile, UserProfileResource>();
+            CreateMap<UserProfile, ProfileResource>();
         }
     }
 }

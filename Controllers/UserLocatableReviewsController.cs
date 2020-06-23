@@ -12,19 +12,19 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
-{   [Route("/api/user/{userId}/locatable/{locatableId}/reviews")]
+{   [Route("/api/user/{userProfileId}/locatable/{locatableId}/reviews")]
     public class UserLocatableReviewsController:Controller
     {
         private readonly IReviewService _reviewService;
         private readonly ILocatableService _locatableService;
-        private readonly IUserService _userService;
+        private readonly IUserProfileService _userProfileService;
         private readonly IMapper _mapper;
 
-        public UserLocatableReviewsController(IReviewService reviewService, ILocatableService locatableService, IUserService userService, IMapper mapper)
+        public UserLocatableReviewsController(IReviewService reviewService, ILocatableService locatableService, IUserProfileService userProfileService, IMapper mapper)
         {
             _reviewService = reviewService;
             _locatableService = locatableService;
-            _userService = userService;
+            _userProfileService = userProfileService;
             _mapper = mapper;
         }
 
@@ -33,23 +33,23 @@ namespace GoingTo_API.Controllers
         /// </summary>
         /// <param name="locatableId"></param>
         /// <param name="resource"></param>
-        /// <param name="userId"></param>
+        /// <param name="userProfileId"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> PostAsync(int locatableId, [FromBody] SaveReviewResource resource, int userId)
+        public async Task<IActionResult> PostAsync(int locatableId, [FromBody] SaveReviewResource resource, int userProfileId)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
             var existingLocatable = await _locatableService.GetByIdAsync(locatableId);
-            var existingUser = await _userService.GetByIdAsync(userId);
+            var existingUserProfile = await _userProfileService.FindById(userProfileId);
             if (!existingLocatable.Success)
                 return BadRequest(existingLocatable.Message);
-            if (!existingUser.Success)
-                return BadRequest(existingUser.Message);
+            if (!existingUserProfile.Success)
+                return BadRequest(existingUserProfile.Message);
 
             var review = _mapper.Map<SaveReviewResource, Review>(resource);
             review.Locatable = existingLocatable.Resource;
-            review.User = existingUser.Resource;
+            review.UserProfile = existingUserProfile.Resource;
 
             var result = await _reviewService.SaveAsync(review);
 

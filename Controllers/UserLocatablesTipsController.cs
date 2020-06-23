@@ -11,20 +11,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GoingTo_API.Controllers
 {
-    [Route("/api/users/{userId}/locatables/{locatableId}/tips")]
+    [Route("/api/users/{userProfileId}/locatables/{locatableId}/tips")]
     [Produces("application/json")]
     public class UserLocatablesTipsController : Controller
     {
         private readonly ILocatableService _locatableService;
         private readonly ITipService _tipService;
-        private readonly IUserService _userService;
+        private readonly IUserProfileService _userProfileService;
         private readonly IMapper _mapper;
 
-        public UserLocatablesTipsController(ILocatableService locatableService,ITipService tipService, IUserService userService, IMapper mapper)
+        public UserLocatablesTipsController(ILocatableService locatableService,ITipService tipService, IUserProfileService userProfileService, IMapper mapper)
         {
             _locatableService = locatableService;
             _tipService = tipService;
-            _userService = userService;
+            _userProfileService = userProfileService;
             _mapper = mapper;
         }
 
@@ -33,23 +33,24 @@ namespace GoingTo_API.Controllers
         /// </summary>
         /// <param name="locatableId"></param>
         /// <param name="resource"></param>
-        /// <param name="userId"></param>
+        /// <param name="userProfileId"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> PostAsync(int locatableId,int userId, [FromBody] SaveTipResource resource)
+        public async Task<IActionResult> PostAsync(int locatableId,int userProfileId, [FromBody] SaveTipResource resource)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
             var existingLocatable = await _locatableService.GetByIdAsync(locatableId);
-            var existingUser = await _userService.GetByIdAsync(userId);
+            var existingUserProfile = await _userProfileService.FindById(userProfileId);
             if (!existingLocatable.Success)
                 return BadRequest(existingLocatable.Message);
-            if (!existingUser.Success)
-                return BadRequest(existingUser.Message);
+            if (!existingUserProfile.Success)
+                return BadRequest(existingUserProfile.Message);
 
             var tip = _mapper.Map<SaveTipResource, Tip>(resource);
             tip.Locatable = existingLocatable.Resource;
-            tip.User = existingUser.Resource;
+            //tip.User = existingUser.Resource;
+            tip.UserProfile = existingUserProfile.Resource;
 
             var result = await _tipService.SaveAsync(tip);
 
@@ -66,17 +67,17 @@ namespace GoingTo_API.Controllers
         /// <param name="locatableId"></param>
         /// <param name="tipId">the id of the Tip to update</param>
         /// <param name="resource"></param>
-        /// <param name="userId"></param>
+        /// <param name="userProfileId"></param>
         /// <returns></returns>
         [HttpPut("{tipId}")]
-        public async Task<IActionResult> PutAsync(int locatableId,int userId,int tipId, [FromBody] SaveTipResource resource)
+        public async Task<IActionResult> PutAsync(int locatableId,int userProfileId, int tipId, [FromBody] SaveTipResource resource)
         {
             var existingLocatable = await _locatableService.GetByIdAsync(locatableId);
-            var existingUser = await _userService.GetByIdAsync(userId);
+            var existingUserProfile = await _userProfileService.FindById(userProfileId);
             if (!existingLocatable.Success)
                 return BadRequest(existingLocatable.Message);
-            if (!existingUser.Success)
-                return BadRequest(existingUser.Message);
+            if (!existingUserProfile.Success)
+                return BadRequest(existingUserProfile.Message);
 
             var tip = _mapper.Map<SaveTipResource, Tip>(resource);
             var result = await _tipService.UpdateAsync(tipId, tip);
