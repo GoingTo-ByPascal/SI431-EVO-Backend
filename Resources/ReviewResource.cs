@@ -10,6 +10,6 @@ namespace GoingTo_API.Resources
         public string Comment { get; set; }
         public float Stars { get; set; }
         public string ReviewedAt { get; set; }
-        public UserResource User { get; set; }
+        public UserProfileResource UserProfile { get; set; }
     }
 }
