@@ -52,6 +52,7 @@ namespace GoingTo_API.Persistence.Repositories
             return await _context.Reviews
                 .Where(p => p.UserProfileId == userProfileId)
                 .Include(p=> p.UserProfile)
+                .Include(p=>p.Locatable)
                 .ToListAsync();
         }
     }
