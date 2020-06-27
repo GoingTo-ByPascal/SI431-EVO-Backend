@@ -12,5 +12,6 @@ namespace GoingTo_API.Resources
         public string BirthDate { get; set; }
         public string Gender { get; set; }
         public string CreatedAt { get; set; }
+        public CountryResource Country { get; set; }
     }
 }
