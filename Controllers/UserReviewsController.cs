@@ -3,6 +3,7 @@ using GoingTo_API.Domain.Models;
 using GoingTo_API.Domain.Repositories;
 using GoingTo_API.Domain.Services.Interactions;
 using GoingTo_API.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
+    [Authorize]
     [Route("/api/userprofile/{userProfileId}/reviews")]
     [Produces("application/json")]
     public class UserReviewsController : Controller

@@ -7,6 +7,7 @@ namespace GoingTo_API.Domain.Services.Accounts
 {
     public interface IUserService
     {
+        Task<AuthenticateResponse> Authenticate(AuthenticateRequest request);
         Task<IEnumerable<User>> ListAsync();
         Task<UserResponse> SaveAsync(User user);
         Task<UserResponse> UpdateAsync(int id, User user);

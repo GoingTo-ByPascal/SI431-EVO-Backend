@@ -25,6 +25,10 @@ using GoingTo_API.Domain.Services.Accounts;
 using GoingTo_API.Domain.Repositories.Business;
 using GoingTo_API.Domain.Services.Business;
 using GoingTo_API.Domain.Models.Business;
+using GoingTo_API.Settings;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace GoingTo_API
 {
@@ -42,6 +46,7 @@ namespace GoingTo_API
         {
             services.AddMvc();
 
+            services.AddCors();
             services.AddControllers();
             services.AddDbContext<AppDbContext>(options =>
             {
@@ -128,6 +133,32 @@ namespace GoingTo_API
 
             services.AddSwaggerExamplesFromAssemblyOf<Startup>();
 
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            //Secret reference
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+
+            //Configure Authenticatoin System based on Bearer JWT
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(x =>
+                {
+                    x.RequireHttpsMetadata = false;
+                    x.SaveToken = true;
+                    x.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
+
 
         }
 
@@ -149,6 +180,12 @@ namespace GoingTo_API
 
             app.UseRouting();
 
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+            );
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

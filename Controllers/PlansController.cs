@@ -4,6 +4,7 @@ using GoingTo_API.Domain.Services.Business;
 using GoingTo_API.Extensions;
 using GoingTo_API.Resources;
 using GoingTo_API.Resources.SaveResources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
+    [Authorize]
     [Route("/api/plans")]
     public class PlansController : Controller
     {

@@ -7,10 +7,12 @@ using GoingTo_API.Domain.Services;
 using GoingTo_API.Domain.Services.Geographic;
 using GoingTo_API.Extensions;
 using GoingTo_API.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GoingTo_API.Controllers
 {
+    [Authorize]
     [Route("/api/locatables/{locatableId}/tips")]
     [Produces("application/json")]
     public class LocatableTipsController : Controller

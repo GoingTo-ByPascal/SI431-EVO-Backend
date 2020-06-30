@@ -9,9 +9,11 @@ using GoingTo_API.Domain.Services;
 using GoingTo_API.Resources;
 using GoingTo_API.Services;
 using GoingTo_API.Domain.Models.Accounts;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GoingTo_API.Controllers
 {
+    [Authorize]
     [Route("/api/users/{userId}/achievements")]
     [Produces("application/json")]
     public class UserAchievementController : Controller

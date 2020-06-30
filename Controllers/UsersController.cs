@@ -1,14 +1,19 @@
 ﻿using AutoMapper;
 using GoingTo_API.Domain.Models.Accounts;
 using GoingTo_API.Domain.Services.Accounts;
+using GoingTo_API.Domain.Services.Communications;
 using GoingTo_API.Extensions;
 using GoingTo_API.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Diagnostics;
+using Renci.SshNet.Messages;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
+    [Authorize]
     [Route("/api/[controller]")]
     [Produces("application/json")]
     public class UsersController : Controller
@@ -34,8 +39,19 @@ namespace GoingTo_API.Controllers
             var resource = _mapper.Map<IEnumerable<User>, IEnumerable<UserResource>>(users);
             return resource;
         }
+        [AllowAnonymous]
+        [HttpPost("authenticate")]
+        public IActionResult Authenticate([FromBody] AuthenticateRequest request)
+        {
+            var response = _userService.Authenticate(request);
 
+            if (response == null)
+                return BadRequest(new { message = "Invalid Email or Password." });
 
+            return Ok(response.Result);
+        }
+
+       
         /// <summary>
         /// add an user in the system
         /// </summary>

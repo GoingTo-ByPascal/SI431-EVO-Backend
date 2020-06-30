@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace GoingTo_API.Domain.Models.Accounts
 {
@@ -6,6 +7,7 @@ namespace GoingTo_API.Domain.Models.Accounts
     {
         public int Id { get; set; }
         public string Email { get; set; }
+        [JsonIgnore]
         public string Password { get; set; }
         public Wallet Wallet { get; set; }
 
