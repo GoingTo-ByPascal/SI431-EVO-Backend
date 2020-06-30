@@ -4,6 +4,8 @@ namespace GoingTo_API.Resources
 {
     public class SaveUserResource
     {
+       
+
         [Required]
         [MaxLength(50)]
         public string Email { get; set; }
@@ -11,7 +13,5 @@ namespace GoingTo_API.Resources
         [Required]
         [MaxLength(50)]
         public string Password { get; set; }
-
-        public int? WalletId { get; set; }
     }
 }
