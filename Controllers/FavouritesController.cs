@@ -2,6 +2,7 @@
 using GoingTo_API.Domain.Models;
 using GoingTo_API.Domain.Services;
 using GoingTo_API.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
+    [Authorize]
     [Route("/api/users/{userId}/locatables")]
     [Produces("application/json")]
     public class FavouritesController : Controller

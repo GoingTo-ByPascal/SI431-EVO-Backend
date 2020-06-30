@@ -2,6 +2,7 @@
 using GoingTo_API.Domain.Models.Interactions;
 using GoingTo_API.Domain.Services.Business;
 using GoingTo_API.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
+    [Authorize]
     [Route ("/api/estate/{estateId}/services")]
     public class EstateServicesController : Controller
     {

@@ -2,6 +2,7 @@
 using GoingTo_API.Domain.Models;
 using GoingTo_API.Domain.Services;
 using GoingTo_API.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,8 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
-{   
+{
+    [Authorize]
     [Route("/api/language/{languageId}/countries")]
     public class LanguageCountriesController : Controller
     {

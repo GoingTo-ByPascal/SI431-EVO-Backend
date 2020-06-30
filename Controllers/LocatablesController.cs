@@ -8,9 +8,11 @@ using GoingTo_API.Domain.Models;
 using GoingTo_API.Domain.Services;
 using GoingTo_API.Resources;
 using GoingTo_API.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GoingTo_API.Controllers
 {
+    [Authorize]
     [Route("/api/[controller]")]
     [Produces("application/json")]
     public class LocatablesController : Controller

@@ -4,6 +4,7 @@ using GoingTo_API.Domain.Services.Accounts;
 using GoingTo_API.Extensions;
 using GoingTo_API.Resources;
 using GoingTo_API.Resources.SaveResources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
@@ -15,6 +16,7 @@ using Ubiety.Dns.Core.Records.NotUsed;
 
 namespace GoingTo_API.Controllers
 {
+    [Authorize]
     [Route ("/api/partners")]
     public class PartnersController : Controller
     {

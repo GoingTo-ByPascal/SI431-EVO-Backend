@@ -8,7 +8,6 @@ namespace GoingTo_API.Domain.Repositories.Accounts
     {
         Task<IEnumerable<User>> ListAsync();
         Task AddAsync(User user);
-
         Task<User> FindById(int id);
         void Update(User user);
 

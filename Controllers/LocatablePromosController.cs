@@ -6,10 +6,12 @@ using GoingTo_API.Domain.Models.Business;
 using GoingTo_API.Domain.Services.Business;
 using GoingTo_API.Extensions;
 using GoingTo_API.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GoingTo_API.Controllers
 {
+    [Authorize]
     [Route("/api/locatable/{locatableId}/promos")]
     public class LocatablePromosController : Controller
     {

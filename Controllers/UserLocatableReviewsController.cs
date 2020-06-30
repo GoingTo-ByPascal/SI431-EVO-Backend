@@ -5,6 +5,7 @@ using GoingTo_API.Domain.Services.Accounts;
 using GoingTo_API.Domain.Services.Interactions;
 using GoingTo_API.Extensions;
 using GoingTo_API.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,9 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
-{   [Route("/api/user/{userProfileId}/locatable/{locatableId}/reviews")]
+{
+    [Authorize]
+    [Route("/api/user/{userProfileId}/locatable/{locatableId}/reviews")]
     public class UserLocatableReviewsController:Controller
     {
         private readonly IReviewService _reviewService;
