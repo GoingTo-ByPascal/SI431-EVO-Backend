@@ -57,6 +57,7 @@ namespace GoingTo_API.Controllers
         /// </summary>
         /// <param name="resource"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SaveUserResource resource)
         {
