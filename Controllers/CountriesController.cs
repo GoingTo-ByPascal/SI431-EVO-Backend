@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GoingTo_API.Controllers
 {
-    [Authorize]
+
     [Route("/api/[Controller]")]
     [Produces("application/json")]
     public class CountriesController : Controller

@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GoingTo_API.Controllers
 {
-    [Authorize]
+    
     [Route("/api/[controller]")]
     [Produces("application/json")]
     public class LocatablesController : Controller

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
-    [Authorize]
+    
     [Route("/api/countries/{countryId}/cities")]
     [Produces("application/json")]
     public class CountryCitiesController : Controller

@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
-    [Authorize]
+    
     [Route("/api/locatables/{locatableId}/reviews")]
     public class LocatableReviewsController : Controller
     {

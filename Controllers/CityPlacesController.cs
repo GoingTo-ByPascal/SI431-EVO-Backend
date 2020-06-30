@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
-    [Authorize]
+    
     [Route("/api/cities/{cityId}/places")]
     [Produces("application/json")]
     public class CityPlacesController : Controller
