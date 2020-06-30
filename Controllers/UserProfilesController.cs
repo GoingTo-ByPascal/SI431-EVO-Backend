@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
-    
     [Route("/api/[controller]")]
     public class UserProfilesController : Controller
     {
