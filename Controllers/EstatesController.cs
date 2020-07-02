@@ -41,14 +41,14 @@ namespace GoingTo_API.Controllers
         }
 
         /// <summary>
-        /// returns all the Estates by partnerId.
+        /// returns all the Estates by partner name.
         /// </summary>
-        /// <param name="partnerId"></param>
+        /// <param name="partnerName" example=""></param>
         /// <returns></returns>
-        [HttpGet("{partnerId}")]
-        public async Task<IEnumerable<EstateResource>>ListAllByPartnerId(int partnerId)
+        [HttpGet("{partnerName}")]
+        public async Task<IEnumerable<EstateResource>>ListAllByPartnerName(string partnerName)
         {
-            var estates = await _estateService.ListByPartnerIdAsync(partnerId);
+            var estates = await _estateService.ListByPartnerNameAsync(partnerName);
             var resource = _mapper.Map<IEnumerable<Estate>, IEnumerable<EstateResource>>(estates);
 
             return resource;

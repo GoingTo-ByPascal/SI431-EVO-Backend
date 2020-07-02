@@ -29,7 +29,7 @@ namespace GoingTo_API.Extensions
             }
             return Regex.Replace(text, "([A-Z])", " $1", RegexOptions.Compiled).Trim();
         }
-
+      
         public static string ToProperCase(this string text)
         {
             System.Globalization.CultureInfo cultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;

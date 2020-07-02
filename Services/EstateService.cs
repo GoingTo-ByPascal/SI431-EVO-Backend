@@ -52,9 +52,9 @@ namespace GoingTo_API.Services
             return await _estateRepository.ListAsync();
         }
 
-        public async Task<IEnumerable<Estate>> ListByPartnerIdAsync(int partnerId)
+        public async Task<IEnumerable<Estate>> ListByPartnerNameAsync(string partnerName)
         {
-            return await _estateRepository.ListByPartnerIdAsync(partnerId);
+            return await _estateRepository.ListByPartnerNameAsync(partnerName);
         }
 
         public async Task<EstateResponse> SaveAsync(Estate estate)
