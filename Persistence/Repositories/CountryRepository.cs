@@ -27,6 +27,7 @@ namespace GoingTo_API.Persistence.Repositories
 
             return await _context.Countries
                 .Where(p => p.FullName == fullname)
+                .Include(p=>p.Locatable)
                 .FirstAsync();
         }
         public async Task<IEnumerable<Country>> ListAsync()

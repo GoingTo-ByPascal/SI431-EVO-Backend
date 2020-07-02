@@ -1,6 +1,7 @@
 ﻿using GoingTo_API.Domain.Models;
 using GoingTo_API.Domain.Persistence.Context;
 using GoingTo_API.Domain.Repositories;
+using GoingTo_API.Extensions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -33,5 +34,16 @@ namespace GoingTo_API.Persistence.Repositories
             .Include(p => p.Locatable)
             .Include(p => p.Country.Locatable)
             .ToListAsync();
+
+        public async Task<City> ListByNameAsync(string name) 
+        {
+            name = name.ToProperCase();
+
+            return await _context.Cities
+                .Where(p => p.Name == name)
+                .Include(p=>p.Country)
+                .Include(p=>p.Locatable)
+                .FirstAsync();
+        }
     }
 }

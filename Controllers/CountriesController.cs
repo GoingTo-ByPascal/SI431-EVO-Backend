@@ -35,15 +35,14 @@ namespace GoingTo_API.Controllers
             return resources;
         }
         /// <summary>
-        /// returns a country by searching in id
+        /// returns a country by searching name
         /// </summary>
-        /// <param name="id" example="1">the country id</param>
+        /// <param name="name" example="PeRu">the country id</param>
         /// <returns></returns>
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetByIdAsync(int id)
+        [HttpGet("{name}")]
+        public async Task<IActionResult> GetByIdAsync(string name)
         {
-
-            var result = await _countryServices.GetByIdAsync(id);
+            var result = await _countryServices.GetByFullNameAsync(name);
             if (!result.Success)
                 return BadRequest(result.Message);
             var countryResource = _mapper.Map<Country, CountryResource>(result.Resource);

@@ -10,6 +10,6 @@ namespace GoingTo_API.Domain.Services
         Task<IEnumerable<City>> ListAsync();
         Task<IEnumerable<City>> ListByCountryIdAsync(int countryId);
         Task<CityResponse> GetByIdAsync(int id);
-
+        Task<CityResponse> GetByNameAsync(string name);
     }
 }

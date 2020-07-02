@@ -9,7 +9,7 @@ namespace GoingTo_API.Domain.Repositories.Business
     public interface IEstateRepository
     {
         Task<IEnumerable<Estate>> ListAsync();
-        Task<IEnumerable<Estate>> ListByPartnerIdAsync(int partnerId);
+        Task<IEnumerable<Estate>> ListByPartnerNameAsync(string partnerName);
         Task AddAsync(Estate estate);
         Task<Estate> FindById(int id);
         void Update(Estate estate);

@@ -34,5 +34,15 @@ namespace GoingTo_API.Services
         {
             return await _cityRepository.ListByCountryIdAsync(countryId);
         }
+
+        public async Task<CityResponse> GetByNameAsync(string name)
+        {
+            var existingCity = await _cityRepository.ListByNameAsync(name);
+
+            if (existingCity == null)
+                return new CityResponse("City not found");
+            return new CityResponse(existingCity);
+
+        }
     }
 }
