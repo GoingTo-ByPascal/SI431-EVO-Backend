@@ -20,6 +20,7 @@ namespace GoingTo_API.Extensions
             "" => throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input)),
             _ => input.First().ToString().ToUpper() + input.Substring(1)
         };
+
         public static string SplitPascalCase(this string text)
         {
             if (string.IsNullOrEmpty(text))
@@ -28,6 +29,7 @@ namespace GoingTo_API.Extensions
             }
             return Regex.Replace(text, "([A-Z])", " $1", RegexOptions.Compiled).Trim();
         }
+      
         public static string ToProperCase(this string text)
         {
             System.Globalization.CultureInfo cultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;

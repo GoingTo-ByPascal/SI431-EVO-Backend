@@ -42,6 +42,15 @@ namespace GoingTo_API.Services
             }
         }
 
+        public async Task<PlaceResponse> GetByNameAsync(string name)
+        {
+            var existingPlace = await _placeRepository.FindByName(name);
+
+            if (existingPlace == null)
+                return new PlaceResponse("Country name not found");
+            return new PlaceResponse(existingPlace);
+        }
+
         public async Task<PlaceResponse> GetByIdAsync(int id)
         {
             var existingPlace = await _placeRepository.FindById(id);
