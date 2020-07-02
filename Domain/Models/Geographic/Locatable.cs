@@ -1,4 +1,5 @@
 ﻿using GoingTo_API.Domain.Models.Business;
+using GoingTo_API.Domain.Models.Geographic;
 using GoingTo_API.Domain.Models.Interactions;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,8 @@ namespace GoingTo_API.Domain.Models
         public Place Place { get; set; }
         public List<LocatablePromo> LocatablePromos { get; set; }
         public Estate Estate { get; set; }
+        public LocatableType LocatableType { get ;set;}
+        public int LocatableTypeId;
 
     }
 }
