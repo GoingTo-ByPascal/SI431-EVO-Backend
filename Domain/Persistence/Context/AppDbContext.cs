@@ -26,6 +26,7 @@ namespace GoingTo_API.Domain.Persistence.Context
         public DbSet<Favourite> Favourites { get; set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<Locatable> Locatables { get; set; }
+        public DbSet<LocatableType> LocatableTypes { get; set; }
         public DbSet<LocatablePromo> LocatablePromos { get; set; } 
         public DbSet<Partner> Partners { get; set; }
         public DbSet<PartnerProfile> PartnerProfiles { get; set; }
@@ -228,7 +229,19 @@ namespace GoingTo_API.Domain.Persistence.Context
                 .HasOne(p => p.Estate)
                 .WithOne(p => p.Locatable)
                 .HasForeignKey<Estate>(p => p.LocatableId);
-                
+
+
+            //LocatableType Entity
+
+            builder.Entity<LocatableType>().ToTable("LocatableTypes");
+            builder.Entity<LocatableType>().HasKey(p => p.Id);
+            builder.Entity<LocatableType>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<LocatableType>().Property(p => p.Name);
+            builder.Entity<LocatableType>()
+                .HasOne(p => p.Locatable)
+                .WithOne(p => p.LocatableType)
+                .HasForeignKey<Locatable>(p => p.LocatableTypeId);
+
 
             //LocatablePromo Entity
 
