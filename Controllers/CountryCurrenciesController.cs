@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
-    [Authorize]
+    
     [Route("/api/countries/{countryId}/currencies")]
     public class CountryCurrenciesController : Controller
     {
