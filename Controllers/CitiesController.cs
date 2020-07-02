@@ -35,14 +35,14 @@ namespace GoingTo_API.Controllers
             return resources;
         }
         /// <summary>
-        /// returns one city by id
+        /// returns one city by name
         /// </summary>
-        /// <param name="id" example="1">the city id</param>
+        /// <param name="name" example="CuSco">the city name</param>
         /// <returns></returns>
-        [HttpGet("{id}")]
-        public async Task<ActionResult> GetAsync(int id)
+        [HttpGet("{name}")]
+        public async Task<ActionResult> GetAsync(string name)
         {
-            var result = await _cityServices.GetByIdAsync(id);
+            var result = await _cityServices.GetByNameAsync(name);
             if (!result.Success)
                 return BadRequest(result.Message);
             var cityResource = _mapper.Map<City, CityResource>(result.Resource);

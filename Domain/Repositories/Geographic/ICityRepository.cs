@@ -8,6 +8,7 @@ namespace GoingTo_API.Domain.Repositories
     {
         Task<IEnumerable<City>> ListAsync();
         Task<IEnumerable<City>> ListByCountryIdAsync(int countryId);
+        Task<City> ListByNameAsync(string name);
         Task<City> FindById(int id);
     }
 }
