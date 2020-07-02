@@ -62,12 +62,12 @@ namespace GoingTo_API.Controllers
         /// <summary>
         /// returns one place  by id
         /// </summary>
-        /// <param name="id" example="1">the place Id</param>
+        /// <param name="name" example="Machu Picchu">the place Id</param>
         /// <returns></returns>
-        [HttpGet("{id}")]
-        public async Task<IActionResult> FindById(int id)
+        [HttpGet("{name}")]
+        public async Task<IActionResult> FindByName(string name)
         {
-            var result = await _placeService.GetByIdAsync(id);
+            var result = await _placeService.GetByNameAsync(name);
             if (!result.Success)
                 return BadRequest(result.Message);
             var placeResource = _mapper.Map<Place, PlaceResource>(result.Resource);
