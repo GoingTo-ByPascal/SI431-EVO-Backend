@@ -24,7 +24,7 @@ namespace GoingTo_API.Domain.Models
         public List<LocatablePromo> LocatablePromos { get; set; }
         public Estate Estate { get; set; }
         public LocatableType LocatableType { get ;set;}
-        public int LocatableTypeId;
+        public int LocatableTypeId { get; set; }
 
     }
 }
