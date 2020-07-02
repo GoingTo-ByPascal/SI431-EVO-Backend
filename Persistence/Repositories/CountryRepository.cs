@@ -23,10 +23,11 @@ namespace GoingTo_API.Persistence.Repositories
 
         public async Task<Country> FindByFullName(string fullname)
         {
-            fullname = fullname.FirstCharToUpper();
+            fullname = fullname.ToProperCase();
 
             return await _context.Countries
                 .Where(p => p.FullName == fullname)
+                .Include(p=>p.Locatable)
                 .FirstAsync();
         }
         public async Task<IEnumerable<Country>> ListAsync()
@@ -39,6 +40,5 @@ namespace GoingTo_API.Persistence.Repositories
             .Where(p => p.LocatableId == locatableId)
             .Include(p => p.Locatable)
             .FirstAsync();
-        
     }
 }

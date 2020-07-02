@@ -12,6 +12,7 @@ namespace GoingTo_API.Domain.Services
         Task<IEnumerable<Place>> ListAsync();
         Task<IEnumerable<Place>> ListByCityIdAsync(int cityId); 
         Task<PlaceResponse> GetByIdAsync(int id);
+        Task<PlaceResponse> GetByNameAsync(string name);
         Task<PlaceResponse> SaveAsync(Place place);
         Task<PlaceResponse> UpdateAsync(int id, Place place);
         Task<PlaceResponse> DeleteAsync(int id);
