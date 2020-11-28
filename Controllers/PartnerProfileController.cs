@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
-    [Authorize]
     [Route ("/api/PartnerProfile")]
     public class PartnerProfileController : Controller
     {

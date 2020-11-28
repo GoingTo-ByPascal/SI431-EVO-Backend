@@ -16,7 +16,6 @@ using Ubiety.Dns.Core.Records.NotUsed;
 
 namespace GoingTo_API.Controllers
 {
-    [Authorize]
     [Route ("/api/partners")]
     public class PartnersController : Controller
     {

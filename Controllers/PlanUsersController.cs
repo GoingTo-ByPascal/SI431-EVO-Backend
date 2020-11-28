@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
-    [Authorize]
     [Route("/api/plan/{planId}/user/{userId}")]
     public class PlanUsersController : Controller
     {

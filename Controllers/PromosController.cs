@@ -15,7 +15,6 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
-    [Authorize]
     [Route ("/api/[controller]")]
     public class PromosController : Controller
     {

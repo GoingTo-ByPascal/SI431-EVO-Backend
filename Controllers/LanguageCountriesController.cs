@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
-    [Authorize]
     [Route("/api/language/{languageId}/countries")]
     public class LanguageCountriesController : Controller
     {

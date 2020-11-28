@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
-    [Authorize]
     [Route ("/api/plan/{planId}/benefits")]
     public class PlanBenefitsController : Controller
     {

@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
-    [Authorize]
     [Route("/api/user/{userProfileId}/locatable/{locatableId}/reviews")]
     public class UserLocatableReviewsController:Controller
     {

@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
-    [Authorize]
     [Route("/api/userprofile/{userProfileId}/reviews")]
     [Produces("application/json")]
     public class UserReviewsController : Controller

@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 
 namespace GoingTo_API.Controllers
 {
-    [Authorize]
     [Route("/api/estate/{estateId}/reviews")]
     public class EstateReviewsController : Controller 
     {

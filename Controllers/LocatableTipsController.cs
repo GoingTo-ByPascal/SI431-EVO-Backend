@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GoingTo_API.Controllers
 {
-    [Authorize]
     [Route("/api/locatables/{locatableId}/tips")]
     [Produces("application/json")]
     public class LocatableTipsController : Controller

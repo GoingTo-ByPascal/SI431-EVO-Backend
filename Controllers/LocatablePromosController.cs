@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GoingTo_API.Controllers
 {
-    [Authorize]
     [Route("/api/locatable/{locatableId}/promos")]
     public class LocatablePromosController : Controller
     {
